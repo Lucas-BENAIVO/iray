@@ -1,3 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">iray</string>
+
+    <!-- Welcome -->
+    <string name="welcome_greeting">👋 Bonjour !</string>
+    <string name="welcome_subtitle">Que souhaitez-vous faire dans Agora aujourd’hui ?</string>
+
+    <string name="welcome_action_ask_question">Poser ma question au Gouvernement</string>
+    <string name="welcome_action_follow_answers">Suivre les réponses des ministres</string>
+    <string name="welcome_action_consultations">Participer aux consultations citoyennes</string>
+
+    <string name="welcome_featured_title">🔥 À la une</string>
+    <string name="welcome_featured_body">Une nouvelle consultation sur la santé mentale est lancée. À vos avis !</string>
+    <string name="welcome_featured_cta">rendez-vous dans la section Consultations citoyennes »</string>
+
+    <string name="welcome_logo_placeholder">Logo</string>
+    <string name="welcome_content_desc_logo">Logo de l’application</string>
+    <string name="welcome_content_desc_chevron">Continuer</string>
 </resources>
