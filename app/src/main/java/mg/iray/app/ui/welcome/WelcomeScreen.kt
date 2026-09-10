@@ -64,10 +64,12 @@ fun WelcomeScreen(
             horizontalAlignment = Alignment.Start
         ) {
             AppLogo(
-                modifier = Modifier.align(Alignment.Start)
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .align(Alignment.CenterHorizontally)
             )
 
-            Spacer(modifier = Modifier.height(28.dp))
+            Spacer(modifier = Modifier.height(24.dp))
 
             Text(
                 text = stringResource(R.string.welcome_greeting),
