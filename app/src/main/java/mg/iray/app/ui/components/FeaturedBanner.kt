@@ -11,7 +11,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
@@ -60,9 +59,9 @@ fun FeaturedBanner(
                 text = ctaLabel,
                 style = MaterialTheme.typography.labelLarge.copy(fontWeight = FontWeight.Medium),
                 color = BrandAccent,
-                textAlign = TextAlign.End,
+                textAlign = TextAlign.Start,
                 modifier = Modifier
-                    .align(Alignment.End)
+                    .fillMaxWidth()
                     .clickable(role = Role.Button, onClick = onCtaClick)
                     .padding(vertical = 4.dp)
             )
