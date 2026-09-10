@@ -5,10 +5,12 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 
 private val LightColorScheme = lightColorScheme(
-    primary = BrandBlue,
+    primary = BrandGreen,
     onPrimary = BrandWhite,
     secondary = BrandRed,
     onSecondary = BrandWhite,
+    tertiary = BrandGreen,
+    onTertiary = BrandWhite,
     background = SurfacePage,
     onBackground = TextPrimary,
     surface = SurfacePage,
@@ -21,7 +23,7 @@ private val LightColorScheme = lightColorScheme(
 )
 
 /**
- * Brand theme matching the Agora-style welcome design (light only).
+ * Thème Iray — identité visuelle de l’État malgache (clair uniquement).
  */
 @Composable
 fun IrayTheme(content: @Composable () -> Unit) {

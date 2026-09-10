@@ -20,7 +20,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import mg.iray.app.R
-import mg.iray.app.ui.theme.BrandBlue
+import mg.iray.app.ui.theme.BrandGreen
 import mg.iray.app.ui.theme.IrayTheme
 import mg.iray.app.ui.theme.SurfaceFeatured
 import mg.iray.app.ui.theme.TextPrimary
@@ -46,7 +46,7 @@ fun FeaturedBanner(
             Text(
                 text = title,
                 style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold),
-                color = BrandBlue
+                color = BrandGreen
             )
             Spacer(modifier = Modifier.height(12.dp))
             Text(
@@ -58,7 +58,7 @@ fun FeaturedBanner(
             Text(
                 text = ctaLabel,
                 style = MaterialTheme.typography.labelLarge.copy(fontWeight = FontWeight.Medium),
-                color = BrandBlue,
+                color = BrandGreen,
                 textAlign = TextAlign.End,
                 modifier = Modifier
                     .align(Alignment.End)
