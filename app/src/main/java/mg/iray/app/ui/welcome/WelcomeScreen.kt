@@ -14,8 +14,8 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.Chat
-import androidx.compose.material.icons.outlined.EditNote
-import androidx.compose.material.icons.outlined.Forum
+import androidx.compose.material.icons.outlined.Description
+import androidx.compose.material.icons.outlined.Report
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -37,9 +37,9 @@ import mg.iray.app.ui.theme.TextPrimary
 import mg.iray.app.ui.theme.TextSecondary
 
 data class WelcomeActions(
+    val onDemarches: () -> Unit = {},
+    val onSignalements: () -> Unit = {},
     val onAskQuestion: () -> Unit = {},
-    val onFollowAnswers: () -> Unit = {},
-    val onConsultations: () -> Unit = {},
     val onFeaturedCta: () -> Unit = {}
 )
 
@@ -119,24 +119,24 @@ private fun WelcomeActionsStack(
         verticalArrangement = Arrangement.spacedBy((-6).dp)
     ) {
         WelcomeActionCard(
-            title = stringResource(R.string.welcome_action_ask_question),
-            icon = Icons.AutoMirrored.Outlined.Chat,
+            title = stringResource(R.string.welcome_action_demarches),
+            icon = Icons.Outlined.Description,
             style = WelcomeActionStyle.Primary,
-            onClick = actions.onAskQuestion,
+            onClick = actions.onDemarches,
             modifier = Modifier.zIndex(1f)
         )
         WelcomeActionCard(
-            title = stringResource(R.string.welcome_action_follow_answers),
-            icon = Icons.Outlined.Forum,
+            title = stringResource(R.string.welcome_action_signalements),
+            icon = Icons.Outlined.Report,
             style = WelcomeActionStyle.Quiet,
-            onClick = actions.onFollowAnswers,
+            onClick = actions.onSignalements,
             modifier = Modifier.zIndex(3f)
         )
         WelcomeActionCard(
-            title = stringResource(R.string.welcome_action_consultations),
-            icon = Icons.Outlined.EditNote,
+            title = stringResource(R.string.welcome_action_ask_question),
+            icon = Icons.AutoMirrored.Outlined.Chat,
             style = WelcomeActionStyle.Quiet,
-            onClick = actions.onConsultations,
+            onClick = actions.onAskQuestion,
             modifier = Modifier.zIndex(2f)
         )
     }

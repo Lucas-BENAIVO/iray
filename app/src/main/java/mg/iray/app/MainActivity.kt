@@ -19,9 +19,9 @@ class MainActivity : ComponentActivity() {
                 WelcomeScreen(
                     modifier = Modifier.fillMaxSize(),
                     actions = WelcomeActions(
+                        onDemarches = { /* TODO: navigate */ },
+                        onSignalements = { /* TODO: navigate */ },
                         onAskQuestion = { /* TODO: navigate */ },
-                        onFollowAnswers = { /* TODO: navigate */ },
-                        onConsultations = { /* TODO: navigate */ },
                         onFeaturedCta = { /* TODO: navigate */ }
                     )
                 )
