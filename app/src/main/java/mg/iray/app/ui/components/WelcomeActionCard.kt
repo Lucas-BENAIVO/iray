@@ -29,20 +29,20 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import mg.iray.app.R
-import mg.iray.app.ui.theme.BrandGreen
-import mg.iray.app.ui.theme.BrandRed
+import mg.iray.app.ui.theme.BrandAccent
+import mg.iray.app.ui.theme.BrandPrimarySoft
 import mg.iray.app.ui.theme.BrandWhite
 import mg.iray.app.ui.theme.IrayTheme
 import mg.iray.app.ui.theme.OutlineOnWhite
+import mg.iray.app.ui.theme.TextPrimary
 
 /**
- * Styles des actions d’accueil, dans l’ordre du drapeau malgache :
- * Blanc → Rouge → Vert
+ * [Primary] : fond vert très clair + texte sombre.
+ * [Quiet] : carte blanche.
  */
 enum class WelcomeActionStyle {
-    FlagWhite,
-    FlagRed,
-    FlagGreen
+    Primary,
+    Quiet
 }
 
 @Composable
@@ -53,17 +53,15 @@ fun WelcomeActionCard(
     onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val (container, content) = when (style) {
-        WelcomeActionStyle.FlagWhite -> BrandWhite to BrandGreen
-        WelcomeActionStyle.FlagRed -> BrandRed to BrandWhite
-        WelcomeActionStyle.FlagGreen -> BrandGreen to BrandWhite
+    val container = when (style) {
+        WelcomeActionStyle.Primary -> BrandPrimarySoft
+        WelcomeActionStyle.Quiet -> BrandWhite
     }
+    val content = TextPrimary
+    val accent = BrandAccent
 
     val shape = RoundedCornerShape(12.dp)
-    val elevation = when (style) {
-        WelcomeActionStyle.FlagWhite -> 8.dp
-        else -> 3.dp
-    }
+    val elevation = if (style == WelcomeActionStyle.Quiet) 5.dp else 3.dp
 
     Row(
         modifier = modifier
@@ -71,16 +69,18 @@ fun WelcomeActionCard(
             .shadow(elevation = elevation, shape = shape, clip = false)
             .clip(shape)
             .background(container)
-            .then(
-                if (style == WelcomeActionStyle.FlagWhite) {
-                    Modifier.border(1.dp, OutlineOnWhite, shape)
+            .border(
+                width = if (style == WelcomeActionStyle.Primary) 1.5.dp else 1.dp,
+                color = if (style == WelcomeActionStyle.Primary) {
+                    BrandAccent.copy(alpha = 0.35f)
                 } else {
-                    Modifier
-                }
+                    OutlineOnWhite
+                },
+                shape = shape
             )
             .clickable(
                 interactionSource = remember { MutableInteractionSource() },
-                indication = ripple(color = content.copy(alpha = 0.2f)),
+                indication = ripple(color = accent.copy(alpha = 0.16f)),
                 role = Role.Button,
                 onClick = onClick
             )
@@ -91,7 +91,7 @@ fun WelcomeActionCard(
         Icon(
             imageVector = icon,
             contentDescription = null,
-            tint = content,
+            tint = accent,
             modifier = Modifier.size(26.dp)
         )
         Text(
@@ -103,7 +103,7 @@ fun WelcomeActionCard(
         Text(
             text = "»",
             style = MaterialTheme.typography.titleLarge,
-            color = content
+            color = accent
         )
     }
 }
@@ -115,7 +115,7 @@ private fun WelcomeActionCardPreview() {
         WelcomeActionCard(
             title = stringResource(R.string.welcome_action_ask_question),
             icon = Icons.AutoMirrored.Outlined.Chat,
-            style = WelcomeActionStyle.FlagWhite,
+            style = WelcomeActionStyle.Primary,
             onClick = {}
         )
     }

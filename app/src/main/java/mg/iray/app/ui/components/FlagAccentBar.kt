@@ -14,14 +14,14 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import mg.iray.app.ui.theme.BrandGreen
-import mg.iray.app.ui.theme.BrandRed
-import mg.iray.app.ui.theme.BrandWhite
+import mg.iray.app.ui.theme.FlagGreen
+import mg.iray.app.ui.theme.FlagRed
+import mg.iray.app.ui.theme.FlagWhite
 import mg.iray.app.ui.theme.IrayTheme
 import mg.iray.app.ui.theme.OutlineOnWhite
 
 /**
- * Fine barre tricolore (Blanc · Rouge · Vert) — rappel discret du drapeau.
+ * Fine barre tricolore — rappel discret du drapeau.
  */
 @Composable
 fun FlagAccentBar(
@@ -37,23 +37,23 @@ fun FlagAccentBar(
             .border(0.5.dp, OutlineOnWhite.copy(alpha = 0.6f), shape)
     ) {
         Box(
-            Modifier
+            modifier = Modifier
                 .weight(1f)
                 .fillMaxHeight()
-                .background(BrandWhite)
-        )
+                .background(FlagWhite)
+        ) {}
         Box(
-            Modifier
+            modifier = Modifier
                 .weight(1f)
                 .fillMaxHeight()
-                .background(BrandRed)
-        )
+                .background(FlagRed)
+        ) {}
         Box(
-            Modifier
+            modifier = Modifier
                 .weight(1f)
                 .fillMaxHeight()
-                .background(BrandGreen)
-        )
+                .background(FlagGreen)
+        ) {}
     }
 }
 

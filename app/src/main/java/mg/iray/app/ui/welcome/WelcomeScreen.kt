@@ -31,9 +31,9 @@ import mg.iray.app.ui.components.FeaturedBanner
 import mg.iray.app.ui.components.FlagAccentBar
 import mg.iray.app.ui.components.WelcomeActionCard
 import mg.iray.app.ui.components.WelcomeActionStyle
-import mg.iray.app.ui.theme.BrandGreen
 import mg.iray.app.ui.theme.IrayTheme
 import mg.iray.app.ui.theme.SurfacePage
+import mg.iray.app.ui.theme.TextPrimary
 import mg.iray.app.ui.theme.TextSecondary
 
 data class WelcomeActions(
@@ -83,7 +83,7 @@ fun WelcomeScreen(
             Text(
                 text = stringResource(R.string.welcome_greeting),
                 style = MaterialTheme.typography.headlineLarge,
-                color = BrandGreen
+                color = TextPrimary
             )
 
             Spacer(modifier = Modifier.height(10.dp))
@@ -121,21 +121,21 @@ private fun WelcomeActionsStack(
         WelcomeActionCard(
             title = stringResource(R.string.welcome_action_ask_question),
             icon = Icons.AutoMirrored.Outlined.Chat,
-            style = WelcomeActionStyle.FlagWhite,
+            style = WelcomeActionStyle.Primary,
             onClick = actions.onAskQuestion,
             modifier = Modifier.zIndex(1f)
         )
         WelcomeActionCard(
             title = stringResource(R.string.welcome_action_follow_answers),
             icon = Icons.Outlined.Forum,
-            style = WelcomeActionStyle.FlagRed,
+            style = WelcomeActionStyle.Quiet,
             onClick = actions.onFollowAnswers,
             modifier = Modifier.zIndex(3f)
         )
         WelcomeActionCard(
             title = stringResource(R.string.welcome_action_consultations),
             icon = Icons.Outlined.EditNote,
-            style = WelcomeActionStyle.FlagGreen,
+            style = WelcomeActionStyle.Quiet,
             onClick = actions.onConsultations,
             modifier = Modifier.zIndex(2f)
         )
