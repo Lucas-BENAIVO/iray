@@ -94,10 +94,12 @@ fun IrayNavHost(
         }
         composable(IrayRoute.WELCOME) {
             WelcomeScreen(
+                userFullName = "$firstName $lastName".trim(),
+                userZoneLabel = "$commune, $fokontany",
                 actions = WelcomeActions(
                     onDemarches = { /* TODO: navigate */ },
                     onSignalements = { /* TODO: navigate */ },
-                    onAskQuestion = { /* TODO: navigate */ },
+                    onNotifications = { /* TODO: navigate */ },
                     onFeaturedCta = { /* TODO: navigate */ },
                 ),
             )

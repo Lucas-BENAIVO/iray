@@ -11,7 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.outlined.Chat
+import androidx.compose.material.icons.outlined.Description
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -113,8 +113,8 @@ fun WelcomeActionCard(
 private fun WelcomeActionCardPreview() {
     IrayTheme {
         WelcomeActionCard(
-            title = stringResource(R.string.welcome_action_ask_question),
-            icon = Icons.AutoMirrored.Outlined.Chat,
+            title = stringResource(R.string.welcome_action_demarches),
+            icon = Icons.Outlined.Description,
             style = WelcomeActionStyle.Primary,
             onClick = {}
         )

@@ -8,7 +8,6 @@
 
     <string name="welcome_action_demarches">Hanao fangatahana ara-pitantanana</string>
     <string name="welcome_action_signalements">Hitatitra olana amin’ny manam-pahefana</string>
-    <string name="welcome_action_ask_question">Hanontany ny Governemanta</string>
 
     <string name="welcome_featured_title">🔥 Vaovao</string>
     <string name="welcome_featured_body">Misokatra ny fanadihadiana vaovao momba ny fahasalamana ara-tsaina. Asehoy ny hevitrao !</string>
@@ -17,6 +16,11 @@
     <string name="welcome_logo_placeholder">Logo</string>
     <string name="welcome_content_desc_logo">Logo-n’ny rindranasa</string>
     <string name="welcome_content_desc_chevron">Tohizo</string>
+    <string name="welcome_zone_cd">Votre zone</string>
+    <string name="welcome_notifications_cd">Notifications</string>
+    <string name="welcome_banner_title">Ensemble pour un Madagascar plus simple</string>
+    <string name="welcome_banner_body">Vos démarches, signalements et informations officielles, au même endroit.</string>
+    <string name="welcome_content_desc_banner">Vue de la ville d’Antananarivo au crépuscule</string>
 
     <!-- Hero d’accueil — style référence e-Mada, marque Iray -->
     <string name="welcome_hero_title">Iray</string>

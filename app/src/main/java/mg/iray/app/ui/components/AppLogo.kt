@@ -29,7 +29,7 @@ fun AppLogo(
             contentScale = ContentScale.Fit,
             modifier = modifier
                 .fillMaxWidth()
-                .heightIn(min = 120.dp, max = 160.dp)
+                .heightIn(min = 64.dp, max = 88.dp)
         )
     }
 }
