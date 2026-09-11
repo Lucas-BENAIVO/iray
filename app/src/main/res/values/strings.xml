@@ -24,4 +24,19 @@
     <string name="welcome_hero_body">Simplifiez vos démarches, signalez les problèmes, restez informé.</string>
     <string name="welcome_hero_cta">Commencer</string>
     <string name="welcome_content_desc_hero">Rue animée du marché au centre-ville de Madagascar</string>
+
+    <!-- Profil — création du profil -->
+    <string name="profile_title">Créons votre profil</string>
+    <string name="profile_subtitle">Quelques informations pour personnaliser votre espace.</string>
+    <string name="profile_avatar_cd">Photo de profil — toucher pour ajouter</string>
+    <string name="profile_first_name_label">Prénom *</string>
+    <string name="profile_first_name_hint">Jean</string>
+    <string name="profile_last_name_label">Nom *</string>
+    <string name="profile_last_name_hint">Rakoto</string>
+    <string name="profile_phone_label">Téléphone *</string>
+    <string name="profile_phone_hint">+261 34 12 34 567</string>
+    <string name="profile_birthdate_label">Date de naissance</string>
+    <string name="profile_birthdate_hint">JJ/MM/AAAA</string>
+    <string name="profile_continue">Continuer</string>
+    <string name="profile_back_cd">Retour</string>
 </resources>

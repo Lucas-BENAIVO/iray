@@ -6,8 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.Modifier
-import mg.iray.app.ui.screens.onboarding.OnboardingActions
-import mg.iray.app.ui.screens.onboarding.OnboardingScreen
+import mg.iray.app.ui.navigation.IrayNavHost
 import mg.iray.app.ui.theme.IrayTheme
 
 class MainActivity : ComponentActivity() {
@@ -16,11 +15,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             IrayTheme {
-                OnboardingScreen(
+                IrayNavHost(
                     modifier = Modifier.fillMaxSize(),
-                    actions = OnboardingActions(
-                        onStart = { /* TODO: navigate */ }
-                    )
                 )
             }
         }
