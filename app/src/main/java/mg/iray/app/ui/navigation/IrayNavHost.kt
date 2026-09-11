@@ -1,5 +1,6 @@
 package mg.iray.app.ui.navigation
 
+import android.net.Uri
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateMapOf
@@ -32,6 +33,18 @@ import mg.iray.app.ui.screens.form.FormActions
 import mg.iray.app.ui.screens.form.FormScreen
 import mg.iray.app.ui.screens.notifications.NotificationsActions
 import mg.iray.app.ui.screens.notifications.NotificationsScreen
+import mg.iray.app.ui.screens.signalement.SignalementCategoryActions
+import mg.iray.app.ui.screens.signalement.SignalementCategoryScreen
+import mg.iray.app.ui.screens.signalement.SignalementConfirmActions
+import mg.iray.app.ui.screens.signalement.SignalementConfirmScreen
+import mg.iray.app.ui.screens.signalement.SignalementDetailsActions
+import mg.iray.app.ui.screens.signalement.SignalementDetailsScreen
+import mg.iray.app.ui.screens.signalement.SignalementLocationActions
+import mg.iray.app.ui.screens.signalement.SignalementLocationScreen
+import mg.iray.app.ui.screens.signalement.SignalementSubcategoryActions
+import mg.iray.app.ui.screens.signalement.SignalementSubcategoryScreen
+import mg.iray.app.ui.screens.signalement.SignalementSuccessActions
+import mg.iray.app.ui.screens.signalement.SignalementSuccessScreen
 import mg.iray.app.ui.screens.success.SuccessActions
 import mg.iray.app.ui.screens.success.SuccessScreen
 import mg.iray.app.ui.screens.upload.UploadActions
@@ -58,6 +71,12 @@ object IrayRoute {
     const val FORM = "form/{demarcheId}"
     const val RECAP = "recap/{demarcheId}"
     const val CONFIRMATION = "confirmation/{demarcheId}"
+    const val SIGNALEMENT = "signalement"
+    const val SIGNALEMENT_DETAIL = "signalement_detail/{categoryId}"
+    const val SIGNALEMENT_LOCATION = "signalement_location/{categoryId}"
+    const val SIGNALEMENT_DETAILS = "signalement_details/{categoryId}/{subcategory}"
+    const val SIGNALEMENT_CONFIRM = "signalement_confirm"
+    const val SIGNALEMENT_SUCCESS = "signalement_success"
     const val WELCOME = "welcome"
 }
 
@@ -68,7 +87,12 @@ fun IrayNavHost(
 ) {
     val navController = rememberNavController()
 
-    // Données du parcours conservées pour l’écran succès (survit à la rotation).
+    // Données du parcours signalement (survivent à la rotation).
+    var sigCategoryId by rememberSaveable { mutableStateOf("") }
+    var sigSubcategory by rememberSaveable { mutableStateOf("") }
+    var sigAddress by rememberSaveable { mutableStateOf("") }
+    var sigDescription by rememberSaveable { mutableStateOf("") }
+    var sigPhotos by rememberSaveable { mutableStateOf(listOf<String>()) }
     var firstName by rememberSaveable { mutableStateOf("") }
     var lastName by rememberSaveable { mutableStateOf("") }
     var birthdate by rememberSaveable { mutableStateOf("") }
@@ -131,9 +155,100 @@ fun IrayNavHost(
                 userZoneLabel = "$commune, $fokontany",
                 actions = WelcomeActions(
                     onDemarches = { navController.navigate(IrayRoute.DEMARCHES) },
-                    onSignalements = { /* TODO: navigate */ },
+                    onSignalements = { navController.navigate(IrayRoute.SIGNALEMENT) },
                     onNotifications = { navController.navigate(IrayRoute.NOTIFICATIONS) },
                     onFeaturedCta = { /* TODO: navigate */ },
+                ),
+            )
+        }
+        composable(IrayRoute.SIGNALEMENT) {
+            SignalementCategoryScreen(
+                actions = SignalementCategoryActions(
+                    onBack = { navController.popBackStack() },
+                    onCategoryClick = { categoryId ->
+                        navController.navigate("signalement_detail/$categoryId")
+                    },
+                ),
+            )
+        }
+        composable(
+            route = IrayRoute.SIGNALEMENT_DETAIL,
+            arguments = listOf(navArgument("categoryId") { type = NavType.StringType }),
+        ) { backStackEntry ->
+            SignalementSubcategoryScreen(
+                categoryId = backStackEntry.arguments?.getString("categoryId").orEmpty(),
+                actions = SignalementSubcategoryActions(
+                    onBack = { navController.popBackStack() },
+                    onContinue = { categoryId, subcategory ->
+                        sigCategoryId = categoryId
+                        sigSubcategory = subcategory
+                        navController.navigate("signalement_location/$categoryId")
+                    },
+                ),
+            )
+        }
+        composable(
+            route = IrayRoute.SIGNALEMENT_LOCATION,
+            arguments = listOf(navArgument("categoryId") { type = NavType.StringType }),
+        ) { backStackEntry ->
+            val locCategoryId =
+                backStackEntry.arguments?.getString("categoryId").orEmpty()
+            SignalementLocationScreen(
+                initialAddress = "Fokontany $fokontany, $commune",
+                actions = SignalementLocationActions(
+                    onBack = { navController.popBackStack() },
+                    onUsePosition = { /* TODO: GPS */ },
+                    onContinue = { address ->
+                        sigAddress = address
+                        navController.navigate(
+                            "signalement_details/$locCategoryId/" +
+                                Uri.encode(sigSubcategory),
+                        )
+                    },
+                ),
+            )
+        }
+        composable(
+            route = IrayRoute.SIGNALEMENT_DETAILS,
+            arguments = listOf(
+                navArgument("categoryId") { type = NavType.StringType },
+                navArgument("subcategory") { type = NavType.StringType },
+            ),
+        ) {
+            SignalementDetailsScreen(
+                actions = SignalementDetailsActions(
+                    onBack = { navController.popBackStack() },
+                    onContinue = { description, photoUris ->
+                        sigDescription = description
+                        sigPhotos = photoUris
+                        navController.navigate(IrayRoute.SIGNALEMENT_CONFIRM)
+                    },
+                ),
+            )
+        }
+        composable(IrayRoute.SIGNALEMENT_CONFIRM) {
+            SignalementConfirmScreen(
+                categoryId = sigCategoryId,
+                subcategory = sigSubcategory,
+                address = sigAddress,
+                description = sigDescription,
+                actions = SignalementConfirmActions(
+                    onBack = { navController.popBackStack() },
+                    onSend = {
+                        navController.navigate(IrayRoute.SIGNALEMENT_SUCCESS)
+                    },
+                ),
+            )
+        }
+        composable(IrayRoute.SIGNALEMENT_SUCCESS) {
+            SignalementSuccessScreen(
+                categoryId = sigCategoryId,
+                subcategory = sigSubcategory,
+                actions = SignalementSuccessActions(
+                    onBack = { navController.popBackStack() },
+                    // Page "Mes signalements" : TODO.
+                    onViewReports = { navController.navigate(IrayRoute.WELCOME) },
+                    onHome = { navController.navigate(IrayRoute.WELCOME) },
                 ),
             )
         }

@@ -54,3 +54,7 @@ val ZoneMapPin = Color(0xFF1A73E8)
 val SuccessHalo = Color(0xFFE3F3E8)
 /** Pastille avatar bleu nuit. */
 val SuccessAvatar = Color(0xFF1B3A5C)
+
+// —— Priorités signalement ——
+/** Orange priorité moyenne. */
+val PriorityOrange = Color(0xFFE68900)

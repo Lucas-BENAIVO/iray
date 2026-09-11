@@ -38,6 +38,7 @@ fun IrayPrimaryButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
+    containerColor: androidx.compose.ui.graphics.Color = FlagGreen,
 ) {
     Button(
         onClick = onClick,
@@ -47,7 +48,7 @@ fun IrayPrimaryButton(
             .heightIn(min = 56.dp),
         shape = CircleShape,
         colors = ButtonDefaults.buttonColors(
-            containerColor = FlagGreen,
+            containerColor = containerColor,
             contentColor = TextOnBrand,
         ),
         contentPadding = PaddingValues(horizontal = 24.dp, vertical = 16.dp),

@@ -164,4 +164,60 @@
     <string name="confirmation_step_validation">Validation</string>
     <string name="confirmation_step_done">Terminée</string>
     <string name="confirmation_cta">Voir mes demandes</string>
+
+    <!-- Signalement — choix de la catégorie -->
+    <string name="signalement_back_cd">Retour</string>
+    <string name="signalement_title">Signaler un problème</string>
+    <string name="signalement_subtitle">Que souhaitez-vous signaler ?</string>
+    <string name="signalement_search_hint">Vous pouvez aussi rechercher une catégorie</string>
+    <string name="signalement_chevron_cd">Choisir la catégorie</string>
+    <string name="signalement_cat_electricite">Électricité</string>
+    <string name="signalement_cat_eau">Eau</string>
+    <string name="signalement_cat_routes">Routes et voirie</string>
+    <string name="signalement_cat_eclairage">Éclairage public</string>
+    <string name="signalement_cat_proprete">Propreté &amp; déchets</string>
+    <string name="signalement_cat_inondation">Inondation &amp; drainage</string>
+    <string name="signalement_cat_sante">Santé</string>
+    <string name="signalement_cat_infrastructures">Infrastructures publiques</string>
+    <string name="signalement_cat_environnement">Environnement</string>
+    <string name="signalement_cat_autre">Autre</string>
+    <string name="signalement_sub_step">Catégorie</string>
+    <string name="signalement_continue">Continuer</string>
+
+    <!-- Signalement — localisation -->
+    <string name="signalement_location_back_cd">Retour</string>
+    <string name="signalement_location_title">Localisation</string>
+    <string name="signalement_use_position">Utilisez ma position</string>
+    <string name="signalement_address_label">Adresse détectée</string>
+    <string name="signalement_address_hint">Fokontany, Commune</string>
+
+    <!-- Signalement — détails et photos -->
+    <string name="signalement_details_back_cd">Retour</string>
+    <string name="signalement_details_title">Détails et photos</string>
+    <string name="signalement_description_label">Que s’est-il produit ?</string>
+    <string name="signalement_description_hint">Décrivez le problème…</string>
+    <string name="signalement_add_photo_label">Ajouter une photo (optionnel)</string>
+    <string name="signalement_add_photo_cd">Ajouter une photo</string>
+
+    <!-- Signalement — confirmation -->
+    <string name="signalement_confirm_back_cd">Retour</string>
+    <string name="signalement_confirm_title">Confirmation</string>
+    <string name="signalement_location_row_label">Localisation : </string>
+    <string name="signalement_description_row_label">Description : </string>
+    <string name="signalement_priority_label">Priorité : </string>
+    <string name="signalement_priority_high">Haute</string>
+    <string name="signalement_priority_medium">Moyenne</string>
+    <string name="signalement_priority_low">Basse</string>
+    <string name="signalement_send">Envoyer</string>
+
+    <!-- Signalement — succès -->
+    <string name="signalement_success_back_cd">Retour</string>
+    <string name="signalement_success_title">Signalement envoyé !</string>
+    <string name="signalement_success_subtitle_format">Votre signalement %1$s a bien été enregistré.</string>
+    <string name="signalement_success_received_label">Reçue</string>
+    <string name="signalement_step_supported">Pris en charge</string>
+    <string name="signalement_step_ongoing">En cours</string>
+    <string name="signalement_step_resolved">Résolu</string>
+    <string name="signalement_view_reports">Voir mes signalements</string>
+    <string name="signalement_back_home">Retour à l’accueil</string>
 </resources>
