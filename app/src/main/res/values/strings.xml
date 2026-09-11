@@ -17,4 +17,11 @@
     <string name="welcome_logo_placeholder">Logo</string>
     <string name="welcome_content_desc_logo">Logo-n’ny rindranasa</string>
     <string name="welcome_content_desc_chevron">Tohizo</string>
+
+    <!-- Hero d’accueil — style référence e-Mada, marque Iray -->
+    <string name="welcome_hero_title">Iray</string>
+    <string name="welcome_hero_subtitle">Les services publics à portée de main</string>
+    <string name="welcome_hero_body">Simplifiez vos démarches, signalez les problèmes, restez informé.</string>
+    <string name="welcome_hero_cta">Commencer</string>
+    <string name="welcome_content_desc_hero">Rue animée du marché au centre-ville de Madagascar</string>
 </resources>

@@ -1,4 +1,4 @@
-package mg.iray.app.ui.welcome
+package mg.iray.app.ui.screens.welcome
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -27,10 +27,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import mg.iray.app.R
 import mg.iray.app.ui.components.AppLogo
-import mg.iray.app.ui.components.FeaturedBanner
 import mg.iray.app.ui.components.FlagAccentBar
-import mg.iray.app.ui.components.WelcomeActionCard
-import mg.iray.app.ui.components.WelcomeActionStyle
+import mg.iray.app.ui.components.welcome.FeaturedBanner
+import mg.iray.app.ui.components.welcome.WelcomeActionCard
+import mg.iray.app.ui.components.welcome.WelcomeActionStyle
 import mg.iray.app.ui.theme.IrayTheme
 import mg.iray.app.ui.theme.SurfacePage
 import mg.iray.app.ui.theme.TextPrimary

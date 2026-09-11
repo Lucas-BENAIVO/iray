@@ -1,4 +1,4 @@
-package mg.iray.app.ui.components
+package mg.iray.app.ui.components.welcome
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
