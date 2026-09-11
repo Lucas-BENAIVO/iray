@@ -42,3 +42,15 @@ val SurfaceCard = Color(0xFFFFFFFF)
 
 val DividerSubtle = Color(0xFFEEEEEE)
 val OutlineOnWhite = Color(0xFFE0E0E0)
+
+// —— Carte zone (placeholder en attendant le SDK carto) ——
+/** Fond beige clair façon carte. */
+val ZoneMapBackground = Color(0xFFEDE9DC)
+/** Punaise de localisation bleue. */
+val ZoneMapPin = Color(0xFF1A73E8)
+
+// —— Écran succès ——
+/** Halo vert clair autour du check. */
+val SuccessHalo = Color(0xFFE3F3E8)
+/** Pastille avatar bleu nuit. */
+val SuccessAvatar = Color(0xFF1B3A5C)

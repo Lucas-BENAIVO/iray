@@ -39,4 +39,27 @@
     <string name="profile_birthdate_hint">JJ/MM/AAAA</string>
     <string name="profile_continue">Continuer</string>
     <string name="profile_back_cd">Retour</string>
+
+    <!-- Zone — lieu de résidence -->
+    <string name="zone_title">Votre zone</string>
+    <string name="zone_subtitle">Indiquez votre lieu de résidence pour accéder aux services adaptés.</string>
+    <string name="zone_title_cd">Icône de localisation</string>
+    <string name="zone_search_hint">Rechercher votre zone…</string>
+    <string name="zone_map_cd">Aperçu de la carte de votre zone</string>
+    <string name="zone_region_label">Région</string>
+    <string name="zone_region_default">Analamanga</string>
+    <string name="zone_district_label">District</string>
+    <string name="zone_district_default">Antananarivo Avaradrano</string>
+    <string name="zone_commune_label">Commune</string>
+    <string name="zone_commune_default">Antananarivo</string>
+    <string name="zone_fokontany_label">Fokontany</string>
+    <string name="zone_fokontany_default">Andohalo</string>
+    <string name="zone_continue">Continuer</string>
+
+    <!-- Succès — profil créé -->
+    <string name="success_title">Profil créé !</string>
+    <string name="success_subtitle">Votre compte citoyen a été configuré avec succès.</string>
+    <string name="success_check_cd">Profil créé avec succès</string>
+    <string name="success_avatar_cd">Avatar du citoyen</string>
+    <string name="success_cta">C\'est parti !</string>
 </resources>
