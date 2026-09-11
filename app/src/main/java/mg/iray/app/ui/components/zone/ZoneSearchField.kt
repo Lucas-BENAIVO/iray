@@ -31,13 +31,15 @@ fun ZoneSearchField(
     value: String,
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
+    hint: String = "",
 ) {
+    val defaultHint = stringResource(R.string.zone_search_hint)
     OutlinedTextField(
         value = value,
         onValueChange = onValueChange,
         placeholder = {
             Text(
-                text = stringResource(R.string.zone_search_hint),
+                text = hint.ifEmpty { defaultHint },
                 color = TextSecondary.copy(alpha = 0.7f),
             )
         },

@@ -90,4 +90,78 @@
     <string name="notifications_5_title">Mise à jour de votre profil</string>
     <string name="notifications_5_body">Vos informations ont été enregistrées</string>
     <string name="notifications_5_time">Hier</string>
+
+    <!-- Démarches administratives -->
+    <string name="demarches_title">Démarches administratives</string>
+    <string name="demarches_back_cd">Retour</string>
+    <string name="demarches_search_hint">Rechercher une démarche…</string>
+    <string name="demarches_filter_all">Tout</string>
+    <string name="demarches_filter_documents">Documents</string>
+    <string name="demarches_filter_identite">Identité</string>
+    <string name="demarches_filter_autres">Autres</string>
+    <string name="demarches_chevron_cd">Ouvrir la démarche</string>
+    <string name="demarches_1_label">Acte de naissance</string>
+    <string name="demarches_2_label">Certificat de résidence</string>
+    <string name="demarches_3_label">Copie d’acte de naissance</string>
+    <string name="demarches_4_label">Carte nationale d’identité (CIN)</string>
+    <string name="demarches_5_label">Certificat de résidence</string>
+    <string name="demarches_6_label">Autres démarches</string>
+
+    <!-- Détail démarche -->
+    <string name="demarche_detail_back_cd">Retour</string>
+    <string name="demarche_detail_service_label">Service concerné</string>
+    <string name="demarche_detail_documents_title">Documents nécessaires</string>
+    <string name="demarche_detail_info_title">Informations</string>
+    <string name="demarche_detail_delay_label">Délai estimé :</string>
+    <string name="demarche_detail_fees_label">Frais :</string>
+    <string name="demarche_detail_cta">Commencer la demande</string>
+
+    <!-- Documents à joindre — étape 3 sur 5 -->
+    <string name="documents_back_cd">Retour</string>
+    <string name="documents_step">Étape 4 sur 5</string>
+    <string name="documents_title">Documents à joindre</string>
+    <string name="documents_attach">Joindre un fichier</string>
+    <string name="documents_types">PDF, JPG, PNG (max 5 Mo)</string>
+    <string name="documents_next">Suivant</string>
+    <string name="documents_row_cd">Ajouter un document</string>
+
+    <!-- Upload de document -->
+    <string name="upload_back_cd">Retour</string>
+    <string name="upload_drop_title">Touchez pour choisir un fichier</string>
+    <string name="upload_remove_cd">Retirer le fichier</string>
+    <string name="upload_cta">Joindre</string>
+
+    <!-- Formulaire — informations personnelles, étape 4 sur 5 -->
+    <string name="form_back_cd">Retour</string>
+    <string name="form_step">Étape 3 sur 5</string>
+    <string name="form_title">Informations personnelles</string>
+    <string name="form_last_name_label">Nom</string>
+    <string name="form_birthdate_label">Date de naissance *</string>
+    <string name="form_address_label">Adresse actuelle *</string>
+    <string name="form_address_hint">Ex : Lot II M 45, Andohalo</string>
+    <string name="form_birthplace_label">Lieu de naissance *</string>
+    <string name="form_submit">Suivant</string>
+
+    <!-- Récapitulatif — étape 5 sur 5 -->
+    <string name="recap_back_cd">Retour</string>
+    <string name="recap_title">Récapitulatif</string>
+    <string name="recap_details_title">Détails de la demande</string>
+    <string name="recap_demarche_label">Démarche</string>
+    <string name="recap_service_label">Service</string>
+    <string name="recap_fees_label">Frais</string>
+    <string name="recap_delay_label">Délai estimé</string>
+    <string name="recap_docs_title">Documents joints</string>
+    <string name="recap_cta">Soumettre la demande</string>
+
+    <!-- Confirmation d’envoi -->
+    <string name="confirmation_back_cd">Retour</string>
+    <string name="confirmation_title">Demande envoyée !</string>
+    <string name="confirmation_subtitle_format">Votre demande de %1$s a bien été enregistrée.</string>
+    <string name="confirmation_dossier_label">N° de dossier</string>
+    <string name="confirmation_received_label">Reçue</string>
+    <string name="confirmation_step_verification">Vérification</string>
+    <string name="confirmation_step_processing">Traitement</string>
+    <string name="confirmation_step_validation">Validation</string>
+    <string name="confirmation_step_done">Terminée</string>
+    <string name="confirmation_cta">Voir mes demandes</string>
 </resources>
