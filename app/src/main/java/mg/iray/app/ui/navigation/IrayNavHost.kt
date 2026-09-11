@@ -13,6 +13,8 @@ import mg.iray.app.ui.screens.onboarding.OnboardingActions
 import mg.iray.app.ui.screens.onboarding.OnboardingScreen
 import mg.iray.app.ui.screens.profile.ProfileActions
 import mg.iray.app.ui.screens.profile.ProfileScreen
+import mg.iray.app.ui.screens.notifications.NotificationsActions
+import mg.iray.app.ui.screens.notifications.NotificationsScreen
 import mg.iray.app.ui.screens.success.SuccessActions
 import mg.iray.app.ui.screens.success.SuccessScreen
 import mg.iray.app.ui.screens.welcome.WelcomeActions
@@ -29,6 +31,7 @@ object IrayRoute {
     const val PROFILE = "profile"
     const val ZONE = "zone"
     const val SUCCESS = "success"
+    const val NOTIFICATIONS = "notifications"
     const val WELCOME = "welcome"
 }
 
@@ -99,8 +102,17 @@ fun IrayNavHost(
                 actions = WelcomeActions(
                     onDemarches = { /* TODO: navigate */ },
                     onSignalements = { /* TODO: navigate */ },
-                    onNotifications = { /* TODO: navigate */ },
+                    onNotifications = { navController.navigate(IrayRoute.NOTIFICATIONS) },
                     onFeaturedCta = { /* TODO: navigate */ },
+                ),
+            )
+        }
+        composable(IrayRoute.NOTIFICATIONS) {
+            NotificationsScreen(
+                actions = NotificationsActions(
+                    onBack = { navController.popBackStack() },
+                    onFilterClick = { /* TODO: filtre avancé */ },
+                    onNotificationClick = { /* TODO: détail */ },
                 ),
             )
         }

@@ -66,4 +66,28 @@
     <string name="success_check_cd">Profil créé avec succès</string>
     <string name="success_avatar_cd">Avatar du citoyen</string>
     <string name="success_cta">C\'est parti !</string>
+
+    <!-- Notifications -->
+    <string name="notifications_title">Notifications</string>
+    <string name="notifications_back_cd">Retour</string>
+    <string name="notifications_filter_cd">Filtrer les notifications</string>
+    <string name="notifications_filter_all">Toutes</string>
+    <string name="notifications_filter_unread">Non lues</string>
+    <string name="notifications_filter_demarches">Démarches</string>
+    <string name="notifications_filter_signalements">Signalements</string>
+    <string name="notifications_1_title">Votre démarche est en cours</string>
+    <string name="notifications_1_body">Certificat de résidence</string>
+    <string name="notifications_1_time">Il y a 2 heures</string>
+    <string name="notifications_2_title">Signalement pris en charge</string>
+    <string name="notifications_2_body">Électricité – SIG-2026-004821</string>
+    <string name="notifications_2_time">Il y a 4 heures</string>
+    <string name="notifications_3_title">Information officielle</string>
+    <string name="notifications_3_body">Interruption d’eau à Antananarivo</string>
+    <string name="notifications_3_time">Il y a 6 heures</string>
+    <string name="notifications_4_title">Votre demande est traitée</string>
+    <string name="notifications_4_body">Acte de naissance – MAD-2026-004210</string>
+    <string name="notifications_4_time">Hier</string>
+    <string name="notifications_5_title">Mise à jour de votre profil</string>
+    <string name="notifications_5_body">Vos informations ont été enregistrées</string>
+    <string name="notifications_5_time">Hier</string>
 </resources>
