@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "340688707229",
+    "project_id": "iray-mobile",
+    "storage_bucket": "iray-mobile.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:340688707229:android:fad4ce6b560c3b7185fe74",
+        "android_client_info": {
+          "package_name": "mg.iray.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNYSWxb152aR6DTPTRaxdEV8yL7fhH-1I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
