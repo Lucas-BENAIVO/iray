@@ -25,12 +25,14 @@
     <!-- Hero d’accueil — onboarding immersif Iray -->
     <string name="welcome_hero_title">Iray</string>
     <string name="welcome_onboarding_headline">Un Madagascar\nplus simple</string>
+    <string name="welcome_onboarding_headline_line1">Un Madagascar</string>
+    <string name="welcome_onboarding_headline_line2">plus simple</string>
     <string name="welcome_onboarding_subtitle">Vos démarches, signalements et infos officielles — enfin au même endroit.</string>
     <string name="welcome_hero_subtitle">Les services publics à portée de main</string>
     <string name="welcome_hero_body">Simplifiez vos démarches, signalez les problèmes, restez informé.</string>
     <string name="welcome_hero_cta">Commencer</string>
     <string name="welcome_cta_start_cd">Commencer</string>
-    <string name="welcome_content_desc_hero">Monument du lac Anosy, Antananarivo</string>
+    <string name="welcome_content_desc_hero">Marché animé à Antananarivo</string>
 
     <!-- Profil — création du profil -->
     <string name="profile_title">Créons votre profil</string>

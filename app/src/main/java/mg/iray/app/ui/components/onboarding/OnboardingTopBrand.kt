@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.sp
 import mg.iray.app.R
 import mg.iray.app.ui.components.FlagAccentBar
 import mg.iray.app.ui.theme.BrandWhite
+import mg.iray.app.ui.theme.IrayDisplayFontFamily
 import mg.iray.app.ui.theme.IrayTheme
 
 /**
@@ -51,9 +52,10 @@ fun OnboardingTopBrand(
             Text(
                 text = stringResource(R.string.welcome_hero_title),
                 style = MaterialTheme.typography.titleLarge.copy(
+                    fontFamily = IrayDisplayFontFamily,
                     fontWeight = FontWeight.SemiBold,
-                    letterSpacing = 2.2.sp,
-                    fontSize = 20.sp,
+                    letterSpacing = 3.sp,
+                    fontSize = 18.sp,
                 ),
                 color = BrandWhite.copy(alpha = 0.98f),
             )

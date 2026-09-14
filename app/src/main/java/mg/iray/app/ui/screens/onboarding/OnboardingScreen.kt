@@ -52,12 +52,12 @@ fun OnboardingScreen(
                 .background(
                     Brush.verticalGradient(
                         colorStops = arrayOf(
-                            0.00f to Color(0xFF0B1A14).copy(alpha = 0.42f),
-                            0.22f to Color.Transparent,
-                            0.48f to Color(0xFF1A120C).copy(alpha = 0.12f),
-                            0.68f to Color(0xFF0E1C16).copy(alpha = 0.52f),
-                            0.85f to Color(0xFF07140F).copy(alpha = 0.78f),
-                            1.00f to Color(0xFF050E0A).copy(alpha = 0.92f),
+                            0.00f to Color(0xFF0B1A14).copy(alpha = 0.48f),
+                            0.20f to Color(0xFF0B1A14).copy(alpha = 0.12f),
+                            0.42f to Color.Transparent,
+                            0.62f to Color(0xFF0E1C16).copy(alpha = 0.45f),
+                            0.80f to Color(0xFF07140F).copy(alpha = 0.78f),
+                            1.00f to Color(0xFF050E0A).copy(alpha = 0.93f),
                         ),
                     ),
                 ),
