@@ -22,24 +22,15 @@
     <string name="welcome_banner_body">Vos démarches, signalements et informations officielles, au même endroit.</string>
     <string name="welcome_content_desc_banner">Vue de la ville d’Antananarivo au crépuscule</string>
 
-    <!-- Hero d’accueil — onboarding premium Iray -->
+    <!-- Hero d’accueil — onboarding immersif Iray -->
     <string name="welcome_hero_title">Iray</string>
-    <string name="welcome_hero_line_strong_1">Ensemble</string>
-    <string name="welcome_hero_line_muted">pour un</string>
-    <string name="welcome_hero_line_strong_2">Madagascar plus simple</string>
+    <string name="welcome_onboarding_headline">Services publics\nde confiance</string>
+    <string name="welcome_onboarding_subtitle">Démarches, signalements et infos officielles — au même endroit.</string>
     <string name="welcome_hero_subtitle">Les services publics à portée de main</string>
     <string name="welcome_hero_body">Simplifiez vos démarches, signalez les problèmes, restez informé.</string>
     <string name="welcome_hero_cta">Commencer</string>
-    <string name="welcome_card_title">Espace citoyen</string>
-    <string name="welcome_card_subtitle">Services publics</string>
     <string name="welcome_cta_start_cd">Commencer</string>
     <string name="welcome_content_desc_hero">Vue d’Antananarivo — lac Anosy et Mahamasina</string>
-    <string name="welcome_content_desc_thumb_1">Rue d’Antananarivo</string>
-    <string name="welcome_content_desc_thumb_2">Ville de Madagascar</string>
-    <string name="welcome_content_desc_thumb_3">Avenue à Madagascar</string>
-    <string name="welcome_service_demarches_cd">Démarches administratives</string>
-    <string name="welcome_service_signalements_cd">Signalements</string>
-    <string name="welcome_service_infos_cd">Informations officielles</string>
 
     <!-- Profil — création du profil -->
     <string name="profile_title">Créons votre profil</string>
