@@ -1,5 +1,8 @@
 package mg.iray.app.ui.components.onboarding
 
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -19,18 +22,25 @@ import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import mg.iray.app.R
 import mg.iray.app.ui.components.FlagAccentBar
 import mg.iray.app.ui.theme.BrandWhite
@@ -119,6 +129,7 @@ fun OnboardingBottomContent(
 
 /**
  * CTA premium sur fond photo — pilule blanche, typo nette, flèche en pastille.
+ * Micro-effet au clic (échelle + légère opacité) avant navigation.
  */
 @Composable
 private fun OnboardingPrimaryCta(
@@ -126,9 +137,27 @@ private fun OnboardingPrimaryCta(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    var tapped by remember { mutableStateOf(false) }
+    val scope = rememberCoroutineScope()
+    val scale by animateFloatAsState(
+        targetValue = if (tapped) 0.96f else 1f,
+        animationSpec = tween(durationMillis = 80, easing = FastOutSlowInEasing),
+        label = "ctaScale",
+    )
+    val alpha by animateFloatAsState(
+        targetValue = if (tapped) 0.86f else 1f,
+        animationSpec = tween(durationMillis = 80, easing = FastOutSlowInEasing),
+        label = "ctaAlpha",
+    )
+
     Row(
         modifier = modifier
             .height(60.dp)
+            .graphicsLayer {
+                scaleX = scale
+                scaleY = scale
+                this.alpha = alpha
+            }
             .shadow(
                 elevation = 16.dp,
                 shape = RoundedCornerShape(999.dp),
@@ -138,9 +167,17 @@ private fun OnboardingPrimaryCta(
             .clip(RoundedCornerShape(999.dp))
             .background(BrandWhite)
             .clickable(
+                enabled = !tapped,
                 interactionSource = remember { MutableInteractionSource() },
-                indication = ripple(bounded = true, color = FlagGreen),
-                onClick = onClick,
+                indication = null,
+                role = Role.Button,
+                onClick = {
+                    tapped = true
+                    scope.launch {
+                        delay(120)
+                        onClick()
+                    }
+                },
             )
             .padding(start = 26.dp, end = 8.dp),
         verticalAlignment = Alignment.CenterVertically,

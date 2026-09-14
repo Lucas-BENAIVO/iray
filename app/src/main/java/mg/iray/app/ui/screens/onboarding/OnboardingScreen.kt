@@ -9,9 +9,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -43,6 +45,15 @@ fun OnboardingScreen(
             contentScale = ContentScale.Crop,
             alignment = androidx.compose.ui.Alignment.Center,
             modifier = Modifier.fillMaxSize(),
+        )
+
+        // Précharge la bannière Welcome pendant l’onboarding → ouverture immédiate.
+        Image(
+            painter = painterResource(R.drawable.welcome_banner),
+            contentDescription = null,
+            modifier = Modifier
+                .size(1.dp)
+                .alpha(0f),
         )
 
         // Overlay chaud / profond — laisse respirer le ciel, ancre le texte en bas.

@@ -1,0 +1,45 @@
+package mg.iray.app.ui.components
+
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.semantics.Role
+
+/**
+ * Clic immédiat — pas de ripple lent, micro-échelle au press (~60 ms).
+ */
+@Composable
+fun Modifier.irayFastClick(
+    enabled: Boolean = true,
+    role: Role? = Role.Button,
+    onClick: () -> Unit,
+): Modifier {
+    val interactionSource = remember { MutableInteractionSource() }
+    val pressed by interactionSource.collectIsPressedAsState()
+    val scale by animateFloatAsState(
+        targetValue = if (pressed) 0.97f else 1f,
+        animationSpec = tween(durationMillis = 60, easing = FastOutSlowInEasing),
+        label = "irayFastClick",
+    )
+
+    return this
+        .graphicsLayer {
+            scaleX = scale
+            scaleY = scale
+        }
+        .clickable(
+            enabled = enabled,
+            interactionSource = interactionSource,
+            indication = null,
+            role = role,
+            onClick = onClick,
+        )
+}

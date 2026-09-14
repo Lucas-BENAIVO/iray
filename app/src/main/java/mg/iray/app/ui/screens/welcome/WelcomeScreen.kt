@@ -119,7 +119,7 @@ fun WelcomeScreen(
                     height = 3.dp,
                 )
 
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(16.dp))
 
                 Row(
                     modifier = Modifier.fillMaxWidth(),
@@ -130,7 +130,7 @@ fun WelcomeScreen(
                         style = MaterialTheme.typography.headlineSmall.copy(
                             fontFamily = IrayDisplayFontFamily,
                             fontWeight = FontWeight.Bold,
-                            fontSize = 26.sp,
+                            fontSize = 23.sp,
                             letterSpacing = (-0.3).sp,
                         ),
                         color = TextPrimary,

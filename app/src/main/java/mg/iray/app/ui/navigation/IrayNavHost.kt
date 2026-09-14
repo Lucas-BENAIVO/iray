@@ -1,6 +1,8 @@
 package mg.iray.app.ui.navigation
 
 import android.net.Uri
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateMapOf
@@ -106,6 +108,10 @@ fun IrayNavHost(
         navController = navController,
         startDestination = startDestination,
         modifier = modifier,
+        enterTransition = { EnterTransition.None },
+        exitTransition = { ExitTransition.None },
+        popEnterTransition = { EnterTransition.None },
+        popExitTransition = { ExitTransition.None },
     ) {
         composable(IrayRoute.ONBOARDING) {
             OnboardingScreen(
