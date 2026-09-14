@@ -3,54 +3,33 @@ package mg.iray.app.ui.screens.zone
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.LocationOn
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import mg.iray.app.R
 import mg.iray.app.ui.components.IrayPrimaryButton
+import mg.iray.app.ui.components.IrayScreenHeader
 import mg.iray.app.ui.components.zone.ZoneDropdownField
 import mg.iray.app.ui.components.zone.ZoneMapPreview
 import mg.iray.app.ui.components.zone.ZoneSearchField
-import mg.iray.app.ui.theme.FlagGreen
 import mg.iray.app.ui.theme.IrayTheme
 import mg.iray.app.ui.theme.SurfacePage
-import mg.iray.app.ui.theme.TextPrimary
-import mg.iray.app.ui.theme.TextSecondary
 
-/**
- * Écran "Votre zone" — entre création profil et welcome.
- *
- * Copie la capture du 11/09 14:06 : recherche + aperçu carte +
- * Région / District / Commune / Fokontany + CTA "Continuer".
- *
- * Best practice : état hoisté ici (rememberSaveable), composants de
- * [mg.iray.app.ui.components.zone] stateless, bouton commun réutilisé.
- */
 data class ZoneActions(
     val onContinue: (ZoneSelection) -> Unit = {},
 )
@@ -68,7 +47,6 @@ fun ZoneScreen(
     modifier: Modifier = Modifier,
     actions: ZoneActions = ZoneActions(),
 ) {
-    // Valeurs par défaut = capture.
     val defaultRegion = stringResource(R.string.zone_region_default)
     val defaultDistrict = stringResource(R.string.zone_district_default)
     val defaultCommune = stringResource(R.string.zone_commune_default)
@@ -86,6 +64,13 @@ fun ZoneScreen(
             .statusBarsPadding()
             .navigationBarsPadding(),
     ) {
+        IrayScreenHeader(
+            title = stringResource(R.string.zone_title),
+            subtitle = stringResource(R.string.zone_subtitle),
+            onBack = null,
+            modifier = Modifier.fillMaxWidth(),
+        )
+
         Column(
             modifier = Modifier
                 .weight(1f)
@@ -94,33 +79,6 @@ fun ZoneScreen(
                 .padding(horizontal = 24.dp)
                 .padding(top = 8.dp, bottom = 24.dp),
         ) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Icon(
-                    imageVector = Icons.Filled.LocationOn,
-                    contentDescription = stringResource(R.string.zone_title_cd),
-                    tint = FlagGreen,
-                    modifier = Modifier.size(22.dp),
-                )
-                Spacer(modifier = Modifier.width(8.dp))
-                Text(
-                    text = stringResource(R.string.zone_title),
-                    style = MaterialTheme.typography.titleLarge.copy(
-                        fontWeight = FontWeight.Bold,
-                    ),
-                    color = TextPrimary,
-                )
-            }
-
-            Spacer(modifier = Modifier.height(4.dp))
-
-            Text(
-                text = stringResource(R.string.zone_subtitle),
-                style = MaterialTheme.typography.bodyLarge,
-                color = TextSecondary,
-            )
-
-            Spacer(modifier = Modifier.height(20.dp))
-
             ZoneSearchField(
                 value = search,
                 onValueChange = { search = it },

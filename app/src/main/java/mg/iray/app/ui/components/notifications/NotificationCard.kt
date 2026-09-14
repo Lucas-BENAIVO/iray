@@ -30,7 +30,7 @@ import mg.iray.app.ui.theme.IrayTheme
 import mg.iray.app.ui.theme.OutlineOnWhite
 import mg.iray.app.ui.theme.TextPrimary
 import mg.iray.app.ui.theme.TextSecondary
-import mg.iray.app.ui.theme.ZoneMapPin
+import mg.iray.app.ui.theme.FlagGreen
 
 /**
  * Carte notification — pastille icône + titre + détail + heure.
@@ -107,7 +107,7 @@ private fun NotificationCardPreview() {
             body = "Certificat de résidence",
             time = "Il y a 2 heures",
             icon = Icons.Filled.Description,
-            iconTint = ZoneMapPin,
+            iconTint = FlagGreen,
         )
     }
 }

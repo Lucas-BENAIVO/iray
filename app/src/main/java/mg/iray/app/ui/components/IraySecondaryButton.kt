@@ -14,14 +14,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import mg.iray.app.ui.theme.BrandAccent
+import mg.iray.app.ui.theme.FlagGreen
+import mg.iray.app.ui.theme.IrayFontFamily
 import mg.iray.app.ui.theme.IrayTheme
 import mg.iray.app.ui.theme.OutlineOnWhite
 
 /**
- * CTA secondaire contour — pilule blanche bord fin, texte vert.
- *
- * Best practice : stateless, pendant de [IrayPrimaryButton].
+ * CTA secondaire — pilule contour, design system onboarding.
  */
 @Composable
 fun IraySecondaryButton(
@@ -39,13 +38,14 @@ fun IraySecondaryButton(
         shape = CircleShape,
         border = BorderStroke(1.5.dp, OutlineOnWhite),
         colors = ButtonDefaults.outlinedButtonColors(
-            contentColor = BrandAccent,
+            contentColor = FlagGreen,
         ),
         contentPadding = PaddingValues(horizontal = 24.dp, vertical = 16.dp),
     ) {
         Text(
             text = label,
             style = MaterialTheme.typography.titleMedium.copy(
+                fontFamily = IrayFontFamily,
                 fontWeight = FontWeight.SemiBold,
             ),
         )

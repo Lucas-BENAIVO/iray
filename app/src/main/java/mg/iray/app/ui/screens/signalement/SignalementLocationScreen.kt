@@ -37,7 +37,7 @@ import mg.iray.app.ui.components.zone.ZoneMapPreview
 import mg.iray.app.ui.theme.IrayTheme
 import mg.iray.app.ui.theme.SurfacePage
 import mg.iray.app.ui.theme.TextPrimary
-import mg.iray.app.ui.theme.ZoneMapPin
+import mg.iray.app.ui.theme.FlagGreen
 
 /**
  * Écran localisation du signalement — carte + position + adresse.
@@ -102,7 +102,7 @@ fun SignalementLocationScreen(
             IrayPrimaryButton(
                 label = stringResource(R.string.signalement_use_position),
                 onClick = actions.onUsePosition,
-                containerColor = ZoneMapPin,
+                containerColor = FlagGreen,
                 modifier = Modifier.fillMaxWidth(),
             )
 

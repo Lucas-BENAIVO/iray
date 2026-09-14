@@ -2,12 +2,21 @@
 <resources>
     <string name="app_name">Iray</string>
 
+    <!-- Bottom navigation -->
+    <string name="nav_home">Accueil</string>
+    <string name="nav_demarches">Démarches</string>
+    <string name="nav_signalements">Signalements</string>
+    <string name="nav_profile">Profil</string>
+
     <!-- Welcome -->
     <string name="welcome_greeting">👋 Salama !</string>
     <string name="welcome_subtitle">Inona no tianao hatao ato amin’ny Iray anio ?</string>
 
     <string name="welcome_action_demarches">Hanao fangatahana ara-pitantanana</string>
+    <string name="welcome_action_demarches_hint">Certificats, actes et démarches administratives</string>
     <string name="welcome_action_signalements">Hitatitra olana amin’ny manam-pahefana</string>
+    <string name="welcome_action_signalements_hint">Signaler un problème à votre commune</string>
+    <string name="welcome_actions_label">Que souhaitez-vous faire ?</string>
 
     <string name="welcome_featured_title">🔥 Vaovao</string>
     <string name="welcome_featured_body">Misokatra ny fanadihadiana vaovao momba ny fahasalamana ara-tsaina. Asehoy ny hevitrao !</string>

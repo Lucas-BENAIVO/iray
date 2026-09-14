@@ -40,7 +40,7 @@ import mg.iray.app.ui.components.upload.UploadDropZone
 import mg.iray.app.ui.theme.IrayTheme
 import mg.iray.app.ui.theme.SurfacePage
 import mg.iray.app.ui.theme.TextPrimary
-import mg.iray.app.ui.theme.ZoneMapPin
+import mg.iray.app.ui.theme.FlagGreen
 
 /**
  * Page d’upload d’un document — sélecteur système (PDF/JPG/PNG) + "Joindre".
@@ -132,7 +132,7 @@ fun UploadScreen(
                 ) {
                     Text(
                         text = stringResource(R.string.upload_remove_cd),
-                        color = ZoneMapPin,
+                        color = FlagGreen,
                     )
                 }
             }

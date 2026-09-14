@@ -33,7 +33,7 @@ import mg.iray.app.ui.theme.OutlineOnWhite
 import mg.iray.app.ui.theme.SurfaceFeatured
 import mg.iray.app.ui.theme.TextPrimary
 import mg.iray.app.ui.theme.TextSecondary
-import mg.iray.app.ui.theme.ZoneMapPin
+import mg.iray.app.ui.theme.FlagGreen
 
 /**
  * Carte N° de dossier — icône doc + libellé + numéro.
@@ -56,14 +56,14 @@ fun ConfirmationDossierCard(
         ) {
             Surface(
                 shape = CircleShape,
-                color = ZoneMapPin.copy(alpha = 0.14f),
+                color = FlagGreen.copy(alpha = 0.14f),
                 modifier = Modifier.size(44.dp),
             ) {
                 Box(contentAlignment = Alignment.Center) {
                     Icon(
                         imageVector = Icons.Filled.Description,
                         contentDescription = null,
-                        tint = ZoneMapPin,
+                        tint = FlagGreen,
                         modifier = Modifier.size(24.dp),
                     )
                 }
@@ -107,11 +107,11 @@ fun ConfirmationTimeline(
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     Surface(
                         shape = CircleShape,
-                        color = if (reached) ZoneMapPin
+                        color = if (reached) FlagGreen
                         else Color.Transparent,
                         border = BorderStroke(
                             width = 2.dp,
-                            color = if (reached) ZoneMapPin else OutlineOnWhite,
+                            color = if (reached) FlagGreen else OutlineOnWhite,
                         ),
                         modifier = Modifier.size(16.dp),
                     ) {}

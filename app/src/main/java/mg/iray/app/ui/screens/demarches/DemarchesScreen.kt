@@ -38,12 +38,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import mg.iray.app.R
+import mg.iray.app.ui.components.IrayScreenHeader
 import mg.iray.app.ui.components.demarches.DemarcheFilterChip
 import mg.iray.app.ui.components.demarches.DemarcheRow
 import mg.iray.app.ui.components.zone.ZoneSearchField
 import mg.iray.app.ui.theme.IrayTheme
 import mg.iray.app.ui.theme.SurfacePage
-import mg.iray.app.ui.theme.TextPrimary
 
 /**
  * Écran "Démarches administratives" — copie la capture du 11/09 15:24.
@@ -107,29 +107,13 @@ fun DemarchesScreen(
             .statusBarsPadding()
             .navigationBarsPadding(),
     ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 8.dp, end = 24.dp, top = 8.dp),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            IconButton(onClick = actions.onBack) {
-                Icon(
-                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                    contentDescription = stringResource(R.string.demarches_back_cd),
-                    tint = TextPrimary,
-                )
-            }
-            Text(
-                text = stringResource(R.string.demarches_title),
-                style = MaterialTheme.typography.titleLarge.copy(
-                    fontWeight = FontWeight.Bold,
-                ),
-                color = TextPrimary,
-            )
-        }
+        IrayScreenHeader(
+            title = stringResource(R.string.demarches_title),
+            onBack = actions.onBack,
+            modifier = Modifier.fillMaxWidth(),
+        )
 
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(4.dp))
 
         // Recherche réutilisée (même style que l’écran zone).
         ZoneSearchField(

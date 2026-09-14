@@ -40,7 +40,6 @@ import mg.iray.app.ui.theme.PriorityOrange
 import mg.iray.app.ui.theme.SurfaceFeatured
 import mg.iray.app.ui.theme.TextPrimary
 import mg.iray.app.ui.theme.TextSecondary
-import mg.iray.app.ui.theme.ZoneMapPin
 
 /**
  * Carte récap du signalement — catégorie + localisation + description + priorité.
@@ -67,14 +66,14 @@ fun SignalementRecapCard(
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Surface(
                     shape = CircleShape,
-                    color = ZoneMapPin.copy(alpha = 0.14f),
+                    color = FlagGreen.copy(alpha = 0.14f),
                     modifier = Modifier.size(44.dp),
                 ) {
                     Box(contentAlignment = Alignment.Center) {
                         Icon(
                             imageVector = categoryIcon,
                             contentDescription = null,
-                            tint = ZoneMapPin,
+                            tint = FlagGreen,
                             modifier = Modifier.size(24.dp),
                         )
                     }

@@ -71,13 +71,21 @@ fun SuccessScreen(
             Text(
                 text = stringResource(R.string.success_title),
                 style = MaterialTheme.typography.headlineMedium.copy(
+                    fontFamily = mg.iray.app.ui.theme.IrayDisplayFontFamily,
                     fontWeight = FontWeight.Bold,
                 ),
                 color = FlagGreen,
                 textAlign = TextAlign.Center,
             )
 
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(10.dp))
+
+            mg.iray.app.ui.components.FlagAccentBar(
+                modifier = Modifier.fillMaxWidth(0.28f),
+                height = 3.dp,
+            )
+
+            Spacer(modifier = Modifier.height(12.dp))
 
             Text(
                 text = stringResource(R.string.success_subtitle),

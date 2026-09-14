@@ -40,7 +40,7 @@ import mg.iray.app.ui.theme.OutlineOnWhite
 import mg.iray.app.ui.theme.SurfaceFeatured
 import mg.iray.app.ui.theme.TextPrimary
 import mg.iray.app.ui.theme.TextSecondary
-import mg.iray.app.ui.theme.ZoneMapPin
+import mg.iray.app.ui.theme.FlagGreen
 
 /**
  * Zone d’upload pointillée — invite galerie/fichiers ou résumé du fichier choisi.
@@ -96,7 +96,7 @@ fun UploadDropZone(
                     Icon(
                         imageVector = Icons.Filled.CloudUpload,
                         contentDescription = null,
-                        tint = ZoneMapPin,
+                        tint = FlagGreen,
                         modifier = Modifier.size(48.dp),
                     )
                     Spacer(modifier = Modifier.height(12.dp))

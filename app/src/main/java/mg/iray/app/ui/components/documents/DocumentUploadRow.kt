@@ -34,7 +34,7 @@ import mg.iray.app.ui.theme.IrayTheme
 import mg.iray.app.ui.theme.OutlineOnWhite
 import mg.iray.app.ui.theme.TextPrimary
 import mg.iray.app.ui.theme.TextSecondary
-import mg.iray.app.ui.theme.ZoneMapPin
+import mg.iray.app.ui.theme.FlagGreen
 
 /**
  * Ligne document à joindre — "» + icône + nom + Joindre un fichier".
@@ -65,14 +65,14 @@ fun DocumentUploadRow(
                 style = MaterialTheme.typography.titleMedium.copy(
                     fontWeight = FontWeight.Bold,
                 ),
-                color = ZoneMapPin,
+                color = FlagGreen,
             )
 
             Spacer(modifier = Modifier.width(8.dp))
 
             Surface(
                 shape = CircleShape,
-                color = ZoneMapPin.copy(alpha = 0.14f),
+                color = FlagGreen.copy(alpha = 0.14f),
                 modifier = Modifier.size(40.dp),
             ) {
                 Box(
@@ -81,7 +81,7 @@ fun DocumentUploadRow(
                     Icon(
                         imageVector = Icons.Filled.Description,
                         contentDescription = null,
-                        tint = ZoneMapPin,
+                        tint = FlagGreen,
                         modifier = Modifier.size(22.dp),
                     )
                 }
@@ -113,7 +113,7 @@ fun DocumentUploadRow(
                             style = MaterialTheme.typography.bodyMedium.copy(
                                 fontWeight = FontWeight.Medium,
                             ),
-                            color = ZoneMapPin,
+                            color = FlagGreen,
                         )
                     }
                 }

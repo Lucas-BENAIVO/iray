@@ -98,6 +98,7 @@ fun IrayNavHost(
     var birthdate by rememberSaveable { mutableStateOf("") }
     var commune by rememberSaveable { mutableStateOf("") }
     var fokontany by rememberSaveable { mutableStateOf("") }
+    var hasProfile by rememberSaveable { mutableStateOf(false) }
     // Fichiers joints par "demarcheId/index" — partagés documents ↔ upload.
     val attachedByKey = remember { mutableStateMapOf<String, String>() }
 
@@ -109,8 +110,12 @@ fun IrayNavHost(
         composable(IrayRoute.ONBOARDING) {
             OnboardingScreen(
                 actions = OnboardingActions(
-                    // "Commencer" → page profil.
-                    onStart = { navController.navigate(IrayRoute.PROFILE) },
+                    // "Commencer" → accueil (profil se fait depuis l’onglet Profil).
+                    onStart = {
+                        navController.navigate(IrayRoute.WELCOME) {
+                            popUpTo(IrayRoute.ONBOARDING) { inclusive = true }
+                        }
+                    },
                 ),
             )
         }
@@ -144,20 +149,29 @@ fun IrayNavHost(
                 fullName = "$firstName $lastName".trim(),
                 zoneLabel = "$commune, $fokontany",
                 actions = SuccessActions(
-                    // "C'est parti !" → accueil.
-                    onStart = { navController.navigate(IrayRoute.WELCOME) },
+                    onStart = {
+                        hasProfile = true
+                        navController.navigate(IrayRoute.WELCOME) {
+                            popUpTo(IrayRoute.WELCOME) { inclusive = true }
+                            launchSingleTop = true
+                        }
+                    },
                 ),
             )
         }
         composable(IrayRoute.WELCOME) {
             WelcomeScreen(
-                userFullName = "$firstName $lastName".trim(),
-                userZoneLabel = "$commune, $fokontany",
                 actions = WelcomeActions(
                     onDemarches = { navController.navigate(IrayRoute.DEMARCHES) },
                     onSignalements = { navController.navigate(IrayRoute.SIGNALEMENT) },
                     onNotifications = { navController.navigate(IrayRoute.NOTIFICATIONS) },
-                    onFeaturedCta = { /* TODO: navigate */ },
+                    onProfile = {
+                        if (hasProfile) {
+                            navController.navigate(IrayRoute.SUCCESS)
+                        } else {
+                            navController.navigate(IrayRoute.PROFILE)
+                        }
+                    },
                 ),
             )
         }

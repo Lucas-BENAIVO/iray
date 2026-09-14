@@ -27,7 +27,7 @@ import mg.iray.app.ui.theme.IrayTheme
 import mg.iray.app.ui.theme.OutlineOnWhite
 import mg.iray.app.ui.theme.TextPrimary
 import mg.iray.app.ui.theme.TextSecondary
-import mg.iray.app.ui.theme.ZoneMapPin
+import mg.iray.app.ui.theme.FlagGreen
 
 /**
  * Carte "Documents nécessaires" — lignes "» + libellé" séparées.
@@ -69,7 +69,7 @@ fun DemarcheDocumentsCard(
                             style = MaterialTheme.typography.titleMedium.copy(
                                 fontWeight = FontWeight.Bold,
                             ),
-                            color = ZoneMapPin,
+                            color = FlagGreen,
                         )
                         Spacer(modifier = Modifier.width(10.dp))
                         Text(

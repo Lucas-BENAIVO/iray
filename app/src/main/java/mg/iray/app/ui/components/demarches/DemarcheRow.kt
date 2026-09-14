@@ -33,7 +33,7 @@ import mg.iray.app.ui.theme.IrayTheme
 import mg.iray.app.ui.theme.OutlineOnWhite
 import mg.iray.app.ui.theme.SurfaceFeatured
 import mg.iray.app.ui.theme.TextPrimary
-import mg.iray.app.ui.theme.ZoneMapPin
+import mg.iray.app.ui.theme.FlagGreen
 
 /**
  * Ligne démarche — pastille icône + libellé + chevron, surlignée si choisie.
@@ -53,10 +53,10 @@ fun DemarcheRow(
         onClick = onClick,
         modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(14.dp),
-        color = if (selected) ZoneMapPin.copy(alpha = 0.10f) else SurfaceFeatured,
+        color = if (selected) FlagGreen.copy(alpha = 0.10f) else SurfaceFeatured,
         border = BorderStroke(
             width = if (selected) 1.5.dp else 1.dp,
-            color = if (selected) ZoneMapPin else OutlineOnWhite.copy(alpha = 0.6f),
+            color = if (selected) FlagGreen else OutlineOnWhite.copy(alpha = 0.6f),
         ),
     ) {
         Row(
@@ -65,14 +65,14 @@ fun DemarcheRow(
         ) {
             Surface(
                 shape = CircleShape,
-                color = ZoneMapPin.copy(alpha = 0.14f),
+                color = FlagGreen.copy(alpha = 0.14f),
                 modifier = Modifier.size(40.dp),
             ) {
                 Box(contentAlignment = Alignment.Center) {
                     Icon(
                         imageVector = icon,
                         contentDescription = null,
-                        tint = ZoneMapPin,
+                        tint = FlagGreen,
                         modifier = Modifier.size(22.dp),
                     )
                 }

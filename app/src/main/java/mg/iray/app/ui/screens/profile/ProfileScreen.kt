@@ -3,7 +3,6 @@ package mg.iray.app.ui.screens.profile
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -15,14 +14,9 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Phone
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -31,26 +25,17 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import mg.iray.app.R
 import mg.iray.app.ui.components.IrayPrimaryButton
+import mg.iray.app.ui.components.IrayScreenHeader
 import mg.iray.app.ui.components.profile.ProfileAvatarPicker
 import mg.iray.app.ui.components.profile.ProfileTextField
 import mg.iray.app.ui.theme.IrayTheme
 import mg.iray.app.ui.theme.SurfacePage
-import mg.iray.app.ui.theme.TextPrimary
-import mg.iray.app.ui.theme.TextSecondary
 
-/**
- * Écran "Créons votre profil" — copie la capture du 11/09 13:42.
- *
- * Best practice : état du formulaire hoisté ici (rememberSaveable),
- * composants de [mg.iray.app.ui.components.profile] stateless,
- * bouton commun [IrayPrimaryButton] réutilisé.
- */
 data class ProfileActions(
     val onBack: () -> Unit = {},
     val onAvatarClick: () -> Unit = {},
@@ -74,7 +59,6 @@ fun ProfileScreen(
     var phone by rememberSaveable { mutableStateOf("") }
     var birthdate by rememberSaveable { mutableStateOf("") }
 
-    // Champs obligatoires (*) remplis → CTA actif, sinon gris désactivé.
     val isValid = firstName.isNotBlank() &&
         lastName.isNotBlank() &&
         phone.isNotBlank()
@@ -86,8 +70,10 @@ fun ProfileScreen(
             .statusBarsPadding()
             .navigationBarsPadding(),
     ) {
-        ProfileTopBar(
-            onBackClick = actions.onBack,
+        IrayScreenHeader(
+            title = stringResource(R.string.profile_title),
+            subtitle = stringResource(R.string.profile_subtitle),
+            onBack = actions.onBack,
             modifier = Modifier.fillMaxWidth(),
         )
 
@@ -99,20 +85,14 @@ fun ProfileScreen(
                 .verticalScroll(rememberScrollState())
                 .padding(horizontal = 24.dp),
         ) {
-            Text(
-                text = stringResource(R.string.profile_subtitle),
-                style = MaterialTheme.typography.bodyLarge,
-                color = TextSecondary,
-            )
-
-            Spacer(modifier = Modifier.height(24.dp))
+            Spacer(modifier = Modifier.height(12.dp))
 
             ProfileAvatarPicker(
                 onClick = actions.onAvatarClick,
                 modifier = Modifier.align(Alignment.CenterHorizontally),
             )
 
-            Spacer(modifier = Modifier.height(24.dp))
+            Spacer(modifier = Modifier.height(28.dp))
 
             Column(verticalArrangement = Arrangement.spacedBy(18.dp)) {
                 ProfileTextField(
@@ -146,7 +126,7 @@ fun ProfileScreen(
                 )
             }
 
-            Spacer(modifier = Modifier.height(32.dp))
+            Spacer(modifier = Modifier.height(36.dp))
 
             IrayPrimaryButton(
                 label = stringResource(R.string.profile_continue),
@@ -164,32 +144,8 @@ fun ProfileScreen(
                 enabled = isValid,
             )
 
-            Spacer(modifier = Modifier.height(24.dp))
+            Spacer(modifier = Modifier.height(28.dp))
         }
-    }
-}
-
-@Composable
-private fun ProfileTopBar(
-    onBackClick: () -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    Row(
-        modifier = modifier.padding(start = 8.dp, end = 24.dp, top = 8.dp, bottom = 4.dp),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        IconButton(onClick = onBackClick) {
-            Icon(
-                imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                contentDescription = stringResource(R.string.profile_back_cd),
-                tint = TextPrimary,
-            )
-        }
-        Text(
-            text = stringResource(R.string.profile_title),
-            style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold),
-            color = TextPrimary,
-        )
     }
 }
 

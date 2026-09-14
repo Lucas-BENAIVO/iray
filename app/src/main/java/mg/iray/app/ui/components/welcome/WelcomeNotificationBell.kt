@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.dp
 import mg.iray.app.R
 import mg.iray.app.ui.theme.FlagRed
 import mg.iray.app.ui.theme.IrayTheme
-import mg.iray.app.ui.theme.ZoneMapPin
+import mg.iray.app.ui.theme.FlagGreen
 
 /**
  * Cloche de notification bleue + pastille rouge si non lu.
@@ -43,7 +43,7 @@ fun WelcomeNotificationBell(
             Icon(
                 imageVector = Icons.Filled.Notifications,
                 contentDescription = stringResource(R.string.welcome_notifications_cd),
-                tint = ZoneMapPin,
+                tint = FlagGreen,
                 modifier = Modifier.size(26.dp),
             )
         }

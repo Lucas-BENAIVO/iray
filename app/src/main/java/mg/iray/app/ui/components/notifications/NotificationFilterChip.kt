@@ -16,7 +16,7 @@ import mg.iray.app.ui.theme.BrandWhite
 import mg.iray.app.ui.theme.IrayTheme
 import mg.iray.app.ui.theme.OutlineOnWhite
 import mg.iray.app.ui.theme.TextSecondary
-import mg.iray.app.ui.theme.ZoneMapPin
+import mg.iray.app.ui.theme.FlagGreen
 
 /**
  * Filtre de notifications — pastille bleue si actif, blanche sinon.
@@ -33,10 +33,10 @@ fun NotificationFilterChip(
     Surface(
         onClick = onClick,
         shape = CircleShape,
-        color = if (selected) ZoneMapPin else BrandWhite,
+        color = if (selected) FlagGreen else BrandWhite,
         border = BorderStroke(
             width = 1.dp,
-            color = if (selected) ZoneMapPin else OutlineOnWhite,
+            color = if (selected) FlagGreen else OutlineOnWhite,
         ),
         modifier = modifier.heightIn(min = 36.dp),
     ) {

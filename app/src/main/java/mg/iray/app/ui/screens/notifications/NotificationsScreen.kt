@@ -49,7 +49,6 @@ import mg.iray.app.ui.theme.IrayTheme
 import mg.iray.app.ui.theme.SuccessAvatar
 import mg.iray.app.ui.theme.SurfacePage
 import mg.iray.app.ui.theme.TextPrimary
-import mg.iray.app.ui.theme.ZoneMapPin
 
 /**
  * Écran Notifications — copie la capture du 11/09 15:01.
@@ -218,7 +217,7 @@ private fun demoNotifications(): List<AppNotification> {
             body = stringResource(R.string.notifications_1_body),
             time = stringResource(R.string.notifications_1_time),
             icon = Icons.Filled.Description,
-            iconTint = ZoneMapPin,
+            iconTint = FlagGreen,
         ),
         AppNotification(
             id = "2",

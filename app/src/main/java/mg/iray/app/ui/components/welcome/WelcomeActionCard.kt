@@ -5,12 +5,18 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material.icons.outlined.Description
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -22,101 +28,165 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import mg.iray.app.R
-import mg.iray.app.ui.theme.BrandAccent
-import mg.iray.app.ui.theme.BrandPrimarySoft
 import mg.iray.app.ui.theme.BrandWhite
+import mg.iray.app.ui.theme.FlagGreen
+import mg.iray.app.ui.theme.FlagRed
+import mg.iray.app.ui.theme.IrayDisplayFontFamily
+import mg.iray.app.ui.theme.IrayFontFamily
 import mg.iray.app.ui.theme.IrayTheme
-import mg.iray.app.ui.theme.OutlineOnWhite
+import mg.iray.app.ui.theme.OnboardingInk
 import mg.iray.app.ui.theme.TextPrimary
+import mg.iray.app.ui.theme.TextSecondary
 
-/**
- * [Primary] : fond vert très clair + texte sombre.
- * [Quiet] : carte blanche.
- */
 enum class WelcomeActionStyle {
-    Primary,
-    Quiet
+    /** Démarches — vert drapeau. */
+    Demarches,
+    /** Signalements — rouge drapeau retenu. */
+    Signalements,
 }
 
+/**
+ * Carte d’action Welcome premium — pastille icône, titre Clash, flèche circulaire.
+ */
 @Composable
 fun WelcomeActionCard(
     title: String,
+    subtitle: String,
     icon: ImageVector,
     style: WelcomeActionStyle,
     onClick: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
-    val container = when (style) {
-        WelcomeActionStyle.Primary -> BrandPrimarySoft
-        WelcomeActionStyle.Quiet -> BrandWhite
+    val accent = when (style) {
+        WelcomeActionStyle.Demarches -> FlagGreen
+        WelcomeActionStyle.Signalements -> FlagRed
     }
-    val content = TextPrimary
-    val accent = BrandAccent
+    val softFill = accent.copy(alpha = 0.10f)
+    val shape = RoundedCornerShape(28.dp)
 
-    val shape = RoundedCornerShape(12.dp)
-    val elevation = if (style == WelcomeActionStyle.Quiet) 5.dp else 3.dp
-
-    Row(
+    Box(
         modifier = modifier
             .fillMaxWidth()
-            .shadow(elevation = elevation, shape = shape, clip = false)
+            .shadow(
+                elevation = 14.dp,
+                shape = shape,
+                ambientColor = OnboardingInk.copy(alpha = 0.18f),
+                spotColor = accent.copy(alpha = 0.22f),
+            )
             .clip(shape)
-            .background(container)
+            .background(BrandWhite)
             .border(
-                width = if (style == WelcomeActionStyle.Primary) 1.5.dp else 1.dp,
-                color = if (style == WelcomeActionStyle.Primary) {
-                    BrandAccent.copy(alpha = 0.35f)
-                } else {
-                    OutlineOnWhite
-                },
-                shape = shape
+                width = 1.dp,
+                brush = Brush.linearGradient(
+                    colors = listOf(
+                        accent.copy(alpha = 0.35f),
+                        accent.copy(alpha = 0.08f),
+                    ),
+                ),
+                shape = shape,
             )
             .clickable(
                 interactionSource = remember { MutableInteractionSource() },
-                indication = ripple(color = accent.copy(alpha = 0.16f)),
+                indication = ripple(color = accent.copy(alpha = 0.18f)),
                 role = Role.Button,
-                onClick = onClick
+                onClick = onClick,
             )
-            .padding(horizontal = 18.dp, vertical = 18.dp),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(14.dp)
+            .padding(18.dp),
     ) {
-        Icon(
-            imageVector = icon,
-            contentDescription = null,
-            tint = accent,
-            modifier = Modifier.size(26.dp)
-        )
-        Text(
-            text = title,
-            style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.SemiBold),
-            color = content,
-            modifier = Modifier.weight(1f)
-        )
-        Text(
-            text = "»",
-            style = MaterialTheme.typography.titleLarge,
-            color = accent
-        )
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(16.dp),
+            modifier = Modifier.fillMaxWidth(),
+        ) {
+            Box(
+                modifier = Modifier
+                    .size(58.dp)
+                    .clip(RoundedCornerShape(18.dp))
+                    .background(
+                        Brush.verticalGradient(
+                            colors = listOf(
+                                softFill,
+                                accent.copy(alpha = 0.18f),
+                            ),
+                        ),
+                    ),
+                contentAlignment = Alignment.Center,
+            ) {
+                Icon(
+                    imageVector = icon,
+                    contentDescription = null,
+                    tint = accent,
+                    modifier = Modifier.size(28.dp),
+                )
+            }
+
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = title,
+                    style = MaterialTheme.typography.titleMedium.copy(
+                        fontFamily = IrayDisplayFontFamily,
+                        fontWeight = FontWeight.SemiBold,
+                        fontSize = 17.sp,
+                        lineHeight = 22.sp,
+                        letterSpacing = (-0.1).sp,
+                    ),
+                    color = TextPrimary,
+                )
+                Spacer(modifier = Modifier.height(6.dp))
+                Text(
+                    text = subtitle,
+                    style = MaterialTheme.typography.bodyMedium.copy(
+                        fontFamily = IrayFontFamily,
+                        fontWeight = FontWeight.Normal,
+                        lineHeight = 20.sp,
+                    ),
+                    color = TextSecondary,
+                )
+            }
+
+            Box(
+                modifier = Modifier
+                    .size(44.dp)
+                    .clip(CircleShape)
+                    .background(accent),
+                contentAlignment = Alignment.Center,
+            ) {
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.ArrowForward,
+                    contentDescription = null,
+                    tint = Color.White,
+                    modifier = Modifier.size(20.dp),
+                )
+            }
+        }
     }
 }
 
-@Preview(showBackground = true, backgroundColor = 0xFFFFFFFF)
+@Preview(showBackground = true, backgroundColor = 0xFFF4F7F5)
 @Composable
 private fun WelcomeActionCardPreview() {
     IrayTheme {
-        WelcomeActionCard(
-            title = stringResource(R.string.welcome_action_demarches),
-            icon = Icons.Outlined.Description,
-            style = WelcomeActionStyle.Primary,
-            onClick = {}
-        )
+        Column(
+            modifier = Modifier.padding(20.dp),
+            verticalArrangement = Arrangement.spacedBy(14.dp),
+        ) {
+            WelcomeActionCard(
+                title = stringResource(R.string.welcome_action_demarches),
+                subtitle = stringResource(R.string.welcome_action_demarches_hint),
+                icon = Icons.Outlined.Description,
+                style = WelcomeActionStyle.Demarches,
+                onClick = {},
+            )
+        }
     }
 }

@@ -40,7 +40,7 @@ import mg.iray.app.ui.theme.IrayTheme
 import mg.iray.app.ui.theme.SurfacePage
 import mg.iray.app.ui.theme.TextPrimary
 import mg.iray.app.ui.theme.TextSecondary
-import mg.iray.app.ui.theme.ZoneMapPin
+import mg.iray.app.ui.theme.FlagGreen
 
 /**
  * Écran sous-catégorie — UN écran dynamique par catégorie.
@@ -102,7 +102,7 @@ fun SignalementSubcategoryScreen(
         ) {
             Surface(
                 shape = CircleShape,
-                color = ZoneMapPin.copy(alpha = 0.14f),
+                color = FlagGreen.copy(alpha = 0.14f),
                 modifier = Modifier.size(64.dp),
             ) {
                 Box(
@@ -111,7 +111,7 @@ fun SignalementSubcategoryScreen(
                     Icon(
                         imageVector = category.icon,
                         contentDescription = null,
-                        tint = ZoneMapPin,
+                        tint = FlagGreen,
                         modifier = Modifier.size(32.dp),
                     )
                 }

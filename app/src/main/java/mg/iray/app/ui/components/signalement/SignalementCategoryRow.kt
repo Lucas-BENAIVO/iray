@@ -31,7 +31,7 @@ import mg.iray.app.ui.theme.BrandWhite
 import mg.iray.app.ui.theme.IrayTheme
 import mg.iray.app.ui.theme.OutlineOnWhite
 import mg.iray.app.ui.theme.TextPrimary
-import mg.iray.app.ui.theme.ZoneMapPin
+import mg.iray.app.ui.theme.FlagGreen
 
 /**
  * Ligne catégorie de signalement — pastille icône + libellé + chevron.
@@ -50,10 +50,10 @@ fun SignalementCategoryRow(
         onClick = onClick,
         modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(14.dp),
-        color = if (selected) ZoneMapPin.copy(alpha = 0.10f) else BrandWhite,
+        color = if (selected) FlagGreen.copy(alpha = 0.10f) else BrandWhite,
         border = BorderStroke(
             width = if (selected) 1.5.dp else 1.dp,
-            color = if (selected) ZoneMapPin else OutlineOnWhite,
+            color = if (selected) FlagGreen else OutlineOnWhite,
         ),
     ) {
         Row(
@@ -62,14 +62,14 @@ fun SignalementCategoryRow(
         ) {
             Surface(
                 shape = CircleShape,
-                color = ZoneMapPin.copy(alpha = 0.14f),
+                color = FlagGreen.copy(alpha = 0.14f),
                 modifier = Modifier.size(40.dp),
             ) {
                 Box(contentAlignment = Alignment.Center) {
                     Icon(
                         imageVector = icon,
                         contentDescription = null,
-                        tint = ZoneMapPin,
+                        tint = FlagGreen,
                         modifier = Modifier.size(22.dp),
                     )
                 }
