@@ -34,7 +34,6 @@ import kotlin.math.abs
 import mg.iray.app.R
 import mg.iray.app.ui.components.IrayPrimaryButton
 import mg.iray.app.ui.components.confirmation.ConfirmationDossierCard
-import mg.iray.app.ui.components.confirmation.ConfirmationTimeline
 import mg.iray.app.ui.components.success.SuccessCheckmark
 import mg.iray.app.ui.screens.demarcheDetail.DemarcheDetailsCatalog
 import mg.iray.app.ui.theme.FlagGreen
@@ -148,18 +147,6 @@ fun ConfirmationScreen(
                     text = receivedAt,
                     style = MaterialTheme.typography.bodyMedium,
                     color = TextSecondary,
-                )
-
-                Spacer(modifier = Modifier.height(12.dp))
-
-                ConfirmationTimeline(
-                    currentStepIndex = 0,
-                    steps = listOf(
-                        stringResource(R.string.confirmation_step_verification),
-                        stringResource(R.string.confirmation_step_processing),
-                        stringResource(R.string.confirmation_step_validation),
-                        stringResource(R.string.confirmation_step_done),
-                    ),
                 )
             }
 

@@ -35,7 +35,6 @@ import mg.iray.app.R
 import mg.iray.app.ui.components.IrayPrimaryButton
 import mg.iray.app.ui.components.IraySecondaryButton
 import mg.iray.app.ui.components.confirmation.ConfirmationDossierCard
-import mg.iray.app.ui.components.confirmation.ConfirmationTimeline
 import mg.iray.app.ui.components.success.SuccessCheckmark
 import mg.iray.app.ui.theme.FlagGreen
 import mg.iray.app.ui.theme.IrayTheme
@@ -152,17 +151,6 @@ fun SignalementSuccessScreen(
                     text = receivedAt,
                     style = MaterialTheme.typography.bodyMedium,
                     color = TextSecondary,
-                )
-
-                Spacer(modifier = Modifier.height(12.dp))
-
-                ConfirmationTimeline(
-                    currentStepIndex = 0,
-                    steps = listOf(
-                        stringResource(R.string.signalement_step_supported),
-                        stringResource(R.string.signalement_step_ongoing),
-                        stringResource(R.string.signalement_step_resolved),
-                    ),
                 )
             }
 
