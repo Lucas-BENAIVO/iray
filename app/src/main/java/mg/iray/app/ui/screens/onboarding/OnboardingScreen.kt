@@ -1,27 +1,34 @@
 package mg.iray.app.ui.screens.onboarding
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
-import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import mg.iray.app.R
 import mg.iray.app.ui.components.onboarding.OnboardingHero
 import mg.iray.app.ui.components.onboarding.OnboardingIntroCard
 import mg.iray.app.ui.theme.IrayTheme
-import mg.iray.app.ui.theme.SurfacePage
+import mg.iray.app.ui.theme.OnboardingGreenDeep
+import mg.iray.app.ui.theme.OnboardingGreenSoft
 
 /**
- * Nouvel écran d’accueil style capture e-Mada, marque Iray.
- *
- * Séparé de [mg.iray.app.ui.screens.welcome.WelcomeScreen] (ancien écran conservé).
- * Hero photo marché + carte intro + CTA "Commencer".
+ * Onboarding page 1 — esthétique premium (réf. produit), contenu Iray citoyen.
  */
 data class OnboardingActions(
     val onStart: () -> Unit = {},
@@ -32,26 +39,42 @@ fun OnboardingScreen(
     modifier: Modifier = Modifier,
     actions: OnboardingActions = OnboardingActions(),
 ) {
-    Column(
-        modifier = modifier
-            .fillMaxSize()
-            .background(SurfacePage)
-            .navigationBarsPadding(),
-    ) {
+    Box(modifier = modifier.fillMaxSize()) {
+        Image(
+            painter = painterResource(R.drawable.onboarding_bg),
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.fillMaxSize(),
+        )
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(
+                    Brush.verticalGradient(
+                        colors = listOf(
+                            OnboardingGreenDeep.copy(alpha = 0.88f),
+                            OnboardingGreenDeep.copy(alpha = 0.72f),
+                            OnboardingGreenSoft.copy(alpha = 0.82f),
+                            Color(0xFF2F5A42).copy(alpha = 0.9f),
+                        ),
+                    ),
+                ),
+        )
+
         Column(
             modifier = Modifier
-                .weight(1f)
-                .fillMaxWidth()
-                .verticalScroll(rememberScrollState()),
+                .fillMaxSize()
+                .navigationBarsPadding()
+                .verticalScroll(rememberScrollState())
+                .padding(bottom = 30.dp),
         ) {
-            OnboardingHero(
-                modifier = Modifier.fillMaxWidth(),
-            )
+            OnboardingHero(modifier = Modifier.fillMaxWidth())
+
+            Spacer(modifier = Modifier.height(26.dp))
+
             OnboardingIntroCard(
                 onStartClick = actions.onStart,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .offset(y = (-24).dp),
+                modifier = Modifier.fillMaxWidth(),
             )
         }
     }

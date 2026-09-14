@@ -58,3 +58,13 @@ val SuccessAvatar = Color(0xFF1B3A5C)
 // —— Priorités signalement ——
 /** Orange priorité moyenne. */
 val PriorityOrange = Color(0xFFE68900)
+
+// —— Onboarding premium ——
+/** Vert profond atmosphérique. */
+val OnboardingGreenDeep = Color(0xFF123528)
+/** Vert doux bas d’écran. */
+val OnboardingGreenSoft = Color(0xFF3A634C)
+/** Texte secondaire sur fond vert. */
+val OnboardingMutedOnGreen = Color(0xFFC5D6CB)
+/** Chrome premium (CTA / barre). */
+val OnboardingInk = Color(0xFF111111)
