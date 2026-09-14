@@ -1,95 +1,86 @@
 package mg.iray.app.repository
 
-import com.google.firebase.firestore.DocumentSnapshot
-import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.tasks.await
 import mg.iray.app.dao.TaskDao
 import mg.iray.app.entity.TaskEntity
+import mg.iray.app.sync.RemoteSync
+
 class TaskRepository(
     private val dao: TaskDao,
-    private val firestore: FirebaseFirestore,
-    private val userId: String
-) {
-    private val collection get() = firestore.collection("users/$userId/tasks")
+    private val sync: RemoteSync,
+    private val userId: () -> String
+) : SyncableRepository {
 
-    // --- Lecture : toujours depuis Room ---
-    fun observeTasks(): Flow<List<TaskEntity>> = dao.observeTasks()
+    private fun collection() = "users/${userId()}/tasks"
 
-    // --- Écriture : local d'abord, sync ensuite ---
+    fun observeTasks(): Flow<List<TaskEntity>> = dao.observeTasks(userId())
+
     suspend fun addOrUpdateTask(task: TaskEntity) {
         dao.upsert(
             task.copy(
+                userId = userId(),
                 isSynced = false,
                 pendingOperation = "UPDATE",
                 updatedAt = System.currentTimeMillis()
             )
         )
-        // La sync réelle est déléguée à WorkManager (voir plus bas)
     }
 
     suspend fun deleteTask(id: String) {
         dao.upsert(
-            TaskEntity(id = id, title = "", isDeleted = true, pendingOperation = "DELETE")
+            TaskEntity(
+                id = id,
+                userId = userId(),
+                title = "",
+                isDeleted = true,
+                pendingOperation = "DELETE",
+                updatedAt = System.currentTimeMillis()
+            )
         )
     }
 
-    // --- Push : envoie les changements locaux vers Firestore ---
-    suspend fun pushPendingChanges() {
-        val pending = dao.getPendingTasks()
-        for (task in pending) {
+    override suspend fun pushPendingChanges() {
+        for (task in dao.getPendingTasks(userId())) {
             try {
                 when (task.pendingOperation) {
                     "DELETE" -> {
-                        collection.document(task.id).delete().await()
+                        sync.delete(collection(), task.id)
                         dao.hardDelete(task.id)
                     }
                     else -> {
-                        collection.document(task.id).set(task.toFirestoreMap()).await()
+                        sync.set(collection(), task.id, task.toSyncData())
                         dao.markSynced(task.id)
                     }
                 }
             } catch (e: Exception) {
-                // Échec réseau : la tâche reste "pending", on réessaiera plus tard
+                // hors-ligne : reste "pending", réessayé au prochain cycle
             }
         }
     }
 
-    // --- Pull : récupère les changements distants ---
-    suspend fun pullRemoteChanges() {
-        val snapshot = collection.get().await()
-        val remoteTasks = snapshot.documents.mapNotNull { it.toTaskEntity() }
-        // Résolution de conflit simple : "last write wins" via updatedAt
-        remoteTasks.forEach { remote ->
-            val local = dao.getPendingTasks().find { it.id == remote.id }
-            if (local == null || remote.updatedAt > local.updatedAt) {
-                dao.upsert(remote.copy(isSynced = true, pendingOperation = null))
-            }
-        }
-    }
-
-    // --- Listener temps réel (optionnel, en plus du pull manuel) ---
-    fun startRealtimeSync(scope: CoroutineScope) {
-        collection.addSnapshotListener { snapshot, _ ->
-            val remoteTasks = snapshot?.documents?.mapNotNull { it.toTaskEntity() } ?: return@addSnapshotListener
-            scope.launch {
-                dao.upsertAll(remoteTasks.map { it.copy(isSynced = true, pendingOperation = null) })
+    override suspend fun pullRemoteChanges() {
+        val pending = dao.getPendingTasks(userId())
+        val remote = sync.list(collection())
+        for (doc in remote) {
+            val entity = taskFromSyncData(doc.id, doc.data) ?: continue
+            val local = pending.find { it.id == doc.id }
+            if (local == null || doc.updatedAt > local.updatedAt) {
+                dao.upsert(entity.copy(isSynced = true, pendingOperation = null))
             }
         }
     }
 }
 
-private fun TaskEntity.toFirestoreMap() = mapOf(
-    "id" to id, "title" to title, "isDone" to isDone, "updatedAt" to updatedAt
+private fun TaskEntity.toSyncData(): Map<String, Any> = mapOf(
+    "id" to id,
+    "title" to title,
+    "isDone" to isDone,
+    "updatedAt" to updatedAt
 )
 
-private fun DocumentSnapshot.toTaskEntity(): TaskEntity? = try {
-    TaskEntity(
-        id = getString("id") ?: id,
-        title = getString("title") ?: "",
-        isDone = getBoolean("isDone") ?: false,
-        updatedAt = getLong("updatedAt") ?: 0L
-    )
-} catch (e: Exception) { null }
+private fun taskFromSyncData(id: String, data: Map<String, Any>): TaskEntity? = TaskEntity(
+    id = id,
+    title = (data["title"] as? String).orEmpty(),
+    isDone = (data["isDone"] as? Boolean) ?: false,
+    updatedAt = (data["updatedAt"] as? Number)?.toLong() ?: 0L
+)

@@ -1,4 +1,4 @@
-package mg.iray.app.dao
+﻿package mg.iray.app.dao
 
 import androidx.room.Dao
 import androidx.room.Query
@@ -8,11 +8,14 @@ import mg.iray.app.entity.TaskEntity
 
 @Dao
 interface TaskDao {
-    @Query("SELECT * FROM tasks WHERE isDeleted = 0 ORDER BY updatedAt DESC")
-    fun observeTasks(): Flow<List<TaskEntity>>
+    @Query("SELECT * FROM tasks WHERE isDeleted = 0 AND userId = :userId ORDER BY updatedAt DESC")
+    fun observeTasks(userId: String): Flow<List<TaskEntity>>
 
-    @Query("SELECT * FROM tasks WHERE pendingOperation IS NOT NULL")
-    suspend fun getPendingTasks(): List<TaskEntity>
+    @Query("SELECT * FROM tasks WHERE pendingOperation IS NOT NULL AND userId = :userId")
+    suspend fun getPendingTasks(userId: String): List<TaskEntity>
+
+    @Query("SELECT * FROM tasks WHERE id = :id")
+    suspend fun get(id: String): TaskEntity?
 
     @Upsert
     suspend fun upsert(task: TaskEntity)
@@ -25,4 +28,7 @@ interface TaskDao {
 
     @Query("DELETE FROM tasks WHERE id = :id")
     suspend fun hardDelete(id: String)
+
+    @Query("UPDATE tasks SET userId = :newUid WHERE userId = :oldUid")
+    suspend fun rewriteUid(oldUid: String, newUid: String)
 }
