@@ -7,12 +7,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -27,8 +25,7 @@ import mg.iray.app.ui.components.onboarding.OnboardingTopBrand
 import mg.iray.app.ui.theme.IrayTheme
 
 /**
- * Onboarding page 1 — style immersif photo pleine page
- * (réf. carpool : fond réel, texte bas, UI minimale).
+ * Onboarding immersif — photo pleine page + overlay cinématique + contenu bas.
  */
 data class OnboardingActions(
     val onStart: () -> Unit = {},
@@ -44,21 +41,23 @@ fun OnboardingScreen(
             painter = painterResource(R.drawable.onboarding_hero),
             contentDescription = stringResource(R.string.welcome_content_desc_hero),
             contentScale = ContentScale.Crop,
+            alignment = androidx.compose.ui.Alignment.Center,
             modifier = Modifier.fillMaxSize(),
         )
 
-        // Voile cinématique — lisibilité du texte blanc (style référence).
+        // Overlay chaud / profond — laisse respirer le ciel, ancre le texte en bas.
         Box(
             modifier = Modifier
                 .fillMaxSize()
                 .background(
                     Brush.verticalGradient(
                         colorStops = arrayOf(
-                            0.0f to Color.Black.copy(alpha = 0.28f),
-                            0.35f to Color.Black.copy(alpha = 0.12f),
-                            0.62f to Color.Black.copy(alpha = 0.35f),
-                            0.82f to Color.Black.copy(alpha = 0.62f),
-                            1.0f to Color.Black.copy(alpha = 0.84f),
+                            0.00f to Color(0xFF0B1A14).copy(alpha = 0.42f),
+                            0.22f to Color.Transparent,
+                            0.48f to Color(0xFF1A120C).copy(alpha = 0.12f),
+                            0.68f to Color(0xFF0E1C16).copy(alpha = 0.52f),
+                            0.85f to Color(0xFF07140F).copy(alpha = 0.78f),
+                            1.00f to Color(0xFF050E0A).copy(alpha = 0.92f),
                         ),
                     ),
                 ),
@@ -70,11 +69,9 @@ fun OnboardingScreen(
                 .statusBarsPadding()
                 .navigationBarsPadding()
                 .padding(horizontal = 28.dp)
-                .padding(top = 20.dp, bottom = 28.dp),
+                .padding(top = 18.dp, bottom = 24.dp),
         ) {
-            OnboardingTopBrand(
-                modifier = Modifier.fillMaxWidth(),
-            )
+            OnboardingTopBrand(modifier = Modifier.fillMaxWidth())
 
             Spacer(modifier = Modifier.weight(1f))
 

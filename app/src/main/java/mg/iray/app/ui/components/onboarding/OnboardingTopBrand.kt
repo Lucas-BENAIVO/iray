@@ -1,14 +1,20 @@
 package mg.iray.app.ui.components.onboarding
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -20,7 +26,7 @@ import mg.iray.app.ui.theme.BrandWhite
 import mg.iray.app.ui.theme.IrayTheme
 
 /**
- * Marque Iray + barre drapeau Madagascar (sans icône décorative).
+ * Marque en haut à gauche : petit logo + Iray + barre drapeau.
  */
 @Composable
 fun OnboardingTopBrand(
@@ -30,19 +36,33 @@ fun OnboardingTopBrand(
         modifier = modifier,
         horizontalAlignment = Alignment.Start,
     ) {
-        Text(
-            text = stringResource(R.string.welcome_hero_title),
-            style = MaterialTheme.typography.titleMedium.copy(
-                fontWeight = FontWeight.SemiBold,
-                letterSpacing = 1.6.sp,
-            ),
-            color = BrandWhite,
-        )
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Image(
+                painter = painterResource(R.drawable.logo_republique),
+                contentDescription = stringResource(R.string.welcome_content_desc_logo),
+                contentScale = ContentScale.Fit,
+                modifier = Modifier.size(34.dp),
+            )
 
-        Spacer(modifier = Modifier.height(10.dp))
+            Spacer(modifier = Modifier.width(10.dp))
+
+            Text(
+                text = stringResource(R.string.welcome_hero_title),
+                style = MaterialTheme.typography.titleLarge.copy(
+                    fontWeight = FontWeight.SemiBold,
+                    letterSpacing = 2.2.sp,
+                    fontSize = 20.sp,
+                ),
+                color = BrandWhite.copy(alpha = 0.98f),
+            )
+        }
+
+        Spacer(modifier = Modifier.height(12.dp))
 
         FlagAccentBar(
-            modifier = Modifier.fillMaxWidth(0.2f),
+            modifier = Modifier.fillMaxWidth(0.22f),
             height = 3.dp,
         )
     }
