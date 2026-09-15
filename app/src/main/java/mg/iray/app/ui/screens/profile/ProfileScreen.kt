@@ -35,6 +35,7 @@ import mg.iray.app.ui.components.profile.ProfileAvatarPicker
 import mg.iray.app.ui.components.profile.ProfileTextField
 import mg.iray.app.ui.theme.IrayTheme
 import mg.iray.app.ui.theme.SurfacePage
+import mg.iray.app.ui.validation.FormValidators
 
 data class ProfileActions(
     val onBack: () -> Unit = {},
@@ -62,10 +63,20 @@ fun ProfileScreen(
     var lastName by rememberSaveable(initialLastName) { mutableStateOf(initialLastName) }
     var phone by rememberSaveable(initialPhone) { mutableStateOf(initialPhone) }
     var birthdate by rememberSaveable(initialBirthdate) { mutableStateOf(initialBirthdate) }
+    var attemptedSubmit by rememberSaveable { mutableStateOf(false) }
 
-    val isValid = firstName.isNotBlank() &&
-        lastName.isNotBlank() &&
-        phone.isNotBlank()
+    val firstNameOk = FormValidators.isValidName(firstName)
+    val lastNameOk = FormValidators.isValidName(lastName)
+    val phoneOk = FormValidators.isValidPhone(phone)
+    val birthdateOk = FormValidators.isValidBirthdate(birthdate)
+    val isValid = firstNameOk && lastNameOk && phoneOk && birthdateOk
+
+    val nameError = stringResource(R.string.validation_name_error)
+    val phoneError = stringResource(R.string.validation_phone_error)
+    val birthdateError = stringResource(R.string.validation_birthdate_error)
+
+    fun showError(hasContent: Boolean, ok: Boolean): Boolean =
+        (attemptedSubmit || hasContent) && !ok
 
     Column(
         modifier = modifier
@@ -105,6 +116,9 @@ fun ProfileScreen(
                     label = stringResource(R.string.profile_first_name_label),
                     hint = stringResource(R.string.profile_first_name_hint),
                     leadingIcon = Icons.Filled.Person,
+                    error = nameError.takeIf {
+                        showError(firstName.isNotBlank(), firstNameOk)
+                    },
                 )
                 ProfileTextField(
                     value = lastName,
@@ -112,21 +126,31 @@ fun ProfileScreen(
                     label = stringResource(R.string.profile_last_name_label),
                     hint = stringResource(R.string.profile_last_name_hint),
                     leadingIcon = Icons.Filled.Person,
+                    error = nameError.takeIf {
+                        showError(lastName.isNotBlank(), lastNameOk)
+                    },
                 )
                 ProfileTextField(
                     value = phone,
-                    onValueChange = { phone = it },
+                    onValueChange = { phone = FormValidators.formatPhoneInput(it) },
                     label = stringResource(R.string.profile_phone_label),
                     hint = stringResource(R.string.profile_phone_hint),
                     leadingIcon = Icons.Filled.Phone,
                     keyboardType = KeyboardType.Phone,
+                    error = phoneError.takeIf {
+                        showError(phone.isNotBlank(), phoneOk)
+                    },
                 )
                 ProfileTextField(
                     value = birthdate,
-                    onValueChange = { birthdate = it },
+                    onValueChange = { birthdate = FormValidators.formatBirthdateInput(it) },
                     label = stringResource(R.string.profile_birthdate_label),
                     hint = stringResource(R.string.profile_birthdate_hint),
                     leadingIcon = Icons.Filled.DateRange,
+                    keyboardType = KeyboardType.Number,
+                    error = birthdateError.takeIf {
+                        showError(birthdate.isNotBlank(), birthdateOk)
+                    },
                 )
             }
 
@@ -135,11 +159,13 @@ fun ProfileScreen(
             IrayPrimaryButton(
                 label = stringResource(R.string.profile_continue),
                 onClick = {
+                    attemptedSubmit = true
+                    if (!isValid) return@IrayPrimaryButton
                     actions.onContinue(
                         ProfileForm(
                             firstName = firstName.trim(),
                             lastName = lastName.trim(),
-                            phone = phone.trim(),
+                            phone = FormValidators.normalizePhone(phone),
                             birthdate = birthdate.trim(),
                         ),
                     )

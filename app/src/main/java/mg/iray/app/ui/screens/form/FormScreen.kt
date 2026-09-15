@@ -24,6 +24,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import mg.iray.app.R
@@ -33,13 +34,13 @@ import mg.iray.app.ui.components.profile.ProfileTextField
 import mg.iray.app.ui.components.zone.ZoneDropdownField
 import mg.iray.app.ui.theme.IrayTheme
 import mg.iray.app.ui.theme.SurfacePage
+import mg.iray.app.ui.validation.FormValidators
 
 /**
  * Écran "Informations personnelles" (étape 4 sur 5) — UN écran dynamique.
  *
  * Champs pré-remplis depuis le profil ([initialFirstName]…), "Lieu de
  * naissance" affiché seulement si [asksBirthPlace] (cas CIN).
- * Best practice : état hoisté ici, champs partagés stateless réutilisés.
  */
 data class FormActions(
     val onBack: () -> Unit = {},
@@ -69,12 +70,21 @@ fun FormScreen(
     var birthdate by rememberSaveable { mutableStateOf(initialBirthdate) }
     var address by rememberSaveable { mutableStateOf(initialAddress) }
     var birthPlace by rememberSaveable { mutableStateOf("") }
+    var attemptedSubmit by rememberSaveable { mutableStateOf(false) }
 
-    // Champs obligatoires (*) remplis → CTA actif.
-    val isValid = firstName.isNotBlank() &&
-        birthdate.isNotBlank() &&
-        address.isNotBlank() &&
-        (!asksBirthPlace || birthPlace.isNotBlank())
+    val firstNameOk = FormValidators.isValidName(firstName)
+    val lastNameOk = lastName.isBlank() || FormValidators.isValidName(lastName)
+    val birthdateOk = FormValidators.isValidBirthdate(birthdate)
+    val addressOk = address.trim().length >= 3
+    val birthPlaceOk = !asksBirthPlace || birthPlace.isNotBlank()
+    val isValid = firstNameOk && lastNameOk && birthdateOk && addressOk && birthPlaceOk
+
+    val nameError = stringResource(R.string.validation_name_error)
+    val birthdateError = stringResource(R.string.validation_birthdate_error)
+    val requiredError = stringResource(R.string.validation_required_error)
+
+    fun showError(hasContent: Boolean, ok: Boolean): Boolean =
+        (attemptedSubmit || hasContent) && !ok
 
     Column(
         modifier = modifier
@@ -105,6 +115,9 @@ fun FormScreen(
                     label = stringResource(R.string.form_last_name_label),
                     hint = stringResource(R.string.profile_last_name_hint),
                     leadingIcon = Icons.Filled.Person,
+                    error = nameError.takeIf {
+                        showError(lastName.isNotBlank(), lastNameOk)
+                    },
                 )
                 ProfileTextField(
                     value = firstName,
@@ -112,13 +125,20 @@ fun FormScreen(
                     label = stringResource(R.string.profile_first_name_label),
                     hint = stringResource(R.string.profile_first_name_hint),
                     leadingIcon = Icons.Filled.Person,
+                    error = nameError.takeIf {
+                        showError(firstName.isNotBlank(), firstNameOk)
+                    },
                 )
                 ProfileTextField(
                     value = birthdate,
-                    onValueChange = { birthdate = it },
+                    onValueChange = { birthdate = FormValidators.formatBirthdateInput(it) },
                     label = stringResource(R.string.form_birthdate_label),
                     hint = stringResource(R.string.profile_birthdate_hint),
                     leadingIcon = Icons.Filled.DateRange,
+                    keyboardType = KeyboardType.Number,
+                    error = birthdateError.takeIf {
+                        showError(birthdate.isNotBlank(), birthdateOk)
+                    },
                 )
                 ProfileTextField(
                     value = address,
@@ -126,6 +146,9 @@ fun FormScreen(
                     label = stringResource(R.string.form_address_label),
                     hint = stringResource(R.string.form_address_hint),
                     leadingIcon = Icons.Filled.Home,
+                    error = requiredError.takeIf {
+                        showError(address.isNotBlank(), addressOk)
+                    },
                 )
                 if (asksBirthPlace) {
                     ZoneDropdownField(
@@ -142,6 +165,8 @@ fun FormScreen(
             IrayPrimaryButton(
                 label = stringResource(R.string.form_submit),
                 onClick = {
+                    attemptedSubmit = true
+                    if (!isValid) return@IrayPrimaryButton
                     actions.onSubmit(
                         FormData(
                             lastName = lastName.trim(),

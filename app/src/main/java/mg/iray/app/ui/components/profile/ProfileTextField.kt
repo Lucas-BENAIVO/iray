@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -26,18 +27,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import mg.iray.app.ui.theme.BrandAccent
 import mg.iray.app.ui.theme.BrandWhite
+import mg.iray.app.ui.theme.FlagRed
 import mg.iray.app.ui.theme.IrayTheme
 import mg.iray.app.ui.theme.OutlineOnWhite
 import mg.iray.app.ui.theme.TextPrimary
 import mg.iray.app.ui.theme.TextSecondary
 
 /**
- * Champ du formulaire profil — icône ronde + libellé + zone de saisie.
- *
- * Copie la capture "Créons votre profil" : icône à gauche, libellé
- * au-dessus du champ, coins arrondis.
- *
- * Best practice : stateless ([value]/[onValueChange] hoistés), aucun texte en dur.
+ * Champ du formulaire profil — icône + libellé + zone de saisie.
+ * [error] affiché sous le champ quand non null (validation).
  */
 @Composable
 fun ProfileTextField(
@@ -50,16 +48,21 @@ fun ProfileTextField(
     keyboardType: KeyboardType = KeyboardType.Text,
     singleLine: Boolean = true,
     accentColor: Color = BrandAccent,
+    error: String? = null,
 ) {
+    val hasError = !error.isNullOrBlank()
+
     Row(
         modifier = modifier.fillMaxWidth(),
-        verticalAlignment = Alignment.CenterVertically,
+        verticalAlignment = Alignment.Top,
     ) {
         Icon(
             imageVector = leadingIcon,
             contentDescription = null,
-            tint = accentColor,
-            modifier = Modifier.size(22.dp),
+            tint = if (hasError) FlagRed else accentColor,
+            modifier = Modifier
+                .paddingTopForIcon()
+                .size(22.dp),
         )
 
         Spacer(modifier = Modifier.width(12.dp))
@@ -83,6 +86,18 @@ fun ProfileTextField(
                     )
                 },
                 singleLine = singleLine,
+                isError = hasError,
+                supportingText = if (hasError) {
+                    {
+                        Text(
+                            text = error.orEmpty(),
+                            color = FlagRed,
+                            style = MaterialTheme.typography.bodySmall,
+                        )
+                    }
+                } else {
+                    null
+                },
                 keyboardOptions = KeyboardOptions(keyboardType = keyboardType),
                 textStyle = MaterialTheme.typography.bodyLarge.copy(color = TextPrimary),
                 shape = RoundedCornerShape(12.dp),
@@ -91,12 +106,16 @@ fun ProfileTextField(
                     unfocusedContainerColor = BrandWhite,
                     focusedBorderColor = accentColor,
                     unfocusedBorderColor = OutlineOnWhite,
+                    errorBorderColor = FlagRed,
+                    errorSupportingTextColor = FlagRed,
                 ),
                 modifier = Modifier.fillMaxWidth(),
             )
         }
     }
 }
+
+private fun Modifier.paddingTopForIcon(): Modifier = padding(top = 28.dp)
 
 @Preview(showBackground = true)
 @Composable
