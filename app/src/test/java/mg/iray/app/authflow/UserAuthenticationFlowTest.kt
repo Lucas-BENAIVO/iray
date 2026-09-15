@@ -4,6 +4,7 @@ import kotlinx.coroutines.test.runTest
 import mg.iray.app.fakes.FakeAuthSource
 import mg.iray.app.fakes.FakeMediaDao
 import mg.iray.app.fakes.FakeNotificationDao
+import mg.iray.app.fakes.FakeRequestDao
 import mg.iray.app.fakes.FakeSignalementDao
 import mg.iray.app.fakes.FakeTaskDao
 import mg.iray.app.fakes.FakeUserDao
@@ -26,7 +27,8 @@ class UserAuthenticationFlowTest {
 
     private fun repo() = AuthRepository(
         auth, session, userDao, profileDao,
-        FakeTaskDao(), FakeSignalementDao(), FakeMediaDao(), FakeNotificationDao()
+        FakeTaskDao(), FakeSignalementDao(), FakeMediaDao(), FakeNotificationDao(),
+        FakeRequestDao()
     )
 
     @Test

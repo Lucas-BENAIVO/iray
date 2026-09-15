@@ -6,6 +6,7 @@ import mg.iray.app.auth.AuthSource
 import mg.iray.app.auth.UserSessionStore
 import mg.iray.app.dao.MediaDao
 import mg.iray.app.dao.NotificationDao
+import mg.iray.app.dao.RequestDao
 import mg.iray.app.dao.SignalementDao
 import mg.iray.app.dao.TaskDao
 import mg.iray.app.dao.UserDao
@@ -13,6 +14,7 @@ import mg.iray.app.dao.UserProfileDao
 import mg.iray.app.entity.MediaEntity
 import mg.iray.app.entity.MediaUploadState
 import mg.iray.app.entity.NotificationEntity
+import mg.iray.app.entity.RequestEntity
 import mg.iray.app.entity.SignalementEntity
 import mg.iray.app.entity.TaskEntity
 import mg.iray.app.entity.UserEntity
@@ -208,4 +210,25 @@ class FakeNotificationDao : NotificationDao {
 
     private fun refresh() { flow.value = store.toList() }
     fun all(): List<NotificationEntity> = store.toList()
+}
+
+class FakeRequestDao : RequestDao {
+    var store = mutableListOf<RequestEntity>()
+    private val flow = MutableStateFlow<List<RequestEntity>>(emptyList())
+    private val flowItem = MutableStateFlow<RequestEntity?>(null)
+
+    override fun observeAll(userId: String): Flow<List<RequestEntity>> = flow
+    override fun observeByStatus(userId: String, status: String): Flow<List<RequestEntity>> = flow
+    override fun observe(id: String): Flow<RequestEntity?> = flowItem
+    override suspend fun getPending(userId: String): List<RequestEntity> =
+        store.filter { it.pendingOperation != null && it.userId == userId }
+    override suspend fun get(id: String): RequestEntity? = store.find { it.id == id }
+    override suspend fun upsert(request: RequestEntity) { store.removeAll { it.id == request.id }; store.add(request); refresh() }
+    override suspend fun upsertAll(requests: List<RequestEntity>) { requests.forEach { upsert(it) } }
+    override suspend fun markSynced(id: String) { store.replaceAll { if (it.id == id) it.copy(isSynced = true, pendingOperation = null) else it }; refresh() }
+    override suspend fun hardDelete(id: String) { store.removeAll { it.id == id }; refresh() }
+    override suspend fun rewriteUid(oldUid: String, newUid: String) { store.replaceAll { if (it.userId == oldUid) it.copy(userId = newUid) else it }; refresh() }
+
+    private fun refresh() { flow.value = store.toList() }
+    fun all(): List<RequestEntity> = store.toList()
 }

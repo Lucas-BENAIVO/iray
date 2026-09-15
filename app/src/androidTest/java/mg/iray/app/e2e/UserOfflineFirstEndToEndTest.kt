@@ -36,7 +36,8 @@ class UserOfflineFirstEndToEndTest {
     private fun uiAuthRepo() = AuthRepository(
         auth, session,
         db.userDao(), db.userProfileDao(), db.taskDao(),
-        db.signalementDao(), db.mediaDao(), db.notificationDao()
+        db.signalementDao(), db.mediaDao(), db.notificationDao(),
+        db.requestDao()
     )
 
     @Test

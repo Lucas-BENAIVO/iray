@@ -6,6 +6,7 @@ import mg.iray.app.auth.AuthSource
 import mg.iray.app.auth.UserSessionStore
 import mg.iray.app.dao.MediaDao
 import mg.iray.app.dao.NotificationDao
+import mg.iray.app.dao.RequestDao
 import mg.iray.app.dao.SignalementDao
 import mg.iray.app.dao.TaskDao
 import mg.iray.app.dao.UserDao
@@ -29,7 +30,8 @@ class AuthRepository(
     private val taskDao: TaskDao,
     private val signalementDao: SignalementDao,
     private val mediaDao: MediaDao,
-    private val notificationDao: NotificationDao
+    private val notificationDao: NotificationDao,
+    private val requestDao: RequestDao
 ) {
 
     suspend fun ensureUserId(): String {
@@ -103,6 +105,7 @@ class AuthRepository(
         signalementDao.rewriteUid(oldUid, newUid)
         mediaDao.rewriteUid(oldUid, newUid)
         notificationDao.rewriteUid(oldUid, newUid)
+        requestDao.rewriteUid(oldUid, newUid)
     }
 
     private fun now() = System.currentTimeMillis()

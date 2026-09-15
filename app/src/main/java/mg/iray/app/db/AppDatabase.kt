@@ -5,16 +5,24 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import mg.iray.app.dao.AnnouncementDao
 import mg.iray.app.dao.MediaDao
 import mg.iray.app.dao.NotificationDao
+import mg.iray.app.dao.ProcedureDao
+import mg.iray.app.dao.RequestDao
 import mg.iray.app.dao.SignalementDao
 import mg.iray.app.dao.TaskDao
+import mg.iray.app.dao.TerritoryDao
 import mg.iray.app.dao.UserDao
 import mg.iray.app.dao.UserProfileDao
+import mg.iray.app.entity.AnnouncementEntity
 import mg.iray.app.entity.MediaEntity
 import mg.iray.app.entity.NotificationEntity
+import mg.iray.app.entity.ProcedureEntity
+import mg.iray.app.entity.RequestEntity
 import mg.iray.app.entity.SignalementEntity
 import mg.iray.app.entity.TaskEntity
+import mg.iray.app.entity.TerritoryEntity
 import mg.iray.app.entity.UserEntity
 import mg.iray.app.entity.UserProfileEntity
 
@@ -25,9 +33,13 @@ import mg.iray.app.entity.UserProfileEntity
         UserProfileEntity::class,
         MediaEntity::class,
         SignalementEntity::class,
-        NotificationEntity::class
+        NotificationEntity::class,
+        TerritoryEntity::class,
+        ProcedureEntity::class,
+        RequestEntity::class,
+        AnnouncementEntity::class
     ],
-    version = 2,
+    version = 3,
     exportSchema = false
 )
 @TypeConverters(Converters::class)
@@ -38,6 +50,10 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun mediaDao(): MediaDao
     abstract fun signalementDao(): SignalementDao
     abstract fun notificationDao(): NotificationDao
+    abstract fun territoryDao(): TerritoryDao
+    abstract fun procedureDao(): ProcedureDao
+    abstract fun requestDao(): RequestDao
+    abstract fun announcementDao(): AnnouncementDao
 
     companion object {
         @Volatile private var INSTANCE: AppDatabase? = null
