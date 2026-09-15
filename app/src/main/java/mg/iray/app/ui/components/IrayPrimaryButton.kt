@@ -46,7 +46,7 @@ fun IrayPrimaryButton(
 ) {
     val contentColor = if (containerColor == BrandWhite) FlagGreen else TextOnBrand
     val arrowBg = if (containerColor == BrandWhite) FlagGreen else BrandWhite
-    val arrowTint = if (containerColor == BrandWhite) BrandWhite else FlagGreen
+    val arrowTint = if (containerColor == BrandWhite) BrandWhite else containerColor
 
     Row(
         modifier = modifier

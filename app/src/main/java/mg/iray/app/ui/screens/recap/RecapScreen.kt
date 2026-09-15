@@ -2,7 +2,6 @@ package mg.iray.app.ui.screens.recap
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -12,27 +11,19 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import mg.iray.app.R
 import mg.iray.app.ui.components.IrayPrimaryButton
+import mg.iray.app.ui.components.IrayScreenHeader
 import mg.iray.app.ui.components.recap.RecapDetailsBlock
 import mg.iray.app.ui.components.recap.RecapDocumentsBlock
 import mg.iray.app.ui.screens.demarcheDetail.DemarcheDetailsCatalog
 import mg.iray.app.ui.theme.IrayTheme
 import mg.iray.app.ui.theme.SurfacePage
-import mg.iray.app.ui.theme.TextPrimary
 
 /**
  * Écran "Récapitulatif" (étape 5 sur 5) — UN écran dynamique.
@@ -63,27 +54,11 @@ fun RecapScreen(
             .statusBarsPadding()
             .navigationBarsPadding(),
     ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 8.dp, end = 24.dp, top = 8.dp),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            IconButton(onClick = actions.onBack) {
-                Icon(
-                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                    contentDescription = stringResource(R.string.recap_back_cd),
-                    tint = TextPrimary,
-                )
-            }
-            Text(
-                text = stringResource(R.string.recap_title),
-                style = MaterialTheme.typography.titleLarge.copy(
-                    fontWeight = FontWeight.Bold,
-                ),
-                color = TextPrimary,
-            )
-        }
+        IrayScreenHeader(
+            title = stringResource(R.string.recap_title),
+            onBack = actions.onBack,
+            modifier = Modifier.fillMaxWidth(),
+        )
 
         Column(
             modifier = Modifier

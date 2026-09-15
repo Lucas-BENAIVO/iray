@@ -2,7 +2,6 @@ package mg.iray.app.ui.screens.signalement
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -12,10 +11,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -33,10 +28,11 @@ import java.util.Locale
 import kotlin.math.abs
 import mg.iray.app.R
 import mg.iray.app.ui.components.IrayPrimaryButton
+import mg.iray.app.ui.components.IrayScreenHeader
 import mg.iray.app.ui.components.IraySecondaryButton
 import mg.iray.app.ui.components.confirmation.ConfirmationDossierCard
 import mg.iray.app.ui.components.success.SuccessCheckmark
-import mg.iray.app.ui.theme.FlagGreen
+import mg.iray.app.ui.theme.FlagRed
 import mg.iray.app.ui.theme.IrayTheme
 import mg.iray.app.ui.theme.SurfacePage
 import mg.iray.app.ui.theme.TextPrimary
@@ -79,22 +75,11 @@ fun SignalementSuccessScreen(
             .navigationBarsPadding(),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 8.dp, top = 8.dp),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            IconButton(onClick = actions.onBack) {
-                Icon(
-                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                    contentDescription = stringResource(
-                        R.string.signalement_success_back_cd,
-                    ),
-                    tint = TextPrimary,
-                )
-            }
-        }
+        IrayScreenHeader(
+            title = stringResource(R.string.signalement_success_title),
+            onBack = actions.onBack,
+            modifier = Modifier.fillMaxWidth(),
+        )
 
         Column(
             modifier = Modifier
@@ -105,20 +90,9 @@ fun SignalementSuccessScreen(
                 .padding(bottom = 24.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            SuccessCheckmark()
+            SuccessCheckmark(accentColor = FlagRed)
 
             Spacer(modifier = Modifier.height(20.dp))
-
-            Text(
-                text = stringResource(R.string.signalement_success_title),
-                style = MaterialTheme.typography.headlineMedium.copy(
-                    fontWeight = FontWeight.Bold,
-                ),
-                color = FlagGreen,
-                textAlign = TextAlign.Center,
-            )
-
-            Spacer(modifier = Modifier.height(8.dp))
 
             Text(
                 text = stringResource(
@@ -132,7 +106,10 @@ fun SignalementSuccessScreen(
 
             Spacer(modifier = Modifier.height(24.dp))
 
-            ConfirmationDossierCard(dossierNumber = sigNumber)
+            ConfirmationDossierCard(
+                dossierNumber = sigNumber,
+                accentColor = FlagRed,
+            )
 
             Spacer(modifier = Modifier.height(20.dp))
 
@@ -159,6 +136,7 @@ fun SignalementSuccessScreen(
             IrayPrimaryButton(
                 label = stringResource(R.string.signalement_view_reports),
                 onClick = actions.onViewReports,
+                containerColor = FlagRed,
                 modifier = Modifier.fillMaxWidth(),
             )
 
@@ -167,6 +145,7 @@ fun SignalementSuccessScreen(
             IraySecondaryButton(
                 label = stringResource(R.string.signalement_back_home),
                 onClick = actions.onHome,
+                contentColor = FlagRed,
                 modifier = Modifier.fillMaxWidth(),
             )
         }

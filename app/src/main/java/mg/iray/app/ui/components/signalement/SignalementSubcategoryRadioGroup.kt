@@ -24,7 +24,7 @@ import mg.iray.app.ui.theme.DividerSubtle
 import mg.iray.app.ui.theme.IrayTheme
 import mg.iray.app.ui.theme.OutlineOnWhite
 import mg.iray.app.ui.theme.TextPrimary
-import mg.iray.app.ui.theme.FlagGreen
+import mg.iray.app.ui.theme.FlagRed
 
 /**
  * Liste radio des sous-catégories — lignes séparées, sélection bleue.
@@ -57,7 +57,7 @@ fun SignalementSubcategoryRadioGroup(
                         selected = option == selected,
                         onClick = null,
                         colors = RadioButtonDefaults.colors(
-                            selectedColor = FlagGreen,
+                            selectedColor = FlagRed,
                         ),
                     )
                     Text(

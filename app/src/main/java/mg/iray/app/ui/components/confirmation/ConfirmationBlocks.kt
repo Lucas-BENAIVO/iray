@@ -44,6 +44,7 @@ import mg.iray.app.ui.theme.FlagGreen
 fun ConfirmationDossierCard(
     dossierNumber: String,
     modifier: Modifier = Modifier,
+    accentColor: Color = FlagGreen,
 ) {
     Surface(
         modifier = modifier.fillMaxWidth(),
@@ -56,14 +57,14 @@ fun ConfirmationDossierCard(
         ) {
             Surface(
                 shape = CircleShape,
-                color = FlagGreen.copy(alpha = 0.14f),
+                color = accentColor.copy(alpha = 0.14f),
                 modifier = Modifier.size(44.dp),
             ) {
                 Box(contentAlignment = Alignment.Center) {
                     Icon(
                         imageVector = Icons.Filled.Description,
                         contentDescription = null,
-                        tint = FlagGreen,
+                        tint = accentColor,
                         modifier = Modifier.size(24.dp),
                     )
                 }

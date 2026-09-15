@@ -11,6 +11,7 @@ import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -22,7 +23,7 @@ import mg.iray.app.ui.theme.OutlineOnWhite
 import mg.iray.app.ui.theme.TextSecondary
 
 /**
- * Champ de recherche de zone — loupe verte + hint.
+ * Champ de recherche de zone — loupe + hint.
  *
  * Best practice : stateless ([value]/[onValueChange] hoistés), aucun texte en dur.
  */
@@ -32,6 +33,7 @@ fun ZoneSearchField(
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
     hint: String = "",
+    accentColor: Color = BrandAccent,
 ) {
     val defaultHint = stringResource(R.string.zone_search_hint)
     OutlinedTextField(
@@ -47,7 +49,7 @@ fun ZoneSearchField(
             Icon(
                 imageVector = Icons.Filled.Search,
                 contentDescription = null,
-                tint = BrandAccent,
+                tint = accentColor,
             )
         },
         singleLine = true,
@@ -56,7 +58,7 @@ fun ZoneSearchField(
         colors = OutlinedTextFieldDefaults.colors(
             focusedContainerColor = BrandWhite,
             unfocusedContainerColor = BrandWhite,
-            focusedBorderColor = BrandAccent,
+            focusedBorderColor = accentColor,
             unfocusedBorderColor = OutlineOnWhite,
         ),
         modifier = modifier.fillMaxWidth(),

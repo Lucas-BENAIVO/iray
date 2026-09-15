@@ -12,29 +12,29 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import mg.iray.app.R
 import mg.iray.app.ui.theme.FlagGreen
 import mg.iray.app.ui.theme.IrayTheme
-import mg.iray.app.ui.theme.SuccessHalo
 import mg.iray.app.ui.theme.TextOnBrand
 
 /**
- * Check de succès — halo vert clair + confettis + pastille verte + check blanc.
- *
- * Copie la capture "Profil créé !". Confettis fixes (pur décoratif).
+ * Check de succès — halo clair + confettis + pastille + check blanc.
  */
 @Composable
 fun SuccessCheckmark(
     modifier: Modifier = Modifier,
+    accentColor: Color = FlagGreen,
 ) {
+    val halo = accentColor.copy(alpha = 0.14f)
+
     Box(
         contentAlignment = Alignment.Center,
         modifier = modifier.size(148.dp),
     ) {
-        // Confettis fixes autour du halo.
         Canvas(modifier = Modifier.matchParentSize()) {
             val w = size.width
             val h = size.height
@@ -52,7 +52,7 @@ fun SuccessCheckmark(
             )
             dots.forEach { (fx, fy, r) ->
                 drawCircle(
-                    color = FlagGreen,
+                    color = accentColor,
                     radius = r * density,
                     center = Offset(w * fx, h * fy),
                 )
@@ -61,13 +61,13 @@ fun SuccessCheckmark(
 
         Surface(
             shape = CircleShape,
-            color = SuccessHalo,
+            color = halo,
             modifier = Modifier.size(116.dp),
         ) {}
 
         Surface(
             shape = CircleShape,
-            color = FlagGreen,
+            color = accentColor,
             modifier = Modifier.size(72.dp),
         ) {
             Box(contentAlignment = Alignment.Center) {

@@ -34,7 +34,7 @@ import mg.iray.app.ui.theme.IrayTheme
 import mg.iray.app.ui.theme.OutlineOnWhite
 import mg.iray.app.ui.theme.SurfaceFeatured
 import mg.iray.app.ui.theme.TextPrimary
-import mg.iray.app.ui.theme.FlagGreen
+import mg.iray.app.ui.theme.FlagRed
 
 /**
  * Vignettes photos + tuile "+" — aperçu réel via ImageView système.
@@ -92,7 +92,7 @@ fun SignalementPhotoTiles(
                             contentDescription = stringResource(
                                 R.string.signalement_add_photo_cd,
                             ),
-                            tint = FlagGreen,
+                            tint = FlagRed,
                             modifier = Modifier.size(28.dp),
                         )
                     }

@@ -2,7 +2,6 @@ package mg.iray.app.ui.screens.confirmation
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -12,10 +11,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -33,10 +28,10 @@ import java.util.Locale
 import kotlin.math.abs
 import mg.iray.app.R
 import mg.iray.app.ui.components.IrayPrimaryButton
+import mg.iray.app.ui.components.IrayScreenHeader
 import mg.iray.app.ui.components.confirmation.ConfirmationDossierCard
 import mg.iray.app.ui.components.success.SuccessCheckmark
 import mg.iray.app.ui.screens.demarcheDetail.DemarcheDetailsCatalog
-import mg.iray.app.ui.theme.FlagGreen
 import mg.iray.app.ui.theme.IrayTheme
 import mg.iray.app.ui.theme.SurfacePage
 import mg.iray.app.ui.theme.TextPrimary
@@ -77,20 +72,11 @@ fun ConfirmationScreen(
             .navigationBarsPadding(),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 8.dp, top = 8.dp),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            IconButton(onClick = actions.onBack) {
-                Icon(
-                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                    contentDescription = stringResource(R.string.confirmation_back_cd),
-                    tint = TextPrimary,
-                )
-            }
-        }
+        IrayScreenHeader(
+            title = stringResource(R.string.confirmation_title),
+            onBack = actions.onBack,
+            modifier = Modifier.fillMaxWidth(),
+        )
 
         Column(
             modifier = Modifier
@@ -104,17 +90,6 @@ fun ConfirmationScreen(
             SuccessCheckmark()
 
             Spacer(modifier = Modifier.height(20.dp))
-
-            Text(
-                text = stringResource(R.string.confirmation_title),
-                style = MaterialTheme.typography.headlineMedium.copy(
-                    fontWeight = FontWeight.Bold,
-                ),
-                color = FlagGreen,
-                textAlign = TextAlign.Center,
-            )
-
-            Spacer(modifier = Modifier.height(8.dp))
 
             Text(
                 text = stringResource(

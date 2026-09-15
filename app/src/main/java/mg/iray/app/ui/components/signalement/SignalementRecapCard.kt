@@ -34,6 +34,7 @@ import mg.iray.app.ui.screens.signalement.SignalementPriority
 import mg.iray.app.ui.theme.BrandDanger
 import mg.iray.app.ui.theme.BrandWhite
 import mg.iray.app.ui.theme.FlagGreen
+import mg.iray.app.ui.theme.FlagRed
 import mg.iray.app.ui.theme.IrayTheme
 import mg.iray.app.ui.theme.OutlineOnWhite
 import mg.iray.app.ui.theme.PriorityOrange
@@ -66,14 +67,14 @@ fun SignalementRecapCard(
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Surface(
                     shape = CircleShape,
-                    color = FlagGreen.copy(alpha = 0.14f),
+                    color = FlagRed.copy(alpha = 0.14f),
                     modifier = Modifier.size(44.dp),
                 ) {
                     Box(contentAlignment = Alignment.Center) {
                         Icon(
                             imageVector = categoryIcon,
                             contentDescription = null,
-                            tint = FlagGreen,
+                            tint = FlagRed,
                             modifier = Modifier.size(24.dp),
                         )
                     }

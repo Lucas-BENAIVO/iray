@@ -3,7 +3,6 @@ package mg.iray.app.ui.screens.signalement
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -15,13 +14,8 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -30,17 +24,15 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import mg.iray.app.R
 import mg.iray.app.ui.components.IrayPrimaryButton
+import mg.iray.app.ui.components.IrayScreenHeader
 import mg.iray.app.ui.components.signalement.SignalementSubcategoryRadioGroup
 import mg.iray.app.ui.theme.IrayTheme
 import mg.iray.app.ui.theme.SurfacePage
-import mg.iray.app.ui.theme.TextPrimary
-import mg.iray.app.ui.theme.TextSecondary
-import mg.iray.app.ui.theme.FlagGreen
+import mg.iray.app.ui.theme.FlagRed
 
 /**
  * Écran sous-catégorie — UN écran dynamique par catégorie.
@@ -71,25 +63,11 @@ fun SignalementSubcategoryScreen(
             .statusBarsPadding()
             .navigationBarsPadding(),
     ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 8.dp, end = 24.dp, top = 8.dp),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            IconButton(onClick = actions.onBack) {
-                Icon(
-                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                    contentDescription = stringResource(R.string.signalement_back_cd),
-                    tint = TextPrimary,
-                )
-            }
-            Text(
-                text = stringResource(R.string.signalement_sub_step),
-                style = MaterialTheme.typography.bodyMedium,
-                color = TextSecondary,
-            )
-        }
+        IrayScreenHeader(
+            title = stringResource(category.labelRes),
+            onBack = actions.onBack,
+            modifier = Modifier.fillMaxWidth(),
+        )
 
         Column(
             modifier = Modifier
@@ -102,7 +80,7 @@ fun SignalementSubcategoryScreen(
         ) {
             Surface(
                 shape = CircleShape,
-                color = FlagGreen.copy(alpha = 0.14f),
+                color = FlagRed.copy(alpha = 0.14f),
                 modifier = Modifier.size(64.dp),
             ) {
                 Box(
@@ -111,21 +89,11 @@ fun SignalementSubcategoryScreen(
                     Icon(
                         imageVector = category.icon,
                         contentDescription = null,
-                        tint = FlagGreen,
+                        tint = FlagRed,
                         modifier = Modifier.size(32.dp),
                     )
                 }
             }
-
-            Spacer(modifier = Modifier.height(12.dp))
-
-            Text(
-                text = stringResource(category.labelRes),
-                style = MaterialTheme.typography.titleLarge.copy(
-                    fontWeight = FontWeight.Bold,
-                ),
-                color = TextPrimary,
-            )
 
             Spacer(modifier = Modifier.height(20.dp))
 
@@ -140,6 +108,7 @@ fun SignalementSubcategoryScreen(
             IrayPrimaryButton(
                 label = stringResource(R.string.signalement_continue),
                 onClick = { actions.onContinue(category.id, selected) },
+                containerColor = FlagRed,
                 modifier = Modifier.fillMaxWidth(),
             )
         }
