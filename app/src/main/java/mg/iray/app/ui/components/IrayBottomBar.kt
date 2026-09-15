@@ -16,6 +16,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -74,7 +76,7 @@ fun IrayBottomBar(
                     Icon(
                         imageVector = icon,
                         contentDescription = stringResource(labelRes),
-                        modifier = Modifier.size(22.dp),
+                        modifier = Modifier.size(20.dp),
                     )
                 },
                 label = {
@@ -82,8 +84,13 @@ fun IrayBottomBar(
                         text = stringResource(labelRes),
                         fontFamily = IrayFontFamily,
                         fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Medium,
-                        fontSize = 11.sp,
+                        fontSize = 9.sp,
+                        lineHeight = 12.sp,
+                        letterSpacing = 0.sp,
                         maxLines = 1,
+                        softWrap = false,
+                        overflow = TextOverflow.Ellipsis,
+                        textAlign = TextAlign.Center,
                     )
                 },
                 colors = NavigationBarItemDefaults.colors(

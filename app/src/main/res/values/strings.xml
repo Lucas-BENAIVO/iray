@@ -4,8 +4,8 @@
 
     <!-- Bottom navigation -->
     <string name="nav_home">Accueil</string>
-    <string name="nav_demarches">Démarches</string>
-    <string name="nav_signalements">Signalements</string>
+    <string name="nav_demarches">Mes démarches</string>
+    <string name="nav_signalements">Mes signalements</string>
     <string name="nav_profile">Profil</string>
 
     <!-- Welcome -->
@@ -232,4 +232,44 @@
     <string name="signalement_step_resolved">Résolu</string>
     <string name="signalement_view_reports">Voir mes signalements</string>
     <string name="signalement_back_home">Retour à l’accueil</string>
+
+    <!-- Mes démarches (historique) -->
+    <string name="mes_demarches_title">Mes démarches</string>
+    <string name="mes_demarches_back_cd">Retour</string>
+    <string name="mes_demarches_search_hint">Rechercher une demande…</string>
+    <string name="mes_demarches_filter_all">Tout</string>
+    <string name="mes_demarches_filter_ongoing">En cours</string>
+    <string name="mes_demarches_filter_done">Terminées</string>
+    <string name="mes_demarches_empty">Aucune demande pour le moment.</string>
+    <string name="mes_demarches_cta">Nouvelle demande</string>
+    <string name="mes_demarches_dossier_format">N° %1$s</string>
+    <string name="mes_demarches_1_title">Certificat de résidence</string>
+    <string name="mes_demarches_1_service">Mairie — Antananarivo</string>
+    <string name="mes_demarches_1_date">12 sept. 2026</string>
+    <string name="mes_demarches_2_title">Acte de naissance</string>
+    <string name="mes_demarches_2_service">État civil — Analakely</string>
+    <string name="mes_demarches_2_date">5 sept. 2026</string>
+    <string name="mes_demarches_3_title">Carte nationale d’identité (CIN)</string>
+    <string name="mes_demarches_3_service">District — Antananarivo</string>
+    <string name="mes_demarches_3_date">28 août 2026</string>
+
+    <!-- Mes signalements (historique) -->
+    <string name="mes_signalements_title">Mes signalements</string>
+    <string name="mes_signalements_back_cd">Retour</string>
+    <string name="mes_signalements_search_hint">Rechercher un signalement…</string>
+    <string name="mes_signalements_filter_all">Tout</string>
+    <string name="mes_signalements_filter_ongoing">En cours</string>
+    <string name="mes_signalements_filter_resolved">Résolus</string>
+    <string name="mes_signalements_empty">Aucun signalement pour le moment.</string>
+    <string name="mes_signalements_cta">Nouveau signalement</string>
+    <string name="mes_signalements_dossier_format">N° %1$s</string>
+    <string name="mes_signalements_1_title">Éclairage public</string>
+    <string name="mes_signalements_1_body">Lampadaire cassé — Rue Rainandriamampandry</string>
+    <string name="mes_signalements_1_date">14 sept. 2026</string>
+    <string name="mes_signalements_2_title">Propreté &amp; déchets</string>
+    <string name="mes_signalements_2_body">Dépôt sauvage près du marché</string>
+    <string name="mes_signalements_2_date">10 sept. 2026</string>
+    <string name="mes_signalements_3_title">Routes et voirie</string>
+    <string name="mes_signalements_3_body">Nid-de-poule dangereux</string>
+    <string name="mes_signalements_3_date">2 sept. 2026</string>
 </resources>

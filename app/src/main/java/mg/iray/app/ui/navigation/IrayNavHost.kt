@@ -33,6 +33,10 @@ import mg.iray.app.ui.screens.documents.DocumentsActions
 import mg.iray.app.ui.screens.documents.DocumentsScreen
 import mg.iray.app.ui.screens.form.FormActions
 import mg.iray.app.ui.screens.form.FormScreen
+import mg.iray.app.ui.screens.mesDemarches.MesDemarchesActions
+import mg.iray.app.ui.screens.mesDemarches.MesDemarchesScreen
+import mg.iray.app.ui.screens.mesSignalements.MesSignalementsActions
+import mg.iray.app.ui.screens.mesSignalements.MesSignalementsScreen
 import mg.iray.app.ui.screens.notifications.NotificationsActions
 import mg.iray.app.ui.screens.notifications.NotificationsScreen
 import mg.iray.app.ui.screens.signalement.SignalementCategoryActions
@@ -79,6 +83,8 @@ object IrayRoute {
     const val SIGNALEMENT_DETAILS = "signalement_details/{categoryId}/{subcategory}"
     const val SIGNALEMENT_CONFIRM = "signalement_confirm"
     const val SIGNALEMENT_SUCCESS = "signalement_success"
+    const val MES_DEMARCHES = "mes_demarches"
+    const val MES_SIGNALEMENTS = "mes_signalements"
     const val WELCOME = "welcome"
 }
 
@@ -168,8 +174,14 @@ fun IrayNavHost(
         composable(IrayRoute.WELCOME) {
             WelcomeScreen(
                 actions = WelcomeActions(
+                    // Cartes d’accueil = démarrer une nouvelle demande / signalement.
                     onDemarches = { navController.navigate(IrayRoute.DEMARCHES) },
                     onSignalements = { navController.navigate(IrayRoute.SIGNALEMENT) },
+                    // Bottom bar = historiques "Mes …".
+                    onMesDemarches = { navController.navigate(IrayRoute.MES_DEMARCHES) },
+                    onMesSignalements = {
+                        navController.navigate(IrayRoute.MES_SIGNALEMENTS)
+                    },
                     onNotifications = { navController.navigate(IrayRoute.NOTIFICATIONS) },
                     onProfile = {
                         if (hasProfile) {
@@ -178,6 +190,60 @@ fun IrayNavHost(
                             navController.navigate(IrayRoute.PROFILE)
                         }
                     },
+                ),
+            )
+        }
+        composable(IrayRoute.MES_DEMARCHES) {
+            MesDemarchesScreen(
+                actions = MesDemarchesActions(
+                    onBack = { navController.popBackStack() },
+                    onHome = {
+                        navController.navigate(IrayRoute.WELCOME) {
+                            popUpTo(IrayRoute.WELCOME) { inclusive = false }
+                            launchSingleTop = true
+                        }
+                    },
+                    onSignalements = {
+                        navController.navigate(IrayRoute.MES_SIGNALEMENTS) {
+                            launchSingleTop = true
+                        }
+                    },
+                    onProfile = {
+                        if (hasProfile) {
+                            navController.navigate(IrayRoute.SUCCESS)
+                        } else {
+                            navController.navigate(IrayRoute.PROFILE)
+                        }
+                    },
+                    onNewRequest = { navController.navigate(IrayRoute.DEMARCHES) },
+                    onRequestClick = { /* TODO: détail suivi */ },
+                ),
+            )
+        }
+        composable(IrayRoute.MES_SIGNALEMENTS) {
+            MesSignalementsScreen(
+                actions = MesSignalementsActions(
+                    onBack = { navController.popBackStack() },
+                    onHome = {
+                        navController.navigate(IrayRoute.WELCOME) {
+                            popUpTo(IrayRoute.WELCOME) { inclusive = false }
+                            launchSingleTop = true
+                        }
+                    },
+                    onDemarches = {
+                        navController.navigate(IrayRoute.MES_DEMARCHES) {
+                            launchSingleTop = true
+                        }
+                    },
+                    onProfile = {
+                        if (hasProfile) {
+                            navController.navigate(IrayRoute.SUCCESS)
+                        } else {
+                            navController.navigate(IrayRoute.PROFILE)
+                        }
+                    },
+                    onNewReport = { navController.navigate(IrayRoute.SIGNALEMENT) },
+                    onReportClick = { /* TODO: détail suivi */ },
                 ),
             )
         }
@@ -266,8 +332,12 @@ fun IrayNavHost(
                 subcategory = sigSubcategory,
                 actions = SignalementSuccessActions(
                     onBack = { navController.popBackStack() },
-                    // Page "Mes signalements" : TODO.
-                    onViewReports = { navController.navigate(IrayRoute.WELCOME) },
+                    onViewReports = {
+                        navController.navigate(IrayRoute.MES_SIGNALEMENTS) {
+                            popUpTo(IrayRoute.WELCOME) { inclusive = false }
+                            launchSingleTop = true
+                        }
+                    },
                     onHome = { navController.navigate(IrayRoute.WELCOME) },
                 ),
             )
@@ -352,8 +422,12 @@ fun IrayNavHost(
                 demarcheId = backStackEntry.arguments?.getString("demarcheId").orEmpty(),
                 actions = ConfirmationActions(
                     onBack = { navController.popBackStack() },
-                    // "Voir mes demandes" → accueil (page Mes demandes : TODO).
-                    onViewRequests = { navController.navigate(IrayRoute.WELCOME) },
+                    onViewRequests = {
+                        navController.navigate(IrayRoute.MES_DEMARCHES) {
+                            popUpTo(IrayRoute.WELCOME) { inclusive = false }
+                            launchSingleTop = true
+                        }
+                    },
                 ),
             )
         }

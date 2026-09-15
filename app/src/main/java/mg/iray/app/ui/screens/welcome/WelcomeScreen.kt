@@ -51,6 +51,8 @@ import mg.iray.app.ui.theme.TextPrimary
 data class WelcomeActions(
     val onDemarches: () -> Unit = {},
     val onSignalements: () -> Unit = {},
+    val onMesDemarches: () -> Unit = {},
+    val onMesSignalements: () -> Unit = {},
     val onNotifications: () -> Unit = {},
     val onProfile: () -> Unit = {},
 )
@@ -193,8 +195,8 @@ fun WelcomeScreen(
                 selected = IrayBottomTab.Home,
                 actions = IrayBottomBarActions(
                     onHome = {},
-                    onDemarches = actions.onDemarches,
-                    onSignalements = actions.onSignalements,
+                    onDemarches = actions.onMesDemarches,
+                    onSignalements = actions.onMesSignalements,
                     onProfile = actions.onProfile,
                 ),
             )
