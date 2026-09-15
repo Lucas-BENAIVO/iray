@@ -114,12 +114,10 @@
     <string name="demarches_filter_identite">Identité</string>
     <string name="demarches_filter_autres">Autres</string>
     <string name="demarches_chevron_cd">Ouvrir la démarche</string>
-    <string name="demarches_1_label">Acte de naissance</string>
-    <string name="demarches_2_label">Certificat de résidence</string>
-    <string name="demarches_3_label">Copie d’acte de naissance</string>
-    <string name="demarches_4_label">Carte nationale d’identité (CIN)</string>
-    <string name="demarches_5_label">Certificat de résidence</string>
-    <string name="demarches_6_label">Autres démarches</string>
+    <string name="demarches_1_label">Certificat de résidence</string>
+    <string name="demarches_2_label">Acte de naissance</string>
+    <string name="demarches_3_label">Carte nationale d’identité (CIN)</string>
+    <string name="demarches_4_label">Autres démarches</string>
 
     <!-- Détail démarche -->
     <string name="demarche_detail_back_cd">Retour</string>

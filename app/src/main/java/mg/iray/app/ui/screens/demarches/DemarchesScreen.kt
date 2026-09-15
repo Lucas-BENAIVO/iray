@@ -192,38 +192,26 @@ fun DemarchesScreen(
 private fun demoDemarches(): List<DemarcheItem> {
     return listOf(
         DemarcheItem(
-            id = "acte-naissance",
-            label = stringResource(R.string.demarches_1_label),
-            category = DemarcheCategory.DOCUMENTS,
-            icon = Icons.Filled.Description,
-        ),
-        DemarcheItem(
             id = "certificat-residence",
-            label = stringResource(R.string.demarches_2_label),
+            label = stringResource(R.string.demarches_1_label),
             category = DemarcheCategory.DOCUMENTS,
             icon = Icons.Filled.Home,
         ),
         DemarcheItem(
-            id = "copie-acte-naissance",
-            label = stringResource(R.string.demarches_3_label),
+            id = "acte-naissance",
+            label = stringResource(R.string.demarches_2_label),
             category = DemarcheCategory.DOCUMENTS,
             icon = Icons.Filled.Description,
         ),
         DemarcheItem(
             id = "cin",
-            label = stringResource(R.string.demarches_4_label),
+            label = stringResource(R.string.demarches_3_label),
             category = DemarcheCategory.IDENTITE,
             icon = Icons.Filled.CreditCard,
         ),
         DemarcheItem(
-            id = "certificat-residence-2",
-            label = stringResource(R.string.demarches_5_label),
-            category = DemarcheCategory.DOCUMENTS,
-            icon = Icons.Filled.Home,
-        ),
-        DemarcheItem(
             id = "autres",
-            label = stringResource(R.string.demarches_6_label),
+            label = stringResource(R.string.demarches_4_label),
             category = DemarcheCategory.AUTRES,
             icon = Icons.Filled.MoreHoriz,
         ),

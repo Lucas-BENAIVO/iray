@@ -23,18 +23,6 @@ object DemarcheDetailsCatalog {
 
     private val byId: Map<String, DemarcheDetails> = listOf(
         DemarcheDetails(
-            id = "acte-naissance",
-            title = "Acte de naissance",
-            service = "État civil",
-            documents = listOf(
-                "Pièce d’identité (CIN ou passeport)",
-                "Livret de famille (si disponible)",
-                "Formulaire de demande (en ligne)",
-            ),
-            delay = "2 à 5 jours ouvrés",
-            fees = "Selon la commune",
-        ),
-        DemarcheDetails(
             id = "certificat-residence",
             title = "Certificat de résidence",
             service = "Administration locale",
@@ -47,8 +35,8 @@ object DemarcheDetailsCatalog {
             fees = "Gratuit ou selon la commune",
         ),
         DemarcheDetails(
-            id = "copie-acte-naissance",
-            title = "Copie d’acte de naissance",
+            id = "acte-naissance",
+            title = "Acte de naissance",
             service = "État civil",
             documents = listOf(
                 "Pièce d’identité (CIN ou passeport)",
@@ -70,18 +58,6 @@ object DemarcheDetailsCatalog {
             delay = "7 à 15 jours ouvrés",
             fees = "Selon la commune",
             asksBirthPlace = true,
-        ),
-        DemarcheDetails(
-            id = "certificat-residence-2",
-            title = "Certificat de résidence",
-            service = "Administration locale",
-            documents = listOf(
-                "Pièce d’identité (CIN ou passeport)",
-                "Justificatif de domicile",
-                "Formulaire de demande (en ligne)",
-            ),
-            delay = "2 à 7 jours ouvrés",
-            fees = "Gratuit ou selon la commune",
         ),
         DemarcheDetails(
             id = "autres",
