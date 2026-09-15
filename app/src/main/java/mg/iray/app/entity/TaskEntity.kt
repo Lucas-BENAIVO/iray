@@ -6,6 +6,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "tasks")
 data class TaskEntity(
     @PrimaryKey val id: String,          // UUID généré côté client
+    val userId: String = "",             // uid Firebase propriétaire de la tâche
     val title: String,
     val isDone: Boolean = false,
     val updatedAt: Long = System.currentTimeMillis(),
