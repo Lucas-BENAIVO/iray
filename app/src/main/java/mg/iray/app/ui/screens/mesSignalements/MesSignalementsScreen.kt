@@ -86,13 +86,15 @@ data class MesSignalementItem(
 
 @Composable
 fun MesSignalementsScreen(
+    items: List<MesSignalementItem> = emptyList(),
     modifier: Modifier = Modifier,
     actions: MesSignalementsActions = MesSignalementsActions(),
 ) {
     var query by rememberSaveable { mutableStateOf("") }
     var filter by rememberSaveable { mutableStateOf(MesSignalementFilter.ALL) }
 
-    val items = demoMesSignalements().filter { item ->
+    val source = items
+    val filtered = source.filter { item ->
         val matchesFilter = when (filter) {
             MesSignalementFilter.ALL -> true
             MesSignalementFilter.ONGOING -> item.status != MesSignalementStatus.RESOLVED
@@ -158,7 +160,7 @@ fun MesSignalementsScreen(
 
         Spacer(modifier = Modifier.height(12.dp))
 
-        if (items.isEmpty()) {
+        if (filtered.isEmpty()) {
             Box(
                 modifier = Modifier
                     .weight(1f)
@@ -186,7 +188,7 @@ fun MesSignalementsScreen(
                     bottom = 16.dp,
                 ),
             ) {
-                items(items, key = { it.id }) { item ->
+                items(filtered, key = { it.id }) { item ->
                     val (statusLabel, statusTint) = when (item.status) {
                         MesSignalementStatus.RECEIVED ->
                             stringResource(R.string.signalement_success_received_label) to
@@ -282,6 +284,6 @@ private fun demoMesSignalements(): List<MesSignalementItem> {
 @Composable
 private fun MesSignalementsScreenPreview() {
     IrayTheme {
-        MesSignalementsScreen()
+        MesSignalementsScreen(items = demoMesSignalements())
     }
 }

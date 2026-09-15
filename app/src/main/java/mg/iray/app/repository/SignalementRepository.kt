@@ -19,6 +19,8 @@ class SignalementRepository(
         dao.upsert(
             signalement.copy(
                 userId = userId(),
+                referenceNumber = signalement.referenceNumber.ifBlank { generateSignalementReference() },
+                status = signalement.status.ifBlank { "RECEIVED" },
                 isSynced = false,
                 pendingOperation = "UPDATE",
                 updatedAt = System.currentTimeMillis()
@@ -69,6 +71,12 @@ class SignalementRepository(
     }
 }
 
+private fun generateSignalementReference(): String {
+    val year = java.util.Calendar.getInstance().get(java.util.Calendar.YEAR)
+    val seq = (0..999999).random()
+    return "SIG-$year-%06d".format(seq)
+}
+
 private fun SignalementEntity.toSyncData(): Map<String, Any> = mapOf(
     "id" to id,
     "category" to category,
@@ -78,6 +86,8 @@ private fun SignalementEntity.toSyncData(): Map<String, Any> = mapOf(
     "latitude" to (latitude ?: 0.0),
     "longitude" to (longitude ?: 0.0),
     "photoMediaIds" to photoMediaIds,
+    "referenceNumber" to referenceNumber,
+    "status" to status,
     "createdAt" to createdAt,
     "updatedAt" to updatedAt
 )
@@ -92,6 +102,8 @@ private fun signalementFromSyncData(id: String, data: Map<String, Any>): Signale
         latitude = (data["latitude"] as? Double),
         longitude = (data["longitude"] as? Double),
         photoMediaIds = (data["photoMediaIds"] as? List<*>)?.filterIsInstance<String>().orEmpty(),
+        referenceNumber = (data["referenceNumber"] as? String).orEmpty(),
+        status = (data["status"] as? String) ?: "RECEIVED",
         createdAt = (data["createdAt"] as? Number)?.toLong() ?: 0L,
         updatedAt = (data["updatedAt"] as? Number)?.toLong() ?: 0L
     )

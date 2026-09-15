@@ -52,13 +52,15 @@ data class ConfirmationActions(
 fun ConfirmationScreen(
     demarcheId: String,
     modifier: Modifier = Modifier,
+    dossierNumber: String? = null,
     actions: ConfirmationActions = ConfirmationActions(),
 ) {
     val details = DemarcheDetailsCatalog.get(demarcheId)
-    // N° stable par démarche (démo — le backend l’attribuera).
-    val dossierNumber = remember(demarcheId) {
+    // N° backend si fourni, sinon hash démo stable par démarche.
+    val fallbackDossierNumber = remember(demarcheId) {
         "MAD-2026-%06d".format((abs(demarcheId.hashCode()) % 900000) + 100000)
     }
+    val resolvedDossierNumber = dossierNumber?.takeIf { it.isNotBlank() } ?: fallbackDossierNumber
     val receivedAt = remember {
         SimpleDateFormat("d MMM yyyy - HH:mm", Locale.FRENCH).format(Date())
     }
@@ -103,7 +105,7 @@ fun ConfirmationScreen(
 
             Spacer(modifier = Modifier.height(24.dp))
 
-            ConfirmationDossierCard(dossierNumber = dossierNumber)
+            ConfirmationDossierCard(dossierNumber = resolvedDossierNumber)
 
             Spacer(modifier = Modifier.height(20.dp))
 

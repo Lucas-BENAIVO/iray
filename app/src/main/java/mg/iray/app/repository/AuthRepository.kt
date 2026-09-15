@@ -1,5 +1,6 @@
 package mg.iray.app.repository
 
+import android.util.Log
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import mg.iray.app.auth.AuthSource
@@ -35,11 +36,15 @@ class AuthRepository(
 ) {
 
     suspend fun ensureUserId(): String {
-        session.getUid()?.let { return it }
+        session.getUid()?.let { existing ->
+            Log.d(TAG, "uid existant (session): $existing")
+            return existing
+        }
         val uid = runCatching { auth.signInAnonymously() }
             .getOrElse { "local-${UUID.randomUUID()}" }
         session.saveUid(uid)
         userDao.upsert(UserEntity(uid = uid, isAnonymous = uid.startsWith("local-"), updatedAt = now()))
+        Log.d(TAG, "uid généré (premier lancement): $uid")
         return uid
     }
 
@@ -89,10 +94,17 @@ class AuthRepository(
     /** Après un premier lancement hors-ligne (uid "local-..."), remplace par le vrai uid Firebase dès que le réseau revient. */
     suspend fun ensureRealUid(): String {
         val uid = session.getUid() ?: return ensureUserId()
-        if (!uid.startsWith("local-")) return uid
-        val real = runCatching { auth.signInAnonymously() }.getOrElse { return uid }
+        if (!uid.startsWith("local-")) {
+            Log.d(TAG, "uid Firebase déjà réel: $uid")
+            return uid
+        }
+        val real = runCatching { auth.signInAnonymously() }.getOrElse {
+            Log.d(TAG, "uid local conservé (hors-ligne): $uid")
+            return uid
+        }
         if (real == uid) return real
         rewriteLocalUid(uid, real)
+        Log.d(TAG, "uid local upgradé: $uid → $real")
         return real
     }
 
@@ -109,4 +121,8 @@ class AuthRepository(
     }
 
     private fun now() = System.currentTimeMillis()
+
+    companion object {
+        private const val TAG = "IrayAuth"
+    }
 }

@@ -87,13 +87,15 @@ data class MesDemarcheItem(
 
 @Composable
 fun MesDemarchesScreen(
+    items: List<MesDemarcheItem> = emptyList(),
     modifier: Modifier = Modifier,
     actions: MesDemarchesActions = MesDemarchesActions(),
 ) {
     var query by rememberSaveable { mutableStateOf("") }
     var filter by rememberSaveable { mutableStateOf(MesDemarcheFilter.ALL) }
 
-    val items = demoMesDemarches().filter { item ->
+    val source = items
+    val filtered = source.filter { item ->
         val matchesFilter = when (filter) {
             MesDemarcheFilter.ALL -> true
             MesDemarcheFilter.ONGOING -> item.status != MesDemarcheStatus.DONE
@@ -158,7 +160,7 @@ fun MesDemarchesScreen(
 
         Spacer(modifier = Modifier.height(12.dp))
 
-        if (items.isEmpty()) {
+        if (filtered.isEmpty()) {
             Box(
                 modifier = Modifier
                     .weight(1f)
@@ -186,7 +188,7 @@ fun MesDemarchesScreen(
                     bottom = 16.dp,
                 ),
             ) {
-                items(items, key = { it.id }) { item ->
+                items(filtered, key = { it.id }) { item ->
                     val (statusLabel, statusTint) = when (item.status) {
                         MesDemarcheStatus.RECEIVED ->
                             stringResource(R.string.confirmation_received_label) to
@@ -282,6 +284,6 @@ private fun demoMesDemarches(): List<MesDemarcheItem> {
 @Composable
 private fun MesDemarchesScreenPreview() {
     IrayTheme {
-        MesDemarchesScreen()
+        MesDemarchesScreen(items = demoMesDemarches())
     }
 }

@@ -3,7 +3,10 @@ package mg.iray.app.ui.navigation
 import android.net.Uri
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
@@ -11,24 +14,27 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import mg.iray.app.ui.controller.ProfileController
+import mg.iray.app.ui.controller.RequestController
+import mg.iray.app.ui.mapper.toMesDemarcheItem
+import mg.iray.app.ui.mapper.toMesSignalementItem
+import mg.iray.app.ui.theme.SurfacePage
+import androidx.compose.foundation.background
+import mg.iray.app.ui.screens.confirmation.ConfirmationActions
+import mg.iray.app.ui.screens.confirmation.ConfirmationScreen
 import mg.iray.app.ui.screens.demarcheDetail.DemarcheDetailActions
 import mg.iray.app.ui.screens.demarcheDetail.DemarcheDetailScreen
 import mg.iray.app.ui.screens.demarcheDetail.DemarcheDetailsCatalog
-import mg.iray.app.ui.screens.onboarding.OnboardingActions
-import mg.iray.app.ui.screens.onboarding.OnboardingScreen
-import mg.iray.app.ui.screens.profile.ProfileActions
-import mg.iray.app.ui.screens.profile.ProfileScreen
-import mg.iray.app.ui.screens.recap.RecapActions
-import mg.iray.app.ui.screens.recap.RecapScreen
 import mg.iray.app.ui.screens.demarches.DemarchesActions
 import mg.iray.app.ui.screens.demarches.DemarchesScreen
-import mg.iray.app.ui.screens.confirmation.ConfirmationActions
-import mg.iray.app.ui.screens.confirmation.ConfirmationScreen
 import mg.iray.app.ui.screens.documents.DocumentsActions
 import mg.iray.app.ui.screens.documents.DocumentsScreen
 import mg.iray.app.ui.screens.form.FormActions
@@ -41,6 +47,12 @@ import mg.iray.app.ui.screens.monProfil.MonProfilActions
 import mg.iray.app.ui.screens.monProfil.MonProfilScreen
 import mg.iray.app.ui.screens.notifications.NotificationsActions
 import mg.iray.app.ui.screens.notifications.NotificationsScreen
+import mg.iray.app.ui.screens.onboarding.OnboardingActions
+import mg.iray.app.ui.screens.onboarding.OnboardingScreen
+import mg.iray.app.ui.screens.profile.ProfileActions
+import mg.iray.app.ui.screens.profile.ProfileScreen
+import mg.iray.app.ui.screens.recap.RecapActions
+import mg.iray.app.ui.screens.recap.RecapScreen
 import mg.iray.app.ui.screens.signalement.SignalementCategoryActions
 import mg.iray.app.ui.screens.signalement.SignalementCategoryScreen
 import mg.iray.app.ui.screens.signalement.SignalementConfirmActions
@@ -61,7 +73,6 @@ import mg.iray.app.ui.screens.welcome.WelcomeActions
 import mg.iray.app.ui.screens.welcome.WelcomeScreen
 import mg.iray.app.ui.screens.zone.ZoneActions
 import mg.iray.app.ui.screens.zone.ZoneScreen
-import androidx.navigation.NavHostController
 
 /**
  * Graphe de navigation — best practice : un seul [NavHost], routes
@@ -102,9 +113,18 @@ private fun NavHostController.openProfileTab(hasProfile: Boolean) {
 @Composable
 fun IrayNavHost(
     modifier: Modifier = Modifier,
-    startDestination: String = IrayRoute.ONBOARDING,
 ) {
     val navController = rememberNavController()
+
+    val profileController: ProfileController = viewModel(factory = ProfileController.Factory)
+    val requestController: RequestController = viewModel(factory = RequestController.Factory)
+    val profile by profileController.profile.collectAsStateWithLifecycle()
+    val hasProfileRemote by profileController.hasProfile.collectAsStateWithLifecycle()
+    val profileReady by profileController.ready.collectAsStateWithLifecycle()
+    val requests by requestController.requests.collectAsStateWithLifecycle()
+    val signalements by requestController.signalements.collectAsStateWithLifecycle()
+    val lastRequestRef by requestController.lastRequestRef.collectAsStateWithLifecycle()
+    val lastSignalementRef by requestController.lastSignalementRef.collectAsStateWithLifecycle()
 
     // Données du parcours signalement (survivent à la rotation).
     var sigCategoryId by rememberSaveable { mutableStateOf("") }
@@ -121,6 +141,35 @@ fun IrayNavHost(
     var hasProfile by rememberSaveable { mutableStateOf(false) }
     // Fichiers joints par "demarcheId/index" — partagés documents ↔ upload.
     val attachedByKey = remember { mutableStateMapOf<String, String>() }
+
+    val openProfile = hasProfileRemote || hasProfile
+
+    // Hydrate l’UI depuis Room (lié à l’uid) dès que le profil est disponible.
+    LaunchedEffect(profile) {
+        val p = profile ?: return@LaunchedEffect
+        if (p.firstName.isNotBlank()) firstName = p.firstName
+        if (p.lastName.isNotBlank()) lastName = p.lastName
+        if (p.phone.isNotBlank()) phone = p.phone
+        if (p.birthdate.isNotBlank()) birthdate = p.birthdate
+        if (p.commune.isNotBlank()) commune = p.commune
+        if (p.fokontany.isNotBlank()) fokontany = p.fokontany
+        if (p.firstName.isNotBlank() && p.lastName.isNotBlank()) {
+            hasProfile = true
+        }
+    }
+
+    // Attendre la 1ʳᵉ lecture profil : évite de rejouer l’onboarding si déjà citoyen.
+    if (!profileReady) {
+        Box(
+            modifier = modifier
+                .fillMaxSize()
+                .background(SurfacePage),
+        )
+        return
+    }
+
+    val startDestination =
+        if (openProfile) IrayRoute.WELCOME else IrayRoute.ONBOARDING
 
     NavHost(
         navController = navController,
@@ -145,10 +194,10 @@ fun IrayNavHost(
         }
         composable(IrayRoute.PROFILE) {
             ProfileScreen(
-                initialFirstName = firstName,
-                initialLastName = lastName,
-                initialPhone = phone,
-                initialBirthdate = birthdate,
+                initialFirstName = profile?.firstName?.takeIf { it.isNotBlank() } ?: firstName,
+                initialLastName = profile?.lastName?.takeIf { it.isNotBlank() } ?: lastName,
+                initialPhone = profile?.phone?.takeIf { it.isNotBlank() } ?: phone,
+                initialBirthdate = profile?.birthdate?.takeIf { it.isNotBlank() } ?: birthdate,
                 actions = ProfileActions(
                     onBack = { navController.popBackStack() },
                     onAvatarClick = { /* TODO: sélecteur photo */ },
@@ -157,6 +206,12 @@ fun IrayNavHost(
                         lastName = form.lastName
                         phone = form.phone
                         birthdate = form.birthdate
+                        profileController.saveIdentity(
+                            firstName = form.firstName,
+                            lastName = form.lastName,
+                            phone = form.phone,
+                            birthdate = form.birthdate,
+                        )
                         if (hasProfile) {
                             navController.navigate(IrayRoute.MON_PROFIL) {
                                 popUpTo(IrayRoute.MON_PROFIL) { inclusive = true }
@@ -175,6 +230,10 @@ fun IrayNavHost(
                     onContinue = { selection ->
                         commune = selection.commune
                         fokontany = selection.fokontany
+                        profileController.saveZone(
+                            commune = selection.commune,
+                            fokontany = selection.fokontany,
+                        )
                         if (hasProfile) {
                             // Édition zone depuis Mon profil — retour direct.
                             navController.navigate(IrayRoute.MON_PROFIL) {
@@ -215,18 +274,18 @@ fun IrayNavHost(
                         navController.navigate(IrayRoute.MES_SIGNALEMENTS)
                     },
                     onNotifications = { navController.navigate(IrayRoute.NOTIFICATIONS) },
-                    onProfile = { navController.openProfileTab(hasProfile) },
+                    onProfile = { navController.openProfileTab(openProfile) },
                 ),
             )
         }
         composable(IrayRoute.MON_PROFIL) {
             MonProfilScreen(
-                firstName = firstName,
-                lastName = lastName,
-                phone = phone,
-                birthdate = birthdate,
-                commune = commune,
-                fokontany = fokontany,
+                firstName = profile?.firstName?.takeIf { it.isNotBlank() } ?: firstName,
+                lastName = profile?.lastName?.takeIf { it.isNotBlank() } ?: lastName,
+                phone = profile?.phone?.takeIf { it.isNotBlank() } ?: phone,
+                birthdate = profile?.birthdate?.takeIf { it.isNotBlank() } ?: birthdate,
+                commune = profile?.commune?.takeIf { it.isNotBlank() } ?: commune,
+                fokontany = profile?.fokontany?.takeIf { it.isNotBlank() } ?: fokontany,
                 actions = MonProfilActions(
                     onBack = { navController.popBackStack() },
                     onHome = {
@@ -252,6 +311,7 @@ fun IrayNavHost(
         }
         composable(IrayRoute.MES_DEMARCHES) {
             MesDemarchesScreen(
+                items = requests.map { it.toMesDemarcheItem() },
                 actions = MesDemarchesActions(
                     onBack = { navController.popBackStack() },
                     onHome = {
@@ -265,7 +325,7 @@ fun IrayNavHost(
                             launchSingleTop = true
                         }
                     },
-                    onProfile = { navController.openProfileTab(hasProfile) },
+                    onProfile = { navController.openProfileTab(openProfile) },
                     onNewRequest = { navController.navigate(IrayRoute.DEMARCHES) },
                     onRequestClick = { /* TODO: détail suivi */ },
                 ),
@@ -273,6 +333,7 @@ fun IrayNavHost(
         }
         composable(IrayRoute.MES_SIGNALEMENTS) {
             MesSignalementsScreen(
+                items = signalements.map { it.toMesSignalementItem() },
                 actions = MesSignalementsActions(
                     onBack = { navController.popBackStack() },
                     onHome = {
@@ -286,7 +347,7 @@ fun IrayNavHost(
                             launchSingleTop = true
                         }
                     },
-                    onProfile = { navController.openProfileTab(hasProfile) },
+                    onProfile = { navController.openProfileTab(openProfile) },
                     onNewReport = { navController.navigate(IrayRoute.SIGNALEMENT) },
                     onReportClick = { /* TODO: détail suivi */ },
                 ),
@@ -324,8 +385,10 @@ fun IrayNavHost(
         ) { backStackEntry ->
             val locCategoryId =
                 backStackEntry.arguments?.getString("categoryId").orEmpty()
+            val zoneFokontany = profile?.fokontany?.takeIf { it.isNotBlank() } ?: fokontany
+            val zoneCommune = profile?.commune?.takeIf { it.isNotBlank() } ?: commune
             SignalementLocationScreen(
-                initialAddress = "Fokontany $fokontany, $commune",
+                initialAddress = "Fokontany $zoneFokontany, $zoneCommune",
                 actions = SignalementLocationActions(
                     onBack = { navController.popBackStack() },
                     onUsePosition = { /* TODO: GPS */ },
@@ -366,7 +429,15 @@ fun IrayNavHost(
                 actions = SignalementConfirmActions(
                     onBack = { navController.popBackStack() },
                     onSend = {
-                        navController.navigate(IrayRoute.SIGNALEMENT_SUCCESS)
+                        requestController.submitSignalement(
+                            category = sigCategoryId,
+                            subcategory = sigSubcategory,
+                            description = sigDescription,
+                            zoneLabel = sigAddress,
+                            photoUris = sigPhotos,
+                        ) {
+                            navController.navigate(IrayRoute.SIGNALEMENT_SUCCESS)
+                        }
                     },
                 ),
             )
@@ -375,6 +446,7 @@ fun IrayNavHost(
             SignalementSuccessScreen(
                 categoryId = sigCategoryId,
                 subcategory = sigSubcategory,
+                referenceNumber = lastSignalementRef,
                 actions = SignalementSuccessActions(
                     onBack = { navController.popBackStack() },
                     onViewReports = {
@@ -454,7 +526,16 @@ fun IrayNavHost(
                 actions = RecapActions(
                     onBack = { navController.popBackStack() },
                     onSubmit = { demarcheId ->
-                        navController.navigate("confirmation/$demarcheId")
+                        val documentNames = (0 until docCount).mapNotNull { index ->
+                            attachedByKey["$prefix$index"]
+                        }
+                        requestController.submitRequest(
+                            procedureId = demarcheId,
+                            documentNames = documentNames,
+                            territoryId = "$commune|$fokontany",
+                        ) {
+                            navController.navigate("confirmation/$demarcheId")
+                        }
                     },
                 ),
             )
@@ -465,6 +546,7 @@ fun IrayNavHost(
         ) { backStackEntry ->
             ConfirmationScreen(
                 demarcheId = backStackEntry.arguments?.getString("demarcheId").orEmpty(),
+                dossierNumber = lastRequestRef,
                 actions = ConfirmationActions(
                     onBack = { navController.popBackStack() },
                     onViewRequests = {
@@ -483,16 +565,25 @@ fun IrayNavHost(
             val formDemarcheId =
                 backStackEntry.arguments?.getString("demarcheId").orEmpty()
             FormScreen(
-                initialLastName = lastName,
-                initialFirstName = firstName,
-                initialBirthdate = birthdate,
-                initialAddress = fokontany,
+                initialLastName = profile?.lastName?.takeIf { it.isNotBlank() } ?: lastName,
+                initialFirstName = profile?.firstName?.takeIf { it.isNotBlank() } ?: firstName,
+                initialBirthdate = profile?.birthdate?.takeIf { it.isNotBlank() } ?: birthdate,
+                initialAddress = profile?.fokontany?.takeIf { it.isNotBlank() } ?: fokontany,
                 asksBirthPlace = DemarcheDetailsCatalog
                     .get(formDemarcheId)
                     .asksBirthPlace,
                 actions = FormActions(
                     onBack = { navController.popBackStack() },
-                    onSubmit = {
+                    onSubmit = { formData ->
+                        requestController.setDraftFormData(
+                            mapOf(
+                                "lastName" to formData.lastName,
+                                "firstName" to formData.firstName,
+                                "birthdate" to formData.birthdate,
+                                "address" to formData.address,
+                                "birthPlace" to formData.birthPlace,
+                            ),
+                        )
                         navController.navigate("documents/$formDemarcheId")
                     },
                 ),
@@ -518,7 +609,7 @@ fun IrayNavHost(
                 documentName = documentName,
                 actions = UploadActions(
                     onBack = { navController.popBackStack() },
-                    onFileConfirmed = { fileName ->
+                    onFileConfirmed = { fileName, _ ->
                         attachedByKey["$upDemarcheId/$docIndex"] = fileName
                         navController.popBackStack()
                     },

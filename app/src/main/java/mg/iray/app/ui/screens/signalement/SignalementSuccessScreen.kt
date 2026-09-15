@@ -55,14 +55,16 @@ fun SignalementSuccessScreen(
     categoryId: String,
     subcategory: String,
     modifier: Modifier = Modifier,
+    referenceNumber: String? = null,
     actions: SignalementSuccessActions = SignalementSuccessActions(),
 ) {
-    // N° stable (démo — le backend l’attribuera).
-    val sigNumber = remember(categoryId, subcategory) {
+    // N° backend si fourni, sinon hash démo stable.
+    val fallbackSigNumber = remember(categoryId, subcategory) {
         "SIG-2026-%06d".format(
             (abs("$categoryId/$subcategory".hashCode()) % 900000) + 100000,
         )
     }
+    val sigNumber = referenceNumber?.takeIf { it.isNotBlank() } ?: fallbackSigNumber
     val receivedAt = remember {
         SimpleDateFormat("d MMM yyyy - HH:mm", Locale.FRENCH).format(Date())
     }

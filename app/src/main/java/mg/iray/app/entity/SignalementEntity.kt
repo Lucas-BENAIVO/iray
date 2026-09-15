@@ -14,6 +14,10 @@ data class SignalementEntity(
     val latitude: Double? = null,
     val longitude: Double? = null,
     val photoMediaIds: List<String> = emptyList(),
+    /** Référence affichée (ex. SIG-2026-000123). */
+    val referenceNumber: String = "",
+    /** RECEIVED | ONGOING | RESOLVED */
+    val status: String = "RECEIVED",
     val createdAt: Long = System.currentTimeMillis(),
     val updatedAt: Long = System.currentTimeMillis(),
     val isDeleted: Boolean = false,

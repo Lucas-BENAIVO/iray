@@ -42,7 +42,7 @@ import mg.iray.app.ui.theme.FlagGreen
  */
 data class UploadActions(
     val onBack: () -> Unit = {},
-    val onFileConfirmed: (fileName: String) -> Unit = {},
+    val onFileConfirmed: (fileName: String, uri: String) -> Unit = { _, _ -> },
 )
 
 @Composable
@@ -53,6 +53,7 @@ fun UploadScreen(
 ) {
     val context = LocalContext.current
     var fileName by rememberSaveable { mutableStateOf<String?>(null) }
+    var fileUri by rememberSaveable { mutableStateOf<String?>(null) }
     var fileSizeLabel by rememberSaveable { mutableStateOf("") }
 
     val picker = rememberLauncherForActivityResult(
@@ -64,6 +65,7 @@ fun UploadScreen(
                 uri = uri,
             )
             fileName = name
+            fileUri = uri.toString()
             fileSizeLabel = size
         }
     }
@@ -103,6 +105,7 @@ fun UploadScreen(
                 TextButton(
                     onClick = {
                         fileName = null
+                        fileUri = null
                         fileSizeLabel = ""
                     },
                 ) {
@@ -117,8 +120,14 @@ fun UploadScreen(
 
             IrayPrimaryButton(
                 label = stringResource(R.string.upload_cta),
-                onClick = { fileName?.let(actions.onFileConfirmed) },
-                enabled = fileName != null,
+                onClick = {
+                    val name = fileName
+                    val uri = fileUri
+                    if (name != null && uri != null) {
+                        actions.onFileConfirmed(name, uri)
+                    }
+                },
+                enabled = fileName != null && fileUri != null,
                 modifier = Modifier.fillMaxWidth(),
             )
         }

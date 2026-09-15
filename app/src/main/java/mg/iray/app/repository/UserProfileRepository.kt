@@ -20,15 +20,22 @@ class UserProfileRepository(
         lastName: String = "",
         phone: String = "",
         email: String = "",
+        birthdate: String = "",
+        commune: String = "",
+        fokontany: String = "",
         avatarLocalUri: String? = null
     ) {
         val uid = userId()
-        val profile = (dao.get(uid) ?: UserProfileEntity(uid = uid)).copy(
+        val existing = dao.get(uid)
+        val profile = (existing ?: UserProfileEntity(uid = uid)).copy(
             firstName = firstName,
             lastName = lastName,
             phone = phone,
             email = email,
-            avatarLocalUri = avatarLocalUri ?: dao.get(uid)?.avatarLocalUri,
+            birthdate = birthdate,
+            commune = commune.ifBlank { existing?.commune.orEmpty() },
+            fokontany = fokontany.ifBlank { existing?.fokontany.orEmpty() },
+            avatarLocalUri = avatarLocalUri ?: existing?.avatarLocalUri,
             isSynced = false,
             pendingOperation = "UPDATE",
             updatedAt = System.currentTimeMillis()
@@ -65,6 +72,9 @@ private fun UserProfileEntity.toSyncData(): Map<String, Any> = mapOf(
     "lastName" to lastName,
     "phone" to phone,
     "email" to email,
+    "birthdate" to birthdate,
+    "commune" to commune,
+    "fokontany" to fokontany,
     "avatarRemoteUrl" to (avatarRemoteUrl ?: ""),
     "updatedAt" to updatedAt
 )
@@ -76,6 +86,9 @@ private fun profileFromSyncData(id: String, data: Map<String, Any>): UserProfile
         lastName = (data["lastName"] as? String).orEmpty(),
         phone = (data["phone"] as? String).orEmpty(),
         email = (data["email"] as? String).orEmpty(),
+        birthdate = (data["birthdate"] as? String).orEmpty(),
+        commune = (data["commune"] as? String).orEmpty(),
+        fokontany = (data["fokontany"] as? String).orEmpty(),
         avatarRemoteUrl = (data["avatarRemoteUrl"] as? String)?.takeIf { it.isNotBlank() },
         updatedAt = (data["updatedAt"] as? Number)?.toLong() ?: 0L
     )
