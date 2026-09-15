@@ -16,10 +16,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import mg.iray.app.R
 
 /**
- * Catalogue signalement — source unique : catégories + sous-catégories.
- *
- * Best practice dynamique : UN écran sous-catégories alimenté par [get].
- * Sous-catégories de démo — à remplacer par le référentiel officiel.
+ * Catalogue tatitra — sokajy + zana-tsokajy (malagasy).
  */
 data class SignalementCategoryInfo(
     val id: String,
@@ -44,11 +41,11 @@ object SignalementCatalog {
             icon = Icons.Filled.Bolt,
             priority = SignalementPriority.HIGH,
             subcategories = listOf(
-                "Coupure d’électricité",
-                "Câble dangereux",
-                "Problème de compteur",
-                "Poteau endommagé",
-                "Autre",
+                "Tapaka ny herinaratra",
+                "Tady mampidi-doza",
+                "Olana amin’ny compteur",
+                "Andry simba",
+                "Hafa",
             ),
         ),
         SignalementCategoryInfo(
@@ -57,12 +54,12 @@ object SignalementCatalog {
             icon = Icons.Filled.WaterDrop,
             priority = SignalementPriority.MEDIUM,
             subcategories = listOf(
-                "Coupure d’eau",
-                "Fuite d’eau",
-                "Tuyau endommagé",
-                "Problème de pression",
-                "Qualité de l’eau",
-                "Autre",
+                "Tapaka ny rano",
+                "Mitarika ny rano",
+                "Fantsona simba",
+                "Olana amin’ny tsindry",
+                "Kalitaon’ny rano",
+                "Hafa",
             ),
         ),
         SignalementCategoryInfo(
@@ -70,11 +67,11 @@ object SignalementCatalog {
             labelRes = R.string.signalement_cat_routes,
             icon = Icons.Filled.Construction,
             subcategories = listOf(
-                "Nid-de-poule",
-                "Route bloquée",
-                "Pont endommagé",
-                "Route dégradée",
-                "Autre",
+                "Lavaka amin’ny lalana",
+                "Lalana sakana",
+                "Tetezana simba",
+                "Lalana simba",
+                "Hafa",
             ),
         ),
         SignalementCategoryInfo(
@@ -83,10 +80,10 @@ object SignalementCatalog {
             icon = Icons.Filled.Lightbulb,
             priority = SignalementPriority.MEDIUM,
             subcategories = listOf(
-                "Lampadaire en panne",
-                "Poteau endommagé",
-                "Zone non éclairée",
-                "Autre",
+                "Jiro tsy mandeha",
+                "Andry simba",
+                "Faritra tsy misy jiro",
+                "Hafa",
             ),
         ),
         SignalementCategoryInfo(
@@ -94,10 +91,10 @@ object SignalementCatalog {
             labelRes = R.string.signalement_cat_proprete,
             icon = Icons.Filled.Delete,
             subcategories = listOf(
-                "Dépotoir sauvage",
-                "Bac non collecté",
-                "Déchets encombrants",
-                "Autre",
+                "Fako tsy ara-dalàna",
+                "Daba tsy nalaina",
+                "Fako lehibe",
+                "Hafa",
             ),
         ),
         SignalementCategoryInfo(
@@ -106,10 +103,10 @@ object SignalementCatalog {
             icon = Icons.Filled.Waves,
             priority = SignalementPriority.HIGH,
             subcategories = listOf(
-                "Zone inondée",
-                "Canal bouché",
-                "Évacuation insuffisante",
-                "Autre",
+                "Faritra tondraka",
+                "Lakandrano sakana",
+                "Tsy ampy ny fivoahan-drano",
+                "Hafa",
             ),
         ),
         SignalementCategoryInfo(
@@ -118,10 +115,10 @@ object SignalementCatalog {
             icon = Icons.Filled.MedicalServices,
             priority = SignalementPriority.HIGH,
             subcategories = listOf(
-                "Centre fermé",
-                "Manque de médicaments",
-                "Insalubrité",
-                "Autre",
+                "Tobim-pahasalamana mihidy",
+                "Tsy ampy fanafody",
+                "Tsy madio",
+                "Hafa",
             ),
         ),
         SignalementCategoryInfo(
@@ -130,10 +127,10 @@ object SignalementCatalog {
             icon = Icons.Filled.Business,
             priority = SignalementPriority.MEDIUM,
             subcategories = listOf(
-                "Bâtiment dégradé",
-                "Marché insalubre",
-                "École endommagée",
-                "Autre",
+                "Trano simba",
+                "Tsena tsy madio",
+                "Sekoly simba",
+                "Hafa",
             ),
         ),
         SignalementCategoryInfo(
@@ -141,17 +138,17 @@ object SignalementCatalog {
             labelRes = R.string.signalement_cat_environnement,
             icon = Icons.Filled.Eco,
             subcategories = listOf(
-                "Abattage d’arbres",
-                "Pollution",
-                "Feu de brousse",
-                "Autre",
+                "Fianjeran’ny hazo",
+                "Loto",
+                "Afo an-tsaha",
+                "Hafa",
             ),
         ),
         SignalementCategoryInfo(
             id = "autre",
             labelRes = R.string.signalement_cat_autre,
             icon = Icons.Filled.MoreHoriz,
-            subcategories = listOf("Autre"),
+            subcategories = listOf("Hafa"),
         ),
     )
 

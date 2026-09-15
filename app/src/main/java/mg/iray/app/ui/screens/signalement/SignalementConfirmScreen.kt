@@ -116,9 +116,9 @@ private fun SignalementConfirmScreenPreview() {
     IrayTheme {
         SignalementConfirmScreen(
             categoryId = "electricite",
-            subcategory = "Coupure d’électricité",
+            subcategory = "Tapaka ny herinaratra",
             address = "Fokontany Andohalo, Antananarivo",
-            description = "Coupure depuis ce matin",
+            description = "Tapaka hatramin’ny maraina",
         )
     }
 }

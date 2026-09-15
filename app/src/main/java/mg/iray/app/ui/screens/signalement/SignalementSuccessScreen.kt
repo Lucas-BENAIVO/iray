@@ -179,7 +179,7 @@ private fun SignalementSuccessScreenPreview() {
     IrayTheme {
         SignalementSuccessScreen(
             categoryId = "electricite",
-            subcategory = "Coupure d’électricité",
+            subcategory = "Tapaka ny herinaratra",
         )
     }
 }

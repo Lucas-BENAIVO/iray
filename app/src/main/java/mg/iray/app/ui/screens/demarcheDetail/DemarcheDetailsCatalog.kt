@@ -1,10 +1,8 @@
 package mg.iray.app.ui.screens.demarcheDetail
 
 /**
- * Détail d’une démarche — best practice dynamique : UN seul écran,
- * alimenté par [DemarcheDetails] selon l’id cliqué.
- *
- * Données de démo — à remplacer par le repository / l’API officielle.
+ * Antsipirian’ny asa ara-pitantanana — écran dynamique unique.
+ * Données de démo en malagasy.
  */
 data class DemarcheDetails(
     val id: String,
@@ -13,7 +11,6 @@ data class DemarcheDetails(
     val documents: List<String>,
     val delay: String,
     val fees: String,
-    /** La CIN demande en plus le lieu de naissance dans le formulaire. */
     val asksBirthPlace: Boolean = false,
 )
 
@@ -24,60 +21,60 @@ object DemarcheDetailsCatalog {
     private val byId: Map<String, DemarcheDetails> = listOf(
         DemarcheDetails(
             id = "certificat-residence",
-            title = "Certificat de résidence",
-            service = "Administration locale",
+            title = "Taratasy fanamarinana ny fonenana",
+            service = "Fitantanana eo an-toerana",
             documents = listOf(
-                "Pièce d’identité (CIN ou passeport)",
-                "Justificatif de domicile",
-                "Formulaire de demande (en ligne)",
+                "Taratasy fanamarinan-toetra (CIN na pasipaoro)",
+                "Porofon’ny fonenana",
+                "Taratasim-pangatahana (an-tserasera)",
             ),
-            delay = "2 à 7 jours ouvrés",
-            fees = "Gratuit ou selon la commune",
+            delay = "2 ka hatramin’ny 7 andro fiasana",
+            fees = "Maimaim-poana na araka ny kaominina",
         ),
         DemarcheDetails(
             id = "acte-naissance",
-            title = "Acte de naissance",
-            service = "État civil",
+            title = "Soratra nahaterahana",
+            service = "Sora-piainanana",
             documents = listOf(
-                "Pièce d’identité (CIN ou passeport)",
-                "Livret de famille (si disponible)",
-                "Formulaire de demande (en ligne)",
+                "Taratasy fanamarinan-toetra (CIN na pasipaoro)",
+                "Boky fianakaviana (raha misy)",
+                "Taratasim-pangatahana (an-tserasera)",
             ),
-            delay = "2 à 5 jours ouvrés",
-            fees = "Selon la commune",
+            delay = "2 ka hatramin’ny 5 andro fiasana",
+            fees = "Araka ny kaominina",
         ),
         DemarcheDetails(
             id = "cin",
-            title = "Carte nationale d’identité (CIN)",
-            service = "Justice / État civil",
+            title = "Karam-pirenen’ny maha-olona (CIN)",
+            service = "Fitsarana / Sora-piainanana",
             documents = listOf(
-                "Photo d’identité",
-                "Acte de naissance",
-                "Formulaire de demande (en ligne)",
+                "Sary mombamomba",
+                "Soratra nahaterahana",
+                "Taratasim-pangatahana (an-tserasera)",
             ),
-            delay = "7 à 15 jours ouvrés",
-            fees = "Selon la commune",
+            delay = "7 ka hatramin’ny 15 andro fiasana",
+            fees = "Araka ny kaominina",
             asksBirthPlace = true,
         ),
         DemarcheDetails(
             id = "autres",
-            title = "Autres démarches",
-            service = "Guichet unique",
+            title = "Asa hafa",
+            service = "Varavarana tokana",
             documents = listOf(
-                "Pièce d’identité (CIN ou passeport)",
-                "Formulaire de demande (en ligne)",
+                "Taratasy fanamarinan-toetra (CIN na pasipaoro)",
+                "Taratasim-pangatahana (an-tserasera)",
             ),
-            delay = "Selon la démarche",
-            fees = "Selon la commune",
+            delay = "Araka ny asa",
+            fees = "Araka ny kaominina",
         ),
     ).associateBy { it.id }
 
     private fun fallback(id: String) = DemarcheDetails(
         id = id,
         title = id,
-        service = "Guichet unique",
-        documents = listOf("Pièce d’identité (CIN ou passeport)"),
-        delay = "Selon la démarche",
-        fees = "Selon la commune",
+        service = "Varavarana tokana",
+        documents = listOf("Taratasy fanamarinan-toetra (CIN na pasipaoro)"),
+        delay = "Araka ny asa",
+        fees = "Araka ny kaominina",
     )
 }

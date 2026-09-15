@@ -3,20 +3,20 @@
     <string name="app_name">Iray</string>
 
     <!-- Bottom navigation -->
-    <string name="nav_home">Accueil</string>
-    <string name="nav_demarches">Mes démarches</string>
-    <string name="nav_signalements">Mes signalements</string>
-    <string name="nav_profile">Profil</string>
+    <string name="nav_home">Fandraisana</string>
+    <string name="nav_demarches">Ny fangatahana</string>
+    <string name="nav_signalements">Ny tatitra</string>
+    <string name="nav_profile">Mombamomba</string>
 
     <!-- Welcome -->
     <string name="welcome_greeting">👋 Salama !</string>
     <string name="welcome_subtitle">Inona no tianao hatao ato amin’ny Iray anio ?</string>
 
     <string name="welcome_action_demarches">Hanao fangatahana ara-pitantanana</string>
-    <string name="welcome_action_demarches_hint">Certificats, actes et démarches administratives</string>
+    <string name="welcome_action_demarches_hint">Taratasy fanamarinana, soratra, ary asa ara-pitantanana</string>
     <string name="welcome_action_signalements">Hitatitra olana amin’ny manam-pahefana</string>
-    <string name="welcome_action_signalements_hint">Signaler un problème à votre commune</string>
-    <string name="welcome_actions_label">Que souhaitez-vous faire ?</string>
+    <string name="welcome_action_signalements_hint">Hitatitra olana any amin’ny kaomininao</string>
+    <string name="welcome_actions_label">Inona no tianao hatao ?</string>
 
     <string name="welcome_featured_title">🔥 Vaovao</string>
     <string name="welcome_featured_body">Misokatra ny fanadihadiana vaovao momba ny fahasalamana ara-tsaina. Asehoy ny hevitrao !</string>
@@ -25,260 +25,260 @@
     <string name="welcome_logo_placeholder">Logo</string>
     <string name="welcome_content_desc_logo">Logo-n’ny rindranasa</string>
     <string name="welcome_content_desc_chevron">Tohizo</string>
-    <string name="welcome_zone_cd">Votre zone</string>
-    <string name="welcome_notifications_cd">Notifications</string>
-    <string name="welcome_banner_title">Ensemble pour un Madagascar plus simple</string>
-    <string name="welcome_banner_body">Vos démarches, signalements et informations officielles, au même endroit.</string>
-    <string name="welcome_content_desc_banner">Vue de la ville d’Antananarivo au crépuscule</string>
+    <string name="welcome_zone_cd">Ny faritra misy anao</string>
+    <string name="welcome_notifications_cd">Fampahafantarana</string>
+    <string name="welcome_banner_title">Miara-miasa ho an’ny Madagasikara tsotra kokoa</string>
+    <string name="welcome_banner_body">Ny fangatahanao, ny tatitrao ary ny vaovao ofisialy — ao anaty toerana iray.</string>
+    <string name="welcome_content_desc_banner">Sary ny tanànan’Antananarivo amin’ny filentehan’ny masoandro</string>
 
     <!-- Hero d’accueil — onboarding immersif Iray -->
     <string name="welcome_hero_title">Iray</string>
-    <string name="welcome_onboarding_headline">Un Madagascar\nplus simple</string>
-    <string name="welcome_onboarding_headline_line1">Un Madagascar</string>
-    <string name="welcome_onboarding_headline_line2">plus simple</string>
-    <string name="welcome_onboarding_subtitle">Vos démarches, signalements et infos officielles — enfin au même endroit.</string>
-    <string name="welcome_hero_subtitle">Les services publics à portée de main</string>
-    <string name="welcome_hero_body">Simplifiez vos démarches, signalez les problèmes, restez informé.</string>
-    <string name="welcome_hero_cta">Commencer</string>
-    <string name="welcome_cta_start_cd">Commencer</string>
-    <string name="welcome_content_desc_hero">Marché animé à Antananarivo</string>
+    <string name="welcome_onboarding_headline">Madagasikara\ntsotra kokoa</string>
+    <string name="welcome_onboarding_headline_line1">Madagasikara</string>
+    <string name="welcome_onboarding_headline_line2">tsotra kokoa</string>
+    <string name="welcome_onboarding_subtitle">Ny fangatahanao, ny tatitrao ary ny vaovao ofisialy — ao anaty toerana iray farany.</string>
+    <string name="welcome_hero_subtitle">Ny serivisy panjakana eo an-tananao</string>
+    <string name="welcome_hero_body">Manamora ny fangatahana, mitatitra olana, mijanona ho vaovao.</string>
+    <string name="welcome_hero_cta">Atombohy</string>
+    <string name="welcome_cta_start_cd">Atombohy</string>
+    <string name="welcome_content_desc_hero">Tsena mihetsiketsika any Antananarivo</string>
 
     <!-- Profil — création du profil -->
-    <string name="profile_title">Créons votre profil</string>
-    <string name="profile_subtitle">Quelques informations pour personnaliser votre espace.</string>
-    <string name="profile_avatar_cd">Photo de profil — toucher pour ajouter</string>
-    <string name="profile_first_name_label">Prénom *</string>
+    <string name="profile_title">Andao hamorona ny mombamombao</string>
+    <string name="profile_subtitle">Vaovao vitsivitsy hanamboarana ny toeranao manokana.</string>
+    <string name="profile_avatar_cd">Sary mombamomba — tsindrio hanampiana</string>
+    <string name="profile_first_name_label">Anarana voalohany *</string>
     <string name="profile_first_name_hint">Jean</string>
-    <string name="profile_last_name_label">Nom *</string>
+    <string name="profile_last_name_label">Anarana *</string>
     <string name="profile_last_name_hint">Rakoto</string>
-    <string name="profile_phone_label">Téléphone *</string>
+    <string name="profile_phone_label">Finday *</string>
     <string name="profile_phone_hint">+261 34 12 34 567</string>
-    <string name="profile_birthdate_label">Date de naissance</string>
-    <string name="profile_birthdate_hint">JJ/MM/AAAA</string>
-    <string name="profile_continue">Continuer</string>
-    <string name="profile_back_cd">Retour</string>
+    <string name="profile_birthdate_label">Daty nahaterahana</string>
+    <string name="profile_birthdate_hint">TT/VV/TTTT</string>
+    <string name="profile_continue">Tohizo</string>
+    <string name="profile_back_cd">Miverina</string>
 
     <!-- Profil — fiche citoyen (après création) -->
-    <string name="mon_profil_title">Mon profil</string>
-    <string name="mon_profil_back_cd">Retour</string>
-    <string name="mon_profil_zone_label">Zone de résidence</string>
-    <string name="mon_profil_edit">Modifier mon profil</string>
-    <string name="mon_profil_edit_zone">Modifier ma zone</string>
-    <string name="mon_profil_citizen_badge">Compte citoyen</string>
-    <string name="mon_profil_empty_value">Non renseigné</string>
+    <string name="mon_profil_title">Ny mombamombao</string>
+    <string name="mon_profil_back_cd">Miverina</string>
+    <string name="mon_profil_zone_label">Faritra misy anao</string>
+    <string name="mon_profil_edit">Hanova ny mombamombao</string>
+    <string name="mon_profil_edit_zone">Hanova ny faritra</string>
+    <string name="mon_profil_citizen_badge">Kaonty olom-pirenena</string>
+    <string name="mon_profil_empty_value">Tsy voafaritra</string>
 
     <!-- Zone — lieu de résidence -->
-    <string name="zone_title">Votre zone</string>
-    <string name="zone_subtitle">Indiquez votre lieu de résidence pour accéder aux services adaptés.</string>
-    <string name="zone_title_cd">Icône de localisation</string>
-    <string name="zone_search_hint">Rechercher votre zone…</string>
-    <string name="zone_map_cd">Aperçu de la carte de votre zone</string>
-    <string name="zone_region_label">Région</string>
+    <string name="zone_title">Ny faritrao</string>
+    <string name="zone_subtitle">Lazao ny toerana misy anao mba hahazoanao serivisy mifanaraka.</string>
+    <string name="zone_title_cd">Mari-toerana</string>
+    <string name="zone_search_hint">Karohy ny faritrao…</string>
+    <string name="zone_map_cd">Sarin-tany ny faritrao</string>
+    <string name="zone_region_label">Faritra</string>
     <string name="zone_region_default">Analamanga</string>
-    <string name="zone_district_label">District</string>
+    <string name="zone_district_label">Distrika</string>
     <string name="zone_district_default">Antananarivo Avaradrano</string>
-    <string name="zone_commune_label">Commune</string>
+    <string name="zone_commune_label">Kaominina</string>
     <string name="zone_commune_default">Antananarivo</string>
     <string name="zone_fokontany_label">Fokontany</string>
     <string name="zone_fokontany_default">Andohalo</string>
-    <string name="zone_continue">Continuer</string>
+    <string name="zone_continue">Tohizo</string>
 
     <!-- Succès — profil créé -->
-    <string name="success_title">Profil créé !</string>
-    <string name="success_subtitle">Votre compte citoyen a été configuré avec succès.</string>
-    <string name="success_check_cd">Profil créé avec succès</string>
-    <string name="success_avatar_cd">Avatar du citoyen</string>
-    <string name="success_cta">C\'est parti !</string>
+    <string name="success_title">Vita ny mombamomba !</string>
+    <string name="success_subtitle">Voamboatra soa aman-tsara ny kaontinao olom-pirenena.</string>
+    <string name="success_check_cd">Vita soa aman-tsara ny mombamomba</string>
+    <string name="success_avatar_cd">Sary an’ny olom-pirenena</string>
+    <string name="success_cta">Andao !</string>
 
     <!-- Notifications -->
-    <string name="notifications_title">Notifications</string>
-    <string name="notifications_back_cd">Retour</string>
-    <string name="notifications_filter_cd">Filtrer les notifications</string>
-    <string name="notifications_filter_all">Toutes</string>
-    <string name="notifications_filter_unread">Non lues</string>
-    <string name="notifications_filter_demarches">Démarches</string>
-    <string name="notifications_filter_signalements">Signalements</string>
-    <string name="notifications_1_title">Votre démarche est en cours</string>
-    <string name="notifications_1_body">Certificat de résidence</string>
-    <string name="notifications_1_time">Il y a 2 heures</string>
-    <string name="notifications_2_title">Signalement pris en charge</string>
-    <string name="notifications_2_body">Électricité – SIG-2026-004821</string>
-    <string name="notifications_2_time">Il y a 4 heures</string>
-    <string name="notifications_3_title">Information officielle</string>
-    <string name="notifications_3_body">Interruption d’eau à Antananarivo</string>
-    <string name="notifications_3_time">Il y a 6 heures</string>
-    <string name="notifications_4_title">Votre demande est traitée</string>
-    <string name="notifications_4_body">Acte de naissance – MAD-2026-004210</string>
-    <string name="notifications_4_time">Hier</string>
-    <string name="notifications_5_title">Mise à jour de votre profil</string>
-    <string name="notifications_5_body">Vos informations ont été enregistrées</string>
-    <string name="notifications_5_time">Hier</string>
+    <string name="notifications_title">Fampahafantarana</string>
+    <string name="notifications_back_cd">Miverina</string>
+    <string name="notifications_filter_cd">Sivanina ny fampahafantarana</string>
+    <string name="notifications_filter_all">Rehetra</string>
+    <string name="notifications_filter_unread">Tsy mbola vakiana</string>
+    <string name="notifications_filter_demarches">Fangatahana</string>
+    <string name="notifications_filter_signalements">Tatitra</string>
+    <string name="notifications_1_title">Mandeha ny fangatahanao</string>
+    <string name="notifications_1_body">Taratasy fanamarinana ny fonenana</string>
+    <string name="notifications_1_time">2 ora lasa izay</string>
+    <string name="notifications_2_title">Voaray ny tatitra</string>
+    <string name="notifications_2_body">Herinaratra – SIG-2026-004821</string>
+    <string name="notifications_2_time">4 ora lasa izay</string>
+    <string name="notifications_3_title">Vaovao ofisialy</string>
+    <string name="notifications_3_body">Tapaka ny rano any Antananarivo</string>
+    <string name="notifications_3_time">6 ora lasa izay</string>
+    <string name="notifications_4_title">Vita ny fangatahanao</string>
+    <string name="notifications_4_body">Soratra nahaterahana – MAD-2026-004210</string>
+    <string name="notifications_4_time">Omaly</string>
+    <string name="notifications_5_title">Nohavaozina ny mombamombao</string>
+    <string name="notifications_5_body">Voarakitra ny vaovao momba anao</string>
+    <string name="notifications_5_time">Omaly</string>
 
     <!-- Démarches administratives -->
-    <string name="demarches_title">Démarches administratives</string>
-    <string name="demarches_back_cd">Retour</string>
-    <string name="demarches_search_hint">Rechercher une démarche…</string>
-    <string name="demarches_filter_all">Tout</string>
-    <string name="demarches_filter_documents">Documents</string>
-    <string name="demarches_filter_identite">Identité</string>
-    <string name="demarches_filter_autres">Autres</string>
-    <string name="demarches_chevron_cd">Ouvrir la démarche</string>
-    <string name="demarches_1_label">Certificat de résidence</string>
-    <string name="demarches_2_label">Acte de naissance</string>
-    <string name="demarches_3_label">Carte nationale d’identité (CIN)</string>
-    <string name="demarches_4_label">Autres démarches</string>
+    <string name="demarches_title">Asa ara-pitantanana</string>
+    <string name="demarches_back_cd">Miverina</string>
+    <string name="demarches_search_hint">Karohy asa ara-pitantanana…</string>
+    <string name="demarches_filter_all">Rehetra</string>
+    <string name="demarches_filter_documents">Taratasy</string>
+    <string name="demarches_filter_identite">Fanamarinan-toetra</string>
+    <string name="demarches_filter_autres">Hafa</string>
+    <string name="demarches_chevron_cd">Sokafy ny fangatahana</string>
+    <string name="demarches_1_label">Taratasy fanamarinana ny fonenana</string>
+    <string name="demarches_2_label">Soratra nahaterahana</string>
+    <string name="demarches_3_label">Karam-pirenen’ny maha-olona (CIN)</string>
+    <string name="demarches_4_label">Asa hafa</string>
 
     <!-- Détail démarche -->
-    <string name="demarche_detail_back_cd">Retour</string>
-    <string name="demarche_detail_service_label">Service concerné</string>
-    <string name="demarche_detail_documents_title">Documents nécessaires</string>
-    <string name="demarche_detail_info_title">Informations</string>
-    <string name="demarche_detail_delay_label">Délai estimé :</string>
-    <string name="demarche_detail_fees_label">Frais :</string>
-    <string name="demarche_detail_cta">Commencer la demande</string>
+    <string name="demarche_detail_back_cd">Miverina</string>
+    <string name="demarche_detail_service_label">Serivisy voakasika</string>
+    <string name="demarche_detail_documents_title">Taratasy ilaina</string>
+    <string name="demarche_detail_info_title">Vaovao</string>
+    <string name="demarche_detail_delay_label">Fotoana tombanana :</string>
+    <string name="demarche_detail_fees_label">Saram-pitaovana :</string>
+    <string name="demarche_detail_cta">Atombohy ny fangatahana</string>
 
-    <!-- Documents à joindre — étape 3 sur 5 -->
-    <string name="documents_back_cd">Retour</string>
-    <string name="documents_step">Étape 4 sur 5</string>
-    <string name="documents_title">Documents à joindre</string>
-    <string name="documents_attach">Joindre un fichier</string>
+    <!-- Documents à joindre -->
+    <string name="documents_back_cd">Miverina</string>
+    <string name="documents_step">Dingana faha-4 amin’ny 5</string>
+    <string name="documents_title">Taratasy hampidirina</string>
+    <string name="documents_attach">Ampidiro rakitra</string>
     <string name="documents_types">PDF, JPG, PNG (max 5 Mo)</string>
-    <string name="documents_next">Suivant</string>
-    <string name="documents_row_cd">Ajouter un document</string>
+    <string name="documents_next">Manaraka</string>
+    <string name="documents_row_cd">Hanampy taratasy</string>
 
     <!-- Upload de document -->
-    <string name="upload_back_cd">Retour</string>
-    <string name="upload_drop_title">Touchez pour choisir un fichier</string>
-    <string name="upload_remove_cd">Retirer le fichier</string>
-    <string name="upload_cta">Joindre</string>
+    <string name="upload_back_cd">Miverina</string>
+    <string name="upload_drop_title">Tsindrio hisafidy rakitra</string>
+    <string name="upload_remove_cd">Esory ny rakitra</string>
+    <string name="upload_cta">Ampidiro</string>
 
-    <!-- Formulaire — informations personnelles, étape 4 sur 5 -->
-    <string name="form_back_cd">Retour</string>
-    <string name="form_step">Étape 3 sur 5</string>
-    <string name="form_title">Informations personnelles</string>
-    <string name="form_last_name_label">Nom</string>
-    <string name="form_birthdate_label">Date de naissance *</string>
-    <string name="form_address_label">Adresse actuelle *</string>
-    <string name="form_address_hint">Ex : Lot II M 45, Andohalo</string>
-    <string name="form_birthplace_label">Lieu de naissance *</string>
-    <string name="form_submit">Suivant</string>
+    <!-- Formulaire -->
+    <string name="form_back_cd">Miverina</string>
+    <string name="form_step">Dingana faha-3 amin’ny 5</string>
+    <string name="form_title">Vaovao manokana</string>
+    <string name="form_last_name_label">Anarana</string>
+    <string name="form_birthdate_label">Daty nahaterahana *</string>
+    <string name="form_address_label">Adiresy ankehitriny *</string>
+    <string name="form_address_hint">Ohatra : Lot II M 45, Andohalo</string>
+    <string name="form_birthplace_label">Toerana nahaterahana *</string>
+    <string name="form_submit">Manaraka</string>
 
-    <!-- Récapitulatif — étape 5 sur 5 -->
-    <string name="recap_back_cd">Retour</string>
-    <string name="recap_title">Récapitulatif</string>
-    <string name="recap_details_title">Détails de la demande</string>
-    <string name="recap_demarche_label">Démarche</string>
-    <string name="recap_service_label">Service</string>
-    <string name="recap_fees_label">Frais</string>
-    <string name="recap_delay_label">Délai estimé</string>
-    <string name="recap_docs_title">Documents joints</string>
-    <string name="recap_cta">Soumettre la demande</string>
+    <!-- Récapitulatif -->
+    <string name="recap_back_cd">Miverina</string>
+    <string name="recap_title">Famintinana</string>
+    <string name="recap_details_title">Antsipirian’ny fangatahana</string>
+    <string name="recap_demarche_label">Asa</string>
+    <string name="recap_service_label">Serivisy</string>
+    <string name="recap_fees_label">Saram-pitaovana</string>
+    <string name="recap_delay_label">Fotoana tombanana</string>
+    <string name="recap_docs_title">Taratasy napetraka</string>
+    <string name="recap_cta">Alefaso ny fangatahana</string>
 
     <!-- Confirmation d’envoi -->
-    <string name="confirmation_back_cd">Retour</string>
-    <string name="confirmation_title">Demande envoyée !</string>
-    <string name="confirmation_subtitle_format">Votre demande de %1$s a bien été enregistrée.</string>
-    <string name="confirmation_dossier_label">N° de dossier</string>
-    <string name="confirmation_received_label">Reçue</string>
-    <string name="confirmation_step_verification">Vérification</string>
-    <string name="confirmation_step_processing">Traitement</string>
-    <string name="confirmation_step_validation">Validation</string>
-    <string name="confirmation_step_done">Terminée</string>
-    <string name="confirmation_cta">Voir mes demandes</string>
+    <string name="confirmation_back_cd">Miverina</string>
+    <string name="confirmation_title">Nalefa ny fangatahana !</string>
+    <string name="confirmation_subtitle_format">Voarakitra soa aman-tsara ny fangatahanao momba ny %1$s.</string>
+    <string name="confirmation_dossier_label">Laharana dosie</string>
+    <string name="confirmation_received_label">Voaray</string>
+    <string name="confirmation_step_verification">Fanamarinana</string>
+    <string name="confirmation_step_processing">Fitsaboana</string>
+    <string name="confirmation_step_validation">Fanekena</string>
+    <string name="confirmation_step_done">Vita</string>
+    <string name="confirmation_cta">Hijery ny fangatahana</string>
 
-    <!-- Signalement — choix de la catégorie -->
-    <string name="signalement_back_cd">Retour</string>
-    <string name="signalement_title">Signaler un problème</string>
-    <string name="signalement_subtitle">Que souhaitez-vous signaler ?</string>
-    <string name="signalement_search_hint">Vous pouvez aussi rechercher une catégorie</string>
-    <string name="signalement_chevron_cd">Choisir la catégorie</string>
-    <string name="signalement_cat_electricite">Électricité</string>
-    <string name="signalement_cat_eau">Eau</string>
-    <string name="signalement_cat_routes">Routes et voirie</string>
-    <string name="signalement_cat_eclairage">Éclairage public</string>
-    <string name="signalement_cat_proprete">Propreté &amp; déchets</string>
-    <string name="signalement_cat_inondation">Inondation &amp; drainage</string>
-    <string name="signalement_cat_sante">Santé</string>
-    <string name="signalement_cat_infrastructures">Infrastructures publiques</string>
-    <string name="signalement_cat_environnement">Environnement</string>
-    <string name="signalement_cat_autre">Autre</string>
-    <string name="signalement_sub_step">Catégorie</string>
-    <string name="signalement_continue">Continuer</string>
+    <!-- Signalement — catégorie -->
+    <string name="signalement_back_cd">Miverina</string>
+    <string name="signalement_title">Hitatitra olana</string>
+    <string name="signalement_subtitle">Inona no tianao ho tatitra ?</string>
+    <string name="signalement_search_hint">Azonao atao koa ny mikaroka sokajy</string>
+    <string name="signalement_chevron_cd">Safidio ny sokajy</string>
+    <string name="signalement_cat_electricite">Herinaratra</string>
+    <string name="signalement_cat_eau">Rano</string>
+    <string name="signalement_cat_routes">Lalana sy voirie</string>
+    <string name="signalement_cat_eclairage">Jiro an-dalambe</string>
+    <string name="signalement_cat_proprete">Fahadiovana &amp; fako</string>
+    <string name="signalement_cat_inondation">Tondra-drano &amp; drainage</string>
+    <string name="signalement_cat_sante">Fahasalamana</string>
+    <string name="signalement_cat_infrastructures">Fotodrafitrasa panjakana</string>
+    <string name="signalement_cat_environnement">Tontolo iainana</string>
+    <string name="signalement_cat_autre">Hafa</string>
+    <string name="signalement_sub_step">Sokajy</string>
+    <string name="signalement_continue">Tohizo</string>
 
     <!-- Signalement — localisation -->
-    <string name="signalement_location_back_cd">Retour</string>
-    <string name="signalement_location_title">Localisation</string>
-    <string name="signalement_use_position">Utilisez ma position</string>
-    <string name="signalement_address_label">Adresse détectée</string>
-    <string name="signalement_address_hint">Fokontany, Commune</string>
+    <string name="signalement_location_back_cd">Miverina</string>
+    <string name="signalement_location_title">Toerana</string>
+    <string name="signalement_use_position">Ampiasao ny toerako</string>
+    <string name="signalement_address_label">Adiresy hita</string>
+    <string name="signalement_address_hint">Fokontany, Kaominina</string>
 
-    <!-- Signalement — détails et photos -->
-    <string name="signalement_details_back_cd">Retour</string>
-    <string name="signalement_details_title">Détails et photos</string>
-    <string name="signalement_description_label">Que s’est-il produit ?</string>
-    <string name="signalement_description_hint">Décrivez le problème…</string>
-    <string name="signalement_add_photo_label">Ajouter une photo (optionnel)</string>
-    <string name="signalement_add_photo_cd">Ajouter une photo</string>
+    <!-- Signalement — détails -->
+    <string name="signalement_details_back_cd">Miverina</string>
+    <string name="signalement_details_title">Antsipiriany sy sary</string>
+    <string name="signalement_description_label">Inona no nitranga ?</string>
+    <string name="signalement_description_hint">Lazao ny olana…</string>
+    <string name="signalement_add_photo_label">Ampidiro sary (tsy voatery)</string>
+    <string name="signalement_add_photo_cd">Ampidiro sary</string>
 
     <!-- Signalement — confirmation -->
-    <string name="signalement_confirm_back_cd">Retour</string>
-    <string name="signalement_confirm_title">Confirmation</string>
-    <string name="signalement_location_row_label">Localisation : </string>
-    <string name="signalement_description_row_label">Description : </string>
-    <string name="signalement_priority_label">Priorité : </string>
-    <string name="signalement_priority_high">Haute</string>
-    <string name="signalement_priority_medium">Moyenne</string>
-    <string name="signalement_priority_low">Basse</string>
-    <string name="signalement_send">Envoyer</string>
+    <string name="signalement_confirm_back_cd">Miverina</string>
+    <string name="signalement_confirm_title">Fanamarinana</string>
+    <string name="signalement_location_row_label">Toerana : </string>
+    <string name="signalement_description_row_label">Fanazavana : </string>
+    <string name="signalement_priority_label">Laharana laharam-pahamehana : </string>
+    <string name="signalement_priority_high">Avo</string>
+    <string name="signalement_priority_medium">Antonony</string>
+    <string name="signalement_priority_low">Ambany</string>
+    <string name="signalement_send">Alefaso</string>
 
     <!-- Signalement — succès -->
-    <string name="signalement_success_back_cd">Retour</string>
-    <string name="signalement_success_title">Signalement envoyé !</string>
-    <string name="signalement_success_subtitle_format">Votre signalement %1$s a bien été enregistré.</string>
-    <string name="signalement_success_received_label">Reçue</string>
-    <string name="signalement_step_supported">Pris en charge</string>
-    <string name="signalement_step_ongoing">En cours</string>
-    <string name="signalement_step_resolved">Résolu</string>
-    <string name="signalement_view_reports">Voir mes signalements</string>
-    <string name="signalement_back_home">Retour à l’accueil</string>
+    <string name="signalement_success_back_cd">Miverina</string>
+    <string name="signalement_success_title">Nalefa ny tatitra !</string>
+    <string name="signalement_success_subtitle_format">Voarakitra soa aman-tsara ny tatitrao %1$s.</string>
+    <string name="signalement_success_received_label">Voaray</string>
+    <string name="signalement_step_supported">Voaray hitsaboana</string>
+    <string name="signalement_step_ongoing">Mandeha</string>
+    <string name="signalement_step_resolved">Vita</string>
+    <string name="signalement_view_reports">Hijery ny tatitra</string>
+    <string name="signalement_back_home">Miverina any amin’ny fandraisana</string>
 
-    <!-- Mes démarches (historique) -->
-    <string name="mes_demarches_title">Mes démarches</string>
-    <string name="mes_demarches_back_cd">Retour</string>
-    <string name="mes_demarches_search_hint">Rechercher une demande…</string>
-    <string name="mes_demarches_filter_all">Tout</string>
-    <string name="mes_demarches_filter_ongoing">En cours</string>
-    <string name="mes_demarches_filter_done">Terminées</string>
-    <string name="mes_demarches_empty">Aucune demande pour le moment.</string>
-    <string name="mes_demarches_cta">Nouvelle demande</string>
-    <string name="mes_demarches_dossier_format">N° %1$s</string>
-    <string name="mes_demarches_1_title">Certificat de résidence</string>
-    <string name="mes_demarches_1_service">Mairie — Antananarivo</string>
+    <!-- Mes démarches -->
+    <string name="mes_demarches_title">Ny fangatahana</string>
+    <string name="mes_demarches_back_cd">Miverina</string>
+    <string name="mes_demarches_search_hint">Karohy fangatahana…</string>
+    <string name="mes_demarches_filter_all">Rehetra</string>
+    <string name="mes_demarches_filter_ongoing">Mandeha</string>
+    <string name="mes_demarches_filter_done">Vita</string>
+    <string name="mes_demarches_empty">Tsy misy fangatahana amin’izao.</string>
+    <string name="mes_demarches_cta">Fangatahana vaovao</string>
+    <string name="mes_demarches_dossier_format">Lah. %1$s</string>
+    <string name="mes_demarches_1_title">Taratasy fanamarinana ny fonenana</string>
+    <string name="mes_demarches_1_service">Kaominina — Antananarivo</string>
     <string name="mes_demarches_1_date">12 sept. 2026</string>
-    <string name="mes_demarches_2_title">Acte de naissance</string>
-    <string name="mes_demarches_2_service">État civil — Analakely</string>
+    <string name="mes_demarches_2_title">Soratra nahaterahana</string>
+    <string name="mes_demarches_2_service">Sora-piainanana — Analakely</string>
     <string name="mes_demarches_2_date">5 sept. 2026</string>
-    <string name="mes_demarches_3_title">Carte nationale d’identité (CIN)</string>
-    <string name="mes_demarches_3_service">District — Antananarivo</string>
-    <string name="mes_demarches_3_date">28 août 2026</string>
+    <string name="mes_demarches_3_title">Karam-pirenen’ny maha-olona (CIN)</string>
+    <string name="mes_demarches_3_service">Distrika — Antananarivo</string>
+    <string name="mes_demarches_3_date">28 aog. 2026</string>
 
-    <!-- Mes signalements (historique) -->
-    <string name="mes_signalements_title">Mes signalements</string>
-    <string name="mes_signalements_back_cd">Retour</string>
-    <string name="mes_signalements_search_hint">Rechercher un signalement…</string>
-    <string name="mes_signalements_filter_all">Tout</string>
-    <string name="mes_signalements_filter_ongoing">En cours</string>
-    <string name="mes_signalements_filter_resolved">Résolus</string>
-    <string name="mes_signalements_empty">Aucun signalement pour le moment.</string>
-    <string name="mes_signalements_cta">Nouveau signalement</string>
-    <string name="mes_signalements_dossier_format">N° %1$s</string>
-    <string name="mes_signalements_1_title">Éclairage public</string>
-    <string name="mes_signalements_1_body">Lampadaire cassé — Rue Rainandriamampandry</string>
+    <!-- Mes signalements -->
+    <string name="mes_signalements_title">Ny tatitra</string>
+    <string name="mes_signalements_back_cd">Miverina</string>
+    <string name="mes_signalements_search_hint">Karohy tatitra…</string>
+    <string name="mes_signalements_filter_all">Rehetra</string>
+    <string name="mes_signalements_filter_ongoing">Mandeha</string>
+    <string name="mes_signalements_filter_resolved">Vita</string>
+    <string name="mes_signalements_empty">Tsy misy tatitra amin’izao.</string>
+    <string name="mes_signalements_cta">Tatitra vaovao</string>
+    <string name="mes_signalements_dossier_format">Lah. %1$s</string>
+    <string name="mes_signalements_1_title">Jiro an-dalambe</string>
+    <string name="mes_signalements_1_body">Jiro simba — Lalana Rainandriamampandry</string>
     <string name="mes_signalements_1_date">14 sept. 2026</string>
-    <string name="mes_signalements_2_title">Propreté &amp; déchets</string>
-    <string name="mes_signalements_2_body">Dépôt sauvage près du marché</string>
+    <string name="mes_signalements_2_title">Fahadiovana &amp; fako</string>
+    <string name="mes_signalements_2_body">Fako tsy ara-dalàna akaikin’ny tsena</string>
     <string name="mes_signalements_2_date">10 sept. 2026</string>
-    <string name="mes_signalements_3_title">Routes et voirie</string>
-    <string name="mes_signalements_3_body">Nid-de-poule dangereux</string>
+    <string name="mes_signalements_3_title">Lalana sy voirie</string>
+    <string name="mes_signalements_3_body">Lavaka mampidi-doza amin’ny lalana</string>
     <string name="mes_signalements_3_date">2 sept. 2026</string>
 </resources>
