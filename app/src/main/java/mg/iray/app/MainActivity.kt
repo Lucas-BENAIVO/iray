@@ -9,11 +9,6 @@ import androidx.compose.ui.Modifier
 import mg.iray.app.ui.navigation.IrayNavHost
 import mg.iray.app.ui.theme.IrayTheme
 
-sealed class Screen {
-    object Home : Screen()
-    object Tasks : Screen()
-}
-
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
