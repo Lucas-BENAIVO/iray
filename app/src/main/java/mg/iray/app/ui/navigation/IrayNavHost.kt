@@ -37,6 +37,8 @@ import mg.iray.app.ui.screens.mesDemarches.MesDemarchesActions
 import mg.iray.app.ui.screens.mesDemarches.MesDemarchesScreen
 import mg.iray.app.ui.screens.mesSignalements.MesSignalementsActions
 import mg.iray.app.ui.screens.mesSignalements.MesSignalementsScreen
+import mg.iray.app.ui.screens.monProfil.MonProfilActions
+import mg.iray.app.ui.screens.monProfil.MonProfilScreen
 import mg.iray.app.ui.screens.notifications.NotificationsActions
 import mg.iray.app.ui.screens.notifications.NotificationsScreen
 import mg.iray.app.ui.screens.signalement.SignalementCategoryActions
@@ -59,6 +61,7 @@ import mg.iray.app.ui.screens.welcome.WelcomeActions
 import mg.iray.app.ui.screens.welcome.WelcomeScreen
 import mg.iray.app.ui.screens.zone.ZoneActions
 import mg.iray.app.ui.screens.zone.ZoneScreen
+import androidx.navigation.NavHostController
 
 /**
  * Graphe de navigation — best practice : un seul [NavHost], routes
@@ -85,7 +88,15 @@ object IrayRoute {
     const val SIGNALEMENT_SUCCESS = "signalement_success"
     const val MES_DEMARCHES = "mes_demarches"
     const val MES_SIGNALEMENTS = "mes_signalements"
+    const val MON_PROFIL = "mon_profil"
     const val WELCOME = "welcome"
+}
+
+/** Onglet Profil : fiche si déjà créé, sinon parcours de création. */
+private fun NavHostController.openProfileTab(hasProfile: Boolean) {
+    navigate(if (hasProfile) IrayRoute.MON_PROFIL else IrayRoute.PROFILE) {
+        launchSingleTop = true
+    }
 }
 
 @Composable
@@ -103,6 +114,7 @@ fun IrayNavHost(
     var sigPhotos by rememberSaveable { mutableStateOf(listOf<String>()) }
     var firstName by rememberSaveable { mutableStateOf("") }
     var lastName by rememberSaveable { mutableStateOf("") }
+    var phone by rememberSaveable { mutableStateOf("") }
     var birthdate by rememberSaveable { mutableStateOf("") }
     var commune by rememberSaveable { mutableStateOf("") }
     var fokontany by rememberSaveable { mutableStateOf("") }
@@ -133,14 +145,26 @@ fun IrayNavHost(
         }
         composable(IrayRoute.PROFILE) {
             ProfileScreen(
+                initialFirstName = firstName,
+                initialLastName = lastName,
+                initialPhone = phone,
+                initialBirthdate = birthdate,
                 actions = ProfileActions(
                     onBack = { navController.popBackStack() },
                     onAvatarClick = { /* TODO: sélecteur photo */ },
                     onContinue = { form ->
                         firstName = form.firstName
                         lastName = form.lastName
+                        phone = form.phone
                         birthdate = form.birthdate
-                        navController.navigate(IrayRoute.ZONE)
+                        if (hasProfile) {
+                            navController.navigate(IrayRoute.MON_PROFIL) {
+                                popUpTo(IrayRoute.MON_PROFIL) { inclusive = true }
+                                launchSingleTop = true
+                            }
+                        } else {
+                            navController.navigate(IrayRoute.ZONE)
+                        }
                     },
                 ),
             )
@@ -151,7 +175,15 @@ fun IrayNavHost(
                     onContinue = { selection ->
                         commune = selection.commune
                         fokontany = selection.fokontany
-                        navController.navigate(IrayRoute.SUCCESS)
+                        if (hasProfile) {
+                            // Édition zone depuis Mon profil — retour direct.
+                            navController.navigate(IrayRoute.MON_PROFIL) {
+                                popUpTo(IrayRoute.MON_PROFIL) { inclusive = true }
+                                launchSingleTop = true
+                            }
+                        } else {
+                            navController.navigate(IrayRoute.SUCCESS)
+                        }
                     },
                 ),
             )
@@ -183,13 +215,38 @@ fun IrayNavHost(
                         navController.navigate(IrayRoute.MES_SIGNALEMENTS)
                     },
                     onNotifications = { navController.navigate(IrayRoute.NOTIFICATIONS) },
-                    onProfile = {
-                        if (hasProfile) {
-                            navController.navigate(IrayRoute.SUCCESS)
-                        } else {
-                            navController.navigate(IrayRoute.PROFILE)
+                    onProfile = { navController.openProfileTab(hasProfile) },
+                ),
+            )
+        }
+        composable(IrayRoute.MON_PROFIL) {
+            MonProfilScreen(
+                firstName = firstName,
+                lastName = lastName,
+                phone = phone,
+                birthdate = birthdate,
+                commune = commune,
+                fokontany = fokontany,
+                actions = MonProfilActions(
+                    onBack = { navController.popBackStack() },
+                    onHome = {
+                        navController.navigate(IrayRoute.WELCOME) {
+                            popUpTo(IrayRoute.WELCOME) { inclusive = false }
+                            launchSingleTop = true
                         }
                     },
+                    onDemarches = {
+                        navController.navigate(IrayRoute.MES_DEMARCHES) {
+                            launchSingleTop = true
+                        }
+                    },
+                    onSignalements = {
+                        navController.navigate(IrayRoute.MES_SIGNALEMENTS) {
+                            launchSingleTop = true
+                        }
+                    },
+                    onEditProfile = { navController.navigate(IrayRoute.PROFILE) },
+                    onEditZone = { navController.navigate(IrayRoute.ZONE) },
                 ),
             )
         }
@@ -208,13 +265,7 @@ fun IrayNavHost(
                             launchSingleTop = true
                         }
                     },
-                    onProfile = {
-                        if (hasProfile) {
-                            navController.navigate(IrayRoute.SUCCESS)
-                        } else {
-                            navController.navigate(IrayRoute.PROFILE)
-                        }
-                    },
+                    onProfile = { navController.openProfileTab(hasProfile) },
                     onNewRequest = { navController.navigate(IrayRoute.DEMARCHES) },
                     onRequestClick = { /* TODO: détail suivi */ },
                 ),
@@ -235,13 +286,7 @@ fun IrayNavHost(
                             launchSingleTop = true
                         }
                     },
-                    onProfile = {
-                        if (hasProfile) {
-                            navController.navigate(IrayRoute.SUCCESS)
-                        } else {
-                            navController.navigate(IrayRoute.PROFILE)
-                        }
-                    },
+                    onProfile = { navController.openProfileTab(hasProfile) },
                     onNewReport = { navController.navigate(IrayRoute.SIGNALEMENT) },
                     onReportClick = { /* TODO: détail suivi */ },
                 ),

@@ -58,6 +58,15 @@
     <string name="profile_continue">Continuer</string>
     <string name="profile_back_cd">Retour</string>
 
+    <!-- Profil — fiche citoyen (après création) -->
+    <string name="mon_profil_title">Mon profil</string>
+    <string name="mon_profil_back_cd">Retour</string>
+    <string name="mon_profil_zone_label">Zone de résidence</string>
+    <string name="mon_profil_edit">Modifier mon profil</string>
+    <string name="mon_profil_edit_zone">Modifier ma zone</string>
+    <string name="mon_profil_citizen_badge">Compte citoyen</string>
+    <string name="mon_profil_empty_value">Non renseigné</string>
+
     <!-- Zone — lieu de résidence -->
     <string name="zone_title">Votre zone</string>
     <string name="zone_subtitle">Indiquez votre lieu de résidence pour accéder aux services adaptés.</string>

@@ -52,12 +52,16 @@ data class ProfileForm(
 @Composable
 fun ProfileScreen(
     modifier: Modifier = Modifier,
+    initialFirstName: String = "",
+    initialLastName: String = "",
+    initialPhone: String = "",
+    initialBirthdate: String = "",
     actions: ProfileActions = ProfileActions(),
 ) {
-    var firstName by rememberSaveable { mutableStateOf("") }
-    var lastName by rememberSaveable { mutableStateOf("") }
-    var phone by rememberSaveable { mutableStateOf("") }
-    var birthdate by rememberSaveable { mutableStateOf("") }
+    var firstName by rememberSaveable(initialFirstName) { mutableStateOf(initialFirstName) }
+    var lastName by rememberSaveable(initialLastName) { mutableStateOf(initialLastName) }
+    var phone by rememberSaveable(initialPhone) { mutableStateOf(initialPhone) }
+    var birthdate by rememberSaveable(initialBirthdate) { mutableStateOf(initialBirthdate) }
 
     val isValid = firstName.isNotBlank() &&
         lastName.isNotBlank() &&
