@@ -176,7 +176,7 @@ fun MesSignalementsScreen(
             }
         } else {
             LazyColumn(
-                verticalArrangement = Arrangement.spacedBy(12.dp),
+                verticalArrangement = Arrangement.spacedBy(14.dp),
                 modifier = Modifier
                     .weight(1f)
                     .fillMaxWidth(),

@@ -1,46 +1,51 @@
 package mg.iray.app.ui.components.mes
 
-import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
+import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material.icons.filled.Description
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import mg.iray.app.R
-import mg.iray.app.ui.theme.BrandAccent
+import mg.iray.app.ui.components.irayFastClick
 import mg.iray.app.ui.theme.BrandWhite
+import mg.iray.app.ui.theme.DividerSubtle
+import mg.iray.app.ui.theme.IrayDisplayFontFamily
+import mg.iray.app.ui.theme.IrayFontFamily
 import mg.iray.app.ui.theme.IrayTheme
-import mg.iray.app.ui.theme.OutlineOnWhite
+import mg.iray.app.ui.theme.OnboardingInk
 import mg.iray.app.ui.theme.TextPrimary
 import mg.iray.app.ui.theme.TextSecondary
 
 /**
- * Carte historique (démarche ou signalement) — icône, titre, détail,
- * n° de dossier, date et pastille de statut.
- *
- * Best practice : stateless, textes en paramètres.
+ * Carte historique (démarche / signalement) — ombre, accent, statut, n° dossier.
  */
 @Composable
 fun MesRequestCard(
@@ -55,85 +60,133 @@ fun MesRequestCard(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Surface(
-        onClick = onClick,
-        modifier = modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(16.dp),
-        color = BrandWhite,
-        border = BorderStroke(1.dp, OutlineOnWhite),
+    val shape = RoundedCornerShape(22.dp)
+
+    Box(
+        modifier = modifier
+            .fillMaxWidth()
+            .shadow(
+                elevation = 12.dp,
+                shape = shape,
+                ambientColor = OnboardingInk.copy(alpha = 0.14f),
+                spotColor = iconTint.copy(alpha = 0.18f),
+            )
+            .clip(shape)
+            .background(BrandWhite)
+            .border(
+                width = 1.dp,
+                brush = Brush.linearGradient(
+                    colors = listOf(
+                        iconTint.copy(alpha = 0.28f),
+                        iconTint.copy(alpha = 0.06f),
+                    ),
+                ),
+                shape = shape,
+            )
+            .irayFastClick(onClick = onClick)
+            .padding(18.dp),
     ) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.padding(horizontal = 14.dp, vertical = 14.dp),
-        ) {
-            Surface(
-                shape = CircleShape,
-                color = iconTint.copy(alpha = 0.14f),
-                modifier = Modifier.size(44.dp),
+        Column(modifier = Modifier.fillMaxWidth()) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(14.dp),
+                modifier = Modifier.fillMaxWidth(),
             ) {
-                Box(contentAlignment = Alignment.Center) {
+                Box(
+                    modifier = Modifier
+                        .size(52.dp)
+                        .clip(RoundedCornerShape(16.dp))
+                        .background(
+                            Brush.verticalGradient(
+                                colors = listOf(
+                                    iconTint.copy(alpha = 0.12f),
+                                    iconTint.copy(alpha = 0.20f),
+                                ),
+                            ),
+                        ),
+                    contentAlignment = Alignment.Center,
+                ) {
                     Icon(
                         imageVector = icon,
                         contentDescription = null,
                         tint = iconTint,
-                        modifier = Modifier.size(22.dp),
+                        modifier = Modifier.size(26.dp),
+                    )
+                }
+
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(
+                        text = title,
+                        style = MaterialTheme.typography.titleMedium.copy(
+                            fontFamily = IrayDisplayFontFamily,
+                            fontWeight = FontWeight.SemiBold,
+                            fontSize = 17.sp,
+                            letterSpacing = (-0.1).sp,
+                        ),
+                        color = TextPrimary,
+                    )
+                    Spacer(modifier = Modifier.height(4.dp))
+                    Text(
+                        text = subtitle,
+                        style = MaterialTheme.typography.bodyMedium.copy(
+                            fontFamily = IrayFontFamily,
+                        ),
+                        color = TextSecondary,
+                    )
+                }
+
+                Box(
+                    modifier = Modifier
+                        .size(40.dp)
+                        .clip(CircleShape)
+                        .background(iconTint),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Filled.ArrowForward,
+                        contentDescription = null,
+                        tint = Color.White,
+                        modifier = Modifier.size(18.dp),
                     )
                 }
             }
 
-            Spacer(modifier = Modifier.width(12.dp))
+            Spacer(modifier = Modifier.height(14.dp))
 
-            Column(modifier = Modifier.weight(1f)) {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                ) {
-                    Text(
-                        text = title,
-                        style = MaterialTheme.typography.titleSmall.copy(
-                            fontWeight = FontWeight.Bold,
-                        ),
-                        color = TextPrimary,
-                        modifier = Modifier.weight(1f),
-                    )
-                    MesStatusBadge(label = statusLabel, tint = statusTint)
-                }
-                Text(
-                    text = subtitle,
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = TextSecondary,
-                )
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                ) {
+            HorizontalDivider(color = DividerSubtle)
+
+            Spacer(modifier = Modifier.height(12.dp))
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween,
+            ) {
+                Column {
                     Text(
                         text = dossierLabel,
                         style = MaterialTheme.typography.bodySmall.copy(
-                            fontWeight = FontWeight.Medium,
+                            fontFamily = IrayFontFamily,
+                            fontWeight = FontWeight.SemiBold,
                         ),
-                        color = BrandAccent,
+                        color = iconTint,
                     )
+                    Spacer(modifier = Modifier.height(2.dp))
                     Text(
                         text = date,
-                        style = MaterialTheme.typography.bodySmall,
+                        style = MaterialTheme.typography.bodySmall.copy(
+                            fontFamily = IrayFontFamily,
+                        ),
                         color = TextSecondary.copy(alpha = 0.85f),
                     )
                 }
+                MesStatusBadge(label = statusLabel, tint = statusTint)
             }
-
-            Icon(
-                imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
-                contentDescription = null,
-                tint = BrandAccent,
-                modifier = Modifier.size(22.dp),
-            )
         }
     }
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, backgroundColor = 0xFFF4F7F5)
 @Composable
 private fun MesRequestCardPreview() {
     IrayTheme {

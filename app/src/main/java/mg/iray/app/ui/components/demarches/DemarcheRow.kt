@@ -1,45 +1,50 @@
 package mg.iray.app.ui.components.demarches
 
-import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
+import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material.icons.filled.Description
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import mg.iray.app.R
-import mg.iray.app.ui.theme.BrandAccent
+import mg.iray.app.ui.components.irayFastClick
 import mg.iray.app.ui.theme.BrandWhite
-import mg.iray.app.ui.theme.IrayTheme
-import mg.iray.app.ui.theme.OutlineOnWhite
-import mg.iray.app.ui.theme.SurfaceFeatured
-import mg.iray.app.ui.theme.TextPrimary
 import mg.iray.app.ui.theme.FlagGreen
+import mg.iray.app.ui.theme.IrayDisplayFontFamily
+import mg.iray.app.ui.theme.IrayFontFamily
+import mg.iray.app.ui.theme.IrayTheme
+import mg.iray.app.ui.theme.OnboardingInk
+import mg.iray.app.ui.theme.TextPrimary
+import mg.iray.app.ui.theme.TextSecondary
 
 /**
- * Ligne démarche — pastille icône + libellé + chevron, surlignée si choisie.
- *
- * Copie la capture ("Certificat de résidence" sélectionné).
- * Best practice : stateless, aucun texte en dur.
+ * Carte démarche catalogue — ombre + pastille + flèche (style Welcome).
  */
 @Composable
 fun DemarcheRow(
@@ -48,66 +53,126 @@ fun DemarcheRow(
     selected: Boolean,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
+    subtitle: String? = null,
 ) {
-    Surface(
-        onClick = onClick,
-        modifier = modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(14.dp),
-        color = if (selected) FlagGreen.copy(alpha = 0.10f) else SurfaceFeatured,
-        border = BorderStroke(
-            width = if (selected) 1.5.dp else 1.dp,
-            color = if (selected) FlagGreen else OutlineOnWhite.copy(alpha = 0.6f),
-        ),
+    val accent = FlagGreen
+    val shape = RoundedCornerShape(22.dp)
+    val borderAlpha = if (selected) 0.45f else 0.22f
+    val elevation = if (selected) 14.dp else 10.dp
+
+    Box(
+        modifier = modifier
+            .fillMaxWidth()
+            .shadow(
+                elevation = elevation,
+                shape = shape,
+                ambientColor = OnboardingInk.copy(alpha = 0.14f),
+                spotColor = accent.copy(alpha = if (selected) 0.28f else 0.16f),
+            )
+            .clip(shape)
+            .background(
+                if (selected) accent.copy(alpha = 0.08f) else BrandWhite,
+            )
+            .border(
+                width = if (selected) 1.5.dp else 1.dp,
+                brush = Brush.linearGradient(
+                    colors = listOf(
+                        accent.copy(alpha = borderAlpha),
+                        accent.copy(alpha = 0.06f),
+                    ),
+                ),
+                shape = shape,
+            )
+            .irayFastClick(onClick = onClick)
+            .padding(16.dp),
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.padding(horizontal = 14.dp, vertical = 13.dp),
+            horizontalArrangement = Arrangement.spacedBy(14.dp),
+            modifier = Modifier.fillMaxWidth(),
         ) {
-            Surface(
-                shape = CircleShape,
-                color = FlagGreen.copy(alpha = 0.14f),
-                modifier = Modifier.size(40.dp),
+            Box(
+                modifier = Modifier
+                    .size(52.dp)
+                    .clip(RoundedCornerShape(16.dp))
+                    .background(
+                        Brush.verticalGradient(
+                            colors = listOf(
+                                accent.copy(alpha = 0.12f),
+                                accent.copy(alpha = 0.20f),
+                            ),
+                        ),
+                    ),
+                contentAlignment = Alignment.Center,
             ) {
-                Box(contentAlignment = Alignment.Center) {
-                    Icon(
-                        imageVector = icon,
-                        contentDescription = null,
-                        tint = FlagGreen,
-                        modifier = Modifier.size(22.dp),
+                Icon(
+                    imageVector = icon,
+                    contentDescription = null,
+                    tint = accent,
+                    modifier = Modifier.size(26.dp),
+                )
+            }
+
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = label,
+                    style = MaterialTheme.typography.titleMedium.copy(
+                        fontFamily = IrayDisplayFontFamily,
+                        fontWeight = FontWeight.SemiBold,
+                        fontSize = 16.sp,
+                        letterSpacing = (-0.1).sp,
+                    ),
+                    color = TextPrimary,
+                )
+                if (!subtitle.isNullOrBlank()) {
+                    Spacer(modifier = Modifier.height(4.dp))
+                    Text(
+                        text = subtitle,
+                        style = MaterialTheme.typography.bodyMedium.copy(
+                            fontFamily = IrayFontFamily,
+                        ),
+                        color = TextSecondary,
                     )
                 }
             }
 
-            Spacer(modifier = Modifier.width(12.dp))
-
-            Text(
-                text = label,
-                style = MaterialTheme.typography.bodyLarge.copy(
-                    fontWeight = if (selected) FontWeight.SemiBold else FontWeight.Normal,
-                ),
-                color = TextPrimary,
-                modifier = Modifier.weight(1f),
-            )
-
-            Icon(
-                imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
-                contentDescription = stringResource(R.string.demarches_chevron_cd),
-                tint = BrandAccent,
-                modifier = Modifier.size(24.dp),
-            )
+            Box(
+                modifier = Modifier
+                    .size(40.dp)
+                    .clip(CircleShape)
+                    .background(accent),
+                contentAlignment = Alignment.Center,
+            ) {
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.ArrowForward,
+                    contentDescription = stringResource(R.string.demarches_chevron_cd),
+                    tint = Color.White,
+                    modifier = Modifier.size(18.dp),
+                )
+            }
         }
     }
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, backgroundColor = 0xFFF4F7F5)
 @Composable
 private fun DemarcheRowPreview() {
     IrayTheme {
-        Column {
+        Column(
+            modifier = Modifier.padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp),
+        ) {
             DemarcheRow(
                 label = "Certificat de résidence",
+                subtitle = "Documents officiels",
                 icon = Icons.Filled.Description,
                 selected = true,
+                onClick = {},
+            )
+            DemarcheRow(
+                label = "Acte de naissance",
+                icon = Icons.Filled.Description,
+                selected = false,
                 onClick = {},
             )
         }

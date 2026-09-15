@@ -162,29 +162,29 @@ fun DemarchesScreen(
 
         Spacer(modifier = Modifier.height(12.dp))
 
-        LazyColumn(
-            verticalArrangement = Arrangement.spacedBy(10.dp),
-            modifier = Modifier
-                .weight(1f)
-                .fillMaxWidth(),
-            contentPadding = PaddingValues(
-                start = 24.dp,
-                end = 24.dp,
-                bottom = 24.dp,
-            ),
-        ) {
-            items(visibleItems, key = { it.id }) { item ->
-                DemarcheRow(
-                    label = item.label,
-                    icon = item.icon,
-                    selected = item.id == selectedId,
-                    onClick = {
-                        selectedId = item.id
-                        actions.onDemarcheClick(item.id)
-                    },
-                )
+            LazyColumn(
+                verticalArrangement = Arrangement.spacedBy(14.dp),
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxWidth(),
+                contentPadding = PaddingValues(
+                    start = 24.dp,
+                    end = 24.dp,
+                    bottom = 24.dp,
+                ),
+            ) {
+                items(visibleItems, key = { it.id }) { item ->
+                    DemarcheRow(
+                        label = item.label,
+                        icon = item.icon,
+                        selected = item.id == selectedId,
+                        onClick = {
+                            selectedId = item.id
+                            actions.onDemarcheClick(item.id)
+                        },
+                    )
+                }
             }
-        }
     }
 }
 

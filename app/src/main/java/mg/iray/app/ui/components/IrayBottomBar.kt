@@ -8,11 +8,14 @@ import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material.icons.outlined.Report
 import androidx.compose.material3.Icon
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.LocalRippleConfiguration
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -42,6 +45,7 @@ data class IrayBottomBarActions(
     val onProfile: () -> Unit = {},
 )
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun IrayBottomBar(
     selected: IrayBottomTab,
@@ -55,52 +59,55 @@ fun IrayBottomBar(
         Triple(IrayBottomTab.Profile, Icons.Outlined.Person, R.string.nav_profile),
     )
 
-    NavigationBar(
-        modifier = modifier.fillMaxWidth(),
-        containerColor = BrandWhite,
-        tonalElevation = 0.dp,
-    ) {
-        items.forEach { (tab, icon, labelRes) ->
-            val isSelected = tab == selected
-            NavigationBarItem(
-                selected = isSelected,
-                onClick = {
-                    when (tab) {
-                        IrayBottomTab.Home -> actions.onHome()
-                        IrayBottomTab.Demarches -> actions.onDemarches()
-                        IrayBottomTab.Signalements -> actions.onSignalements()
-                        IrayBottomTab.Profile -> actions.onProfile()
-                    }
-                },
-                icon = {
-                    Icon(
-                        imageVector = icon,
-                        contentDescription = stringResource(labelRes),
-                        modifier = Modifier.size(20.dp),
-                    )
-                },
-                label = {
-                    Text(
-                        text = stringResource(labelRes),
-                        fontFamily = IrayFontFamily,
-                        fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Medium,
-                        fontSize = 9.sp,
-                        lineHeight = 12.sp,
-                        letterSpacing = 0.sp,
-                        maxLines = 1,
-                        softWrap = false,
-                        overflow = TextOverflow.Ellipsis,
-                        textAlign = TextAlign.Center,
-                    )
-                },
-                colors = NavigationBarItemDefaults.colors(
-                    selectedIconColor = FlagGreen,
-                    selectedTextColor = FlagGreen,
-                    unselectedIconColor = TextSecondary,
-                    unselectedTextColor = TextSecondary,
-                    indicatorColor = FlagGreen.copy(alpha = 0.12f),
-                ),
-            )
+    // Pas de ripple Material (flash blanc au clic).
+    CompositionLocalProvider(LocalRippleConfiguration provides null) {
+        NavigationBar(
+            modifier = modifier.fillMaxWidth(),
+            containerColor = BrandWhite,
+            tonalElevation = 0.dp,
+        ) {
+            items.forEach { (tab, icon, labelRes) ->
+                val isSelected = tab == selected
+                NavigationBarItem(
+                    selected = isSelected,
+                    onClick = {
+                        when (tab) {
+                            IrayBottomTab.Home -> actions.onHome()
+                            IrayBottomTab.Demarches -> actions.onDemarches()
+                            IrayBottomTab.Signalements -> actions.onSignalements()
+                            IrayBottomTab.Profile -> actions.onProfile()
+                        }
+                    },
+                    icon = {
+                        Icon(
+                            imageVector = icon,
+                            contentDescription = stringResource(labelRes),
+                            modifier = Modifier.size(20.dp),
+                        )
+                    },
+                    label = {
+                        Text(
+                            text = stringResource(labelRes),
+                            fontFamily = IrayFontFamily,
+                            fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Medium,
+                            fontSize = 9.sp,
+                            lineHeight = 12.sp,
+                            letterSpacing = 0.sp,
+                            maxLines = 1,
+                            softWrap = false,
+                            overflow = TextOverflow.Ellipsis,
+                            textAlign = TextAlign.Center,
+                        )
+                    },
+                    colors = NavigationBarItemDefaults.colors(
+                        selectedIconColor = FlagGreen,
+                        selectedTextColor = FlagGreen,
+                        unselectedIconColor = TextSecondary,
+                        unselectedTextColor = TextSecondary,
+                        indicatorColor = FlagGreen.copy(alpha = 0.12f),
+                    ),
+                )
+            }
         }
     }
 }

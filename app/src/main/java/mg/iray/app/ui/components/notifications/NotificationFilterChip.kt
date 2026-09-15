@@ -12,16 +12,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import mg.iray.app.ui.components.irayFastClick
 import mg.iray.app.ui.theme.BrandWhite
+import mg.iray.app.ui.theme.FlagGreen
 import mg.iray.app.ui.theme.IrayTheme
 import mg.iray.app.ui.theme.OutlineOnWhite
 import mg.iray.app.ui.theme.TextSecondary
-import mg.iray.app.ui.theme.FlagGreen
 
 /**
- * Filtre de notifications — pastille bleue si actif, blanche sinon.
- *
- * Best practice : stateless ([selected]/[onClick] hoistés).
+ * Filtre de notifications — pastille verte si actif, blanche sinon.
+ * Clic sans ripple (évite le flash blanc).
  */
 @Composable
 fun NotificationFilterChip(
@@ -31,14 +31,15 @@ fun NotificationFilterChip(
     modifier: Modifier = Modifier,
 ) {
     Surface(
-        onClick = onClick,
         shape = CircleShape,
         color = if (selected) FlagGreen else BrandWhite,
         border = BorderStroke(
             width = 1.dp,
             color = if (selected) FlagGreen else OutlineOnWhite,
         ),
-        modifier = modifier.heightIn(min = 36.dp),
+        modifier = modifier
+            .heightIn(min = 36.dp)
+            .irayFastClick(onClick = onClick),
     ) {
         Text(
             text = label,

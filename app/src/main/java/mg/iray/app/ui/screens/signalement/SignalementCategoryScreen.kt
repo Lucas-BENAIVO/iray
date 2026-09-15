@@ -118,7 +118,7 @@ fun SignalementCategoryScreen(
             Spacer(modifier = Modifier.height(12.dp))
 
             LazyColumn(
-                verticalArrangement = Arrangement.spacedBy(10.dp),
+                verticalArrangement = Arrangement.spacedBy(14.dp),
                 modifier = Modifier
                     .weight(1f)
                     .fillMaxWidth(),
