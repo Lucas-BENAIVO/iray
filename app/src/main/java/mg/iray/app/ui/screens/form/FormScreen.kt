@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.runtime.Composable
@@ -24,12 +23,12 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import mg.iray.app.R
 import mg.iray.app.ui.components.IrayPrimaryButton
 import mg.iray.app.ui.components.IrayScreenHeader
+import mg.iray.app.ui.components.profile.BirthdatePickerField
 import mg.iray.app.ui.components.profile.ProfileTextField
 import mg.iray.app.ui.components.zone.ZoneDropdownField
 import mg.iray.app.ui.theme.IrayTheme
@@ -129,13 +128,11 @@ fun FormScreen(
                         showError(firstName.isNotBlank(), firstNameOk)
                     },
                 )
-                ProfileTextField(
+                BirthdatePickerField(
                     value = birthdate,
-                    onValueChange = { birthdate = FormValidators.formatBirthdateInput(it) },
+                    onValueChange = { birthdate = it },
                     label = stringResource(R.string.form_birthdate_label),
                     hint = stringResource(R.string.profile_birthdate_hint),
-                    leadingIcon = Icons.Filled.DateRange,
-                    keyboardType = KeyboardType.Number,
                     error = birthdateError.takeIf {
                         showError(birthdate.isNotBlank(), birthdateOk)
                     },

@@ -54,12 +54,15 @@
     <string name="profile_phone_label">Finday *</string>
     <string name="profile_phone_hint">+261 34 12 34 567</string>
     <string name="profile_birthdate_label">Daty nahaterahana *</string>
-    <string name="profile_birthdate_hint">TT/VV/TTTT</string>
+    <string name="profile_birthdate_hint">Safidio ny daty</string>
+    <string name="birthdate_picker_cd">Safidio ny daty nahaterahana</string>
+    <string name="birthdate_picker_ok">Ekena</string>
+    <string name="birthdate_picker_cancel">Aoka ihany</string>
     <string name="profile_continue">Tohizo</string>
     <string name="profile_back_cd">Miverina</string>
     <string name="validation_name_error">Soraty ny anarana (litera fotsiny, 2 litera farafahakeliny)</string>
     <string name="validation_phone_error">Finday tsy mety — ohatra: +261341234567 na 0341234567</string>
-    <string name="validation_birthdate_error">Daty tsy mety — format TT/VV/TTTT (ohatra: 12/05/1990)</string>
+    <string name="validation_birthdate_error">Safidio daty nahaterahana marina</string>
     <string name="validation_required_error">Ity saha ity dia tsy maintsy fenoina</string>
 
     <!-- Profil — fiche citoyen (après création) -->

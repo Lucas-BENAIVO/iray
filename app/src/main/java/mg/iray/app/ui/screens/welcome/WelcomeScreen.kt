@@ -22,6 +22,11 @@ import androidx.compose.material.icons.outlined.Report
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -32,6 +37,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import kotlinx.coroutines.delay
 import mg.iray.app.R
 import mg.iray.app.ui.components.FlagAccentBar
 import mg.iray.app.ui.components.IrayBottomBar
@@ -62,6 +68,17 @@ fun WelcomeScreen(
     modifier: Modifier = Modifier,
     actions: WelcomeActions = WelcomeActions(),
 ) {
+    // Évite le clic fantôme : le doigt sur « Atombohy » (bas d’écran)
+    // retombait sur la bottom bar → Ny tatitra.
+    var interactionsReady by remember { mutableStateOf(false) }
+    LaunchedEffect(Unit) {
+        delay(450)
+        interactionsReady = true
+    }
+    fun gated(action: () -> Unit): () -> Unit = {
+        if (interactionsReady) action()
+    }
+
     Box(
         modifier = modifier
             .fillMaxSize()
@@ -140,7 +157,7 @@ fun WelcomeScreen(
                     )
                     WelcomeNotificationBell(
                         hasUnread = true,
-                        onClick = actions.onNotifications,
+                        onClick = gated(actions.onNotifications),
                     )
                 }
 
@@ -171,14 +188,14 @@ fun WelcomeScreen(
                         subtitle = stringResource(R.string.welcome_action_demarches_hint),
                         icon = Icons.Outlined.Description,
                         style = WelcomeActionStyle.Demarches,
-                        onClick = actions.onDemarches,
+                        onClick = gated(actions.onDemarches),
                     )
                     WelcomeActionCard(
                         title = stringResource(R.string.welcome_action_signalements),
                         subtitle = stringResource(R.string.welcome_action_signalements_hint),
                         icon = Icons.Outlined.Report,
                         style = WelcomeActionStyle.Signalements,
-                        onClick = actions.onSignalements,
+                        onClick = gated(actions.onSignalements),
                     )
                 }
 
@@ -195,9 +212,9 @@ fun WelcomeScreen(
                 selected = IrayBottomTab.Home,
                 actions = IrayBottomBarActions(
                     onHome = {},
-                    onDemarches = actions.onMesDemarches,
-                    onSignalements = actions.onMesSignalements,
-                    onProfile = actions.onProfile,
+                    onDemarches = gated(actions.onMesDemarches),
+                    onSignalements = gated(actions.onMesSignalements),
+                    onProfile = gated(actions.onProfile),
                 ),
             )
         }

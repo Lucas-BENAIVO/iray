@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Phone
 import androidx.compose.runtime.Composable
@@ -31,6 +30,7 @@ import androidx.compose.ui.unit.dp
 import mg.iray.app.R
 import mg.iray.app.ui.components.IrayPrimaryButton
 import mg.iray.app.ui.components.IrayScreenHeader
+import mg.iray.app.ui.components.profile.BirthdatePickerField
 import mg.iray.app.ui.components.profile.ProfileAvatarPicker
 import mg.iray.app.ui.components.profile.ProfileTextField
 import mg.iray.app.ui.theme.IrayTheme
@@ -141,13 +141,11 @@ fun ProfileScreen(
                         showError(phone.isNotBlank(), phoneOk)
                     },
                 )
-                ProfileTextField(
+                BirthdatePickerField(
                     value = birthdate,
-                    onValueChange = { birthdate = FormValidators.formatBirthdateInput(it) },
+                    onValueChange = { birthdate = it },
                     label = stringResource(R.string.profile_birthdate_label),
                     hint = stringResource(R.string.profile_birthdate_hint),
-                    leadingIcon = Icons.Filled.DateRange,
-                    keyboardType = KeyboardType.Number,
                     error = birthdateError.takeIf {
                         showError(birthdate.isNotBlank(), birthdateOk)
                     },

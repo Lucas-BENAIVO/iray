@@ -26,7 +26,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -39,8 +38,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import mg.iray.app.R
 import mg.iray.app.ui.components.FlagAccentBar
 import mg.iray.app.ui.theme.BrandWhite
@@ -138,7 +135,6 @@ private fun OnboardingPrimaryCta(
     modifier: Modifier = Modifier,
 ) {
     var tapped by remember { mutableStateOf(false) }
-    val scope = rememberCoroutineScope()
     val scale by animateFloatAsState(
         targetValue = if (tapped) 0.96f else 1f,
         animationSpec = tween(durationMillis = 80, easing = FastOutSlowInEasing),
@@ -173,10 +169,9 @@ private fun OnboardingPrimaryCta(
                 role = Role.Button,
                 onClick = {
                     tapped = true
-                    scope.launch {
-                        delay(120)
-                        onClick()
-                    }
+                    // Naviguer tout de suite : un delay laissait le doigt
+                    // retomber sur la bottom bar de Welcome (Ny tatitra).
+                    onClick()
                 },
             )
             .padding(start = 26.dp, end = 8.dp),
