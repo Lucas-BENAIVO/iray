@@ -22,7 +22,7 @@ import mg.iray.app.ui.theme.SurfaceFeatured
 import mg.iray.app.ui.theme.TextSecondary
 
 /**
- * Pastille avatar — cercle bleu-gris clair + icône appareil photo.
+ * Pastille avatar - cercle bleu-gris clair + icône appareil photo.
  *
  * Best practice : stateless, [onClick] hoisté, aucun texte en dur.
  */

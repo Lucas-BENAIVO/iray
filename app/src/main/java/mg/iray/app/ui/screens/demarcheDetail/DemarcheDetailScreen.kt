@@ -26,7 +26,7 @@ import mg.iray.app.ui.theme.IrayTheme
 import mg.iray.app.ui.theme.SurfacePage
 
 /**
- * Écran détail d’une démarche — UN écran dynamique pour tous les cas.
+ * Écran détail d’une démarche - UN écran dynamique pour tous les cas.
  *
  * Contenu fourni par [DemarcheDetailsCatalog] selon [demarcheId].
  * Best practice : écran stateless, bouton commun réutilisé.

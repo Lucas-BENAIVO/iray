@@ -17,7 +17,7 @@ import androidx.compose.ui.semantics.Role
 import kotlinx.coroutines.launch
 
 /**
- * Clic avec petit effet press visible — l’animation part avant [onClick]
+ * Clic avec petit effet press visible - l’animation part avant [onClick]
  * (évite que la navigation coupe l’effet).
  */
 @Composable

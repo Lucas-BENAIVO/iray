@@ -29,7 +29,7 @@ import mg.iray.app.ui.theme.TextPrimary
 import mg.iray.app.ui.theme.TextSecondary
 
 /**
- * Liste déroulante de zone — libellé au-dessus + valeur + chevron.
+ * Liste déroulante de zone - libellé au-dessus + valeur + chevron.
  *
  * Best practice : sélection hoistée ([value]/[onSelect]), seul l'état
  * d'ouverture (pur UI) reste local.

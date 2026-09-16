@@ -40,7 +40,7 @@ import mg.iray.app.ui.theme.OnboardingInk
 import mg.iray.app.ui.theme.TextPrimary
 
 /**
- * Carte catégorie signalement — même langage carte que les démarches.
+ * Carte catégorie signalement - même langage carte que les démarches.
  */
 @Composable
 fun SignalementCategoryRow(

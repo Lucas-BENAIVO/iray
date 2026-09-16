@@ -45,7 +45,7 @@ import mg.iray.app.ui.theme.TextPrimary
 import mg.iray.app.ui.theme.TextSecondary
 
 /**
- * Carte historique (démarche / signalement) — ombre, accent, statut, n° dossier.
+ * Carte historique (démarche / signalement) - ombre, accent, statut, n° dossier.
  */
 @Composable
 fun MesRequestCard(
@@ -192,7 +192,7 @@ private fun MesRequestCardPreview() {
     IrayTheme {
         MesRequestCard(
             title = "Certificat de résidence",
-            subtitle = "Mairie — Antananarivo",
+            subtitle = "Mairie - Antananarivo",
             dossierLabel = stringResource(R.string.mes_demarches_dossier_format, "MAD-2026-184221"),
             date = "12 sept. 2026",
             statusLabel = "En cours",

@@ -51,7 +51,7 @@ import java.util.Locale
 import java.util.TimeZone
 
 /**
- * Champ date de naissance — ouvre un calendrier (plus de saisie manuelle bizarre).
+ * Champ date de naissance - ouvre un calendrier (plus de saisie manuelle bizarre).
  * Affiche TT/VV/TTTT. La valeur reste gérée par l’écran parent (rememberSaveable).
  */
 @OptIn(ExperimentalMaterial3Api::class)

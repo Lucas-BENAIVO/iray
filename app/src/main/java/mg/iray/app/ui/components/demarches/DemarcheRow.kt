@@ -44,7 +44,7 @@ import mg.iray.app.ui.theme.TextPrimary
 import mg.iray.app.ui.theme.TextSecondary
 
 /**
- * Carte démarche catalogue — ombre + pastille + flèche (style Welcome).
+ * Carte démarche catalogue - ombre + pastille + flèche (style Welcome).
  */
 @Composable
 fun DemarcheRow(

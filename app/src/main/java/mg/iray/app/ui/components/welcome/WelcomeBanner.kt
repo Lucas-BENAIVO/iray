@@ -34,7 +34,7 @@ import mg.iray.app.ui.theme.OnboardingInk
 import mg.iray.app.ui.theme.TextOnBrand
 
 /**
- * Bannière Welcome premium — photo pleine largeur, coins très arrondis, typo Clash.
+ * Bannière Welcome premium - photo pleine largeur, coins très arrondis, typo Clash.
  */
 @Composable
 fun WelcomeBanner(

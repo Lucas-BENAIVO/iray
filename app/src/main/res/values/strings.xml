@@ -28,25 +28,25 @@
     <string name="welcome_zone_cd">Ny faritra misy anao</string>
     <string name="welcome_notifications_cd">Fampahafantarana</string>
     <string name="welcome_banner_title">Miara-miasa ho an’ny Madagasikara tsotra kokoa</string>
-    <string name="welcome_banner_body">Ny fangatahanao, ny tatitrao ary ny vaovao ofisialy — ao anaty toerana iray.</string>
+    <string name="welcome_banner_body">Ny fangatahanao, ny tatitrao ary ny vaovao ofisialy - ao anaty toerana iray.</string>
     <string name="welcome_content_desc_banner">Sary ny tanànan’Antananarivo amin’ny filentehan’ny masoandro</string>
 
-    <!-- Hero d’accueil — onboarding immersif Iray -->
+    <!-- Hero d’accueil - onboarding immersif Iray -->
     <string name="welcome_hero_title">Iray</string>
     <string name="welcome_onboarding_headline">Madagasikara\ntsotra kokoa</string>
     <string name="welcome_onboarding_headline_line1">Madagasikara</string>
     <string name="welcome_onboarding_headline_line2">tsotra kokoa</string>
-    <string name="welcome_onboarding_subtitle">Ny fangatahanao, ny tatitrao ary ny vaovao ofisialy — ao anaty toerana iray farany.</string>
+    <string name="welcome_onboarding_subtitle">Ny fangatahanao, ny tatitrao ary ny vaovao ofisialy, ao anaty toerana iray farany.</string>
     <string name="welcome_hero_subtitle">Ny serivisy panjakana eo an-tananao</string>
     <string name="welcome_hero_body">Manamora ny fangatahana, mitatitra olana, mijanona ho vaovao.</string>
     <string name="welcome_hero_cta">Atombohy</string>
     <string name="welcome_cta_start_cd">Atombohy</string>
     <string name="welcome_content_desc_hero">Tsena mihetsiketsika any Antananarivo</string>
 
-    <!-- Profil — création du profil -->
+    <!-- Profil - création du profil -->
     <string name="profile_title">Andao hamorona ny mombamombao</string>
     <string name="profile_subtitle">Vaovao vitsivitsy hanamboarana ny toeranao manokana.</string>
-    <string name="profile_avatar_cd">Sary mombamomba — tsindrio hanampiana</string>
+    <string name="profile_avatar_cd">Sary mombamomba - tsindrio hanampiana</string>
     <string name="profile_first_name_label">Anarana voalohany *</string>
     <string name="profile_first_name_hint">Jean</string>
     <string name="profile_last_name_label">Anarana *</string>
@@ -61,11 +61,11 @@
     <string name="profile_continue">Tohizo</string>
     <string name="profile_back_cd">Miverina</string>
     <string name="validation_name_error">Soraty ny anarana (litera fotsiny, 2 litera farafahakeliny)</string>
-    <string name="validation_phone_error">Finday tsy mety — ohatra: +261341234567 na 0341234567</string>
+    <string name="validation_phone_error">Finday tsy mety - ohatra: +261341234567 na 0341234567</string>
     <string name="validation_birthdate_error">Safidio daty nahaterahana marina</string>
     <string name="validation_required_error">Ity saha ity dia tsy maintsy fenoina</string>
 
-    <!-- Profil — fiche citoyen (après création) -->
+    <!-- Profil - fiche citoyen (après création) -->
     <string name="mon_profil_title">Ny mombamombao</string>
     <string name="mon_profil_back_cd">Miverina</string>
     <string name="mon_profil_zone_label">Faritra misy anao</string>
@@ -74,7 +74,7 @@
     <string name="mon_profil_citizen_badge">Kaonty olom-pirenena</string>
     <string name="mon_profil_empty_value">Tsy voafaritra</string>
 
-    <!-- Zone — lieu de résidence -->
+    <!-- Zone - lieu de résidence -->
     <string name="zone_title">Ny faritrao</string>
     <string name="zone_subtitle">Lazao ny toerana misy anao mba hahazoanao serivisy mifanaraka.</string>
     <string name="zone_title_cd">Mari-toerana</string>
@@ -95,7 +95,7 @@
     <string name="zone_retry">Avereno</string>
     <string name="zone_continue">Tohizo</string>
 
-    <!-- Succès — profil créé -->
+    <!-- Succès - profil créé -->
     <string name="success_title">Vita ny mombamomba !</string>
     <string name="success_subtitle">Voamboatra soa aman-tsara ny kaontinao olom-pirenena.</string>
     <string name="success_check_cd">Vita soa aman-tsara ny mombamomba</string>
@@ -114,13 +114,13 @@
     <string name="notifications_1_body">Taratasy fanamarinana ny fonenana</string>
     <string name="notifications_1_time">2 ora lasa izay</string>
     <string name="notifications_2_title">Voaray ny tatitra</string>
-    <string name="notifications_2_body">Herinaratra – SIG-2026-004821</string>
+    <string name="notifications_2_body">Herinaratra - SIG-2026-004821</string>
     <string name="notifications_2_time">4 ora lasa izay</string>
     <string name="notifications_3_title">Vaovao ofisialy</string>
     <string name="notifications_3_body">Tapaka ny rano any Antananarivo</string>
     <string name="notifications_3_time">6 ora lasa izay</string>
     <string name="notifications_4_title">Vita ny fangatahanao</string>
-    <string name="notifications_4_body">Soratra nahaterahana – MAD-2026-004210</string>
+    <string name="notifications_4_body">Soratra nahaterahana - MAD-2026-004210</string>
     <string name="notifications_4_time">Omaly</string>
     <string name="notifications_5_title">Nohavaozina ny mombamombao</string>
     <string name="notifications_5_body">Voarakitra ny vaovao momba anao</string>
@@ -198,7 +198,7 @@
     <string name="confirmation_step_done">Vita</string>
     <string name="confirmation_cta">Hijery ny fangatahana</string>
 
-    <!-- Signalement — catégorie -->
+    <!-- Signalement - catégorie -->
     <string name="signalement_back_cd">Miverina</string>
     <string name="signalement_title">Hitatitra olana</string>
     <string name="signalement_subtitle">Inona no tianao ho tatitra ?</string>
@@ -217,7 +217,7 @@
     <string name="signalement_sub_step">Sokajy</string>
     <string name="signalement_continue">Tohizo</string>
 
-    <!-- Signalement — localisation -->
+    <!-- Signalement - localisation -->
     <string name="signalement_location_back_cd">Miverina</string>
     <string name="signalement_location_title">Toerana</string>
     <string name="signalement_use_position">Ampiasao ny toerako</string>
@@ -229,7 +229,7 @@
     <string name="signalement_address_label">Adiresy hita</string>
     <string name="signalement_address_hint">Fokontany, Kaominina</string>
 
-    <!-- Signalement — détails -->
+    <!-- Signalement - détails -->
     <string name="signalement_details_back_cd">Miverina</string>
     <string name="signalement_details_title">Antsipiriany sy sary</string>
     <string name="signalement_description_label">Inona no nitranga ?</string>
@@ -237,7 +237,7 @@
     <string name="signalement_add_photo_label">Ampidiro sary (tsy voatery)</string>
     <string name="signalement_add_photo_cd">Ampidiro sary</string>
 
-    <!-- Signalement — confirmation -->
+    <!-- Signalement - confirmation -->
     <string name="signalement_confirm_back_cd">Miverina</string>
     <string name="signalement_confirm_title">Fanamarinana</string>
     <string name="signalement_location_row_label">Toerana : </string>
@@ -248,7 +248,7 @@
     <string name="signalement_priority_low">Ambany</string>
     <string name="signalement_send">Alefaso</string>
 
-    <!-- Signalement — succès -->
+    <!-- Signalement - succès -->
     <string name="signalement_success_back_cd">Miverina</string>
     <string name="signalement_success_title">Nalefa ny tatitra !</string>
     <string name="signalement_success_subtitle_format">Voarakitra soa aman-tsara ny tatitrao %1$s.</string>
@@ -270,13 +270,13 @@
     <string name="mes_demarches_cta">Fangatahana vaovao</string>
     <string name="mes_demarches_dossier_format">Lah. %1$s</string>
     <string name="mes_demarches_1_title">Taratasy fanamarinana ny fonenana</string>
-    <string name="mes_demarches_1_service">Kaominina — Antananarivo</string>
+    <string name="mes_demarches_1_service">Kaominina - Antananarivo</string>
     <string name="mes_demarches_1_date">12 sept. 2026</string>
     <string name="mes_demarches_2_title">Soratra nahaterahana</string>
-    <string name="mes_demarches_2_service">Sora-piainanana — Analakely</string>
+    <string name="mes_demarches_2_service">Sora-piainanana - Analakely</string>
     <string name="mes_demarches_2_date">5 sept. 2026</string>
     <string name="mes_demarches_3_title">Karam-pirenen’ny maha-olona (CIN)</string>
-    <string name="mes_demarches_3_service">Distrika — Antananarivo</string>
+    <string name="mes_demarches_3_service">Distrika - Antananarivo</string>
     <string name="mes_demarches_3_date">28 aog. 2026</string>
 
     <!-- Mes signalements -->
@@ -290,7 +290,7 @@
     <string name="mes_signalements_cta">Tatitra vaovao</string>
     <string name="mes_signalements_dossier_format">Lah. %1$s</string>
     <string name="mes_signalements_1_title">Jiro an-dalambe</string>
-    <string name="mes_signalements_1_body">Jiro simba — Lalana Rainandriamampandry</string>
+    <string name="mes_signalements_1_body">Jiro simba - Lalana Rainandriamampandry</string>
     <string name="mes_signalements_1_date">14 sept. 2026</string>
     <string name="mes_signalements_2_title">Fahadiovana &amp; fako</string>
     <string name="mes_signalements_2_body">Fako tsy ara-dalàna akaikin’ny tsena</string>

@@ -16,7 +16,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import mg.iray.app.R
 
 /**
- * Catalogue tatitra — sokajy + zana-tsokajy (malagasy).
+ * Catalogue tatitra - sokajy + zana-tsokajy (malagasy).
  */
 data class SignalementCategoryInfo(
     val id: String,

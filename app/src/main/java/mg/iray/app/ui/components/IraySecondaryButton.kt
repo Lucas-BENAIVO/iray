@@ -25,7 +25,7 @@ import mg.iray.app.ui.theme.IrayTheme
 import mg.iray.app.ui.theme.OutlineOnWhite
 
 /**
- * CTA secondaire — pilule contour, design system onboarding.
+ * CTA secondaire - pilule contour, design system onboarding.
  */
 @Composable
 fun IraySecondaryButton(

@@ -34,7 +34,7 @@ import mg.iray.app.ui.theme.IrayTheme
 import mg.iray.app.ui.theme.TextOnBrand
 
 /**
- * CTA principal — pilule FlagGreen + pastille flèche (design system onboarding).
+ * CTA principal - pilule FlagGreen + pastille flèche (design system onboarding).
  */
 @Composable
 fun IrayPrimaryButton(

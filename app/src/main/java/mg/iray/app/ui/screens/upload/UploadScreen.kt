@@ -35,7 +35,7 @@ import mg.iray.app.ui.theme.SurfacePage
 import mg.iray.app.ui.theme.FlagGreen
 
 /**
- * Page d’upload d’un document — sélecteur système (PDF/JPG/PNG) + "Joindre".
+ * Page d’upload d’un document - sélecteur système (PDF/JPG/PNG) + "Joindre".
  *
  * Best practice : URI → nom/taille via ContentResolver, résultat remonté
  * par [UploadActions.onFileConfirmed], aucun texte en dur.

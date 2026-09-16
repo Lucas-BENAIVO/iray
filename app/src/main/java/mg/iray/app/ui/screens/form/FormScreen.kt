@@ -36,7 +36,7 @@ import mg.iray.app.ui.theme.SurfacePage
 import mg.iray.app.ui.validation.FormValidators
 
 /**
- * Écran "Informations personnelles" (étape 4 sur 5) — UN écran dynamique.
+ * Écran "Informations personnelles" (étape 4 sur 5) - UN écran dynamique.
  *
  * Champs pré-remplis depuis le profil ([initialFirstName]…), "Lieu de
  * naissance" affiché seulement si [asksBirthPlace] (cas CIN).
@@ -181,7 +181,7 @@ fun FormScreen(
     }
 }
 
-/** Lieux de naissance proposés — à remplacer par le référentiel officiel. */
+/** Lieux de naissance proposés - à remplacer par le référentiel officiel. */
 private val BirthPlaces = listOf(
     "Antananarivo",
     "Antsirabe",

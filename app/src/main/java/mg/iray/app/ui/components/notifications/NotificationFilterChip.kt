@@ -20,7 +20,7 @@ import mg.iray.app.ui.theme.OutlineOnWhite
 import mg.iray.app.ui.theme.TextSecondary
 
 /**
- * Filtre de notifications — pastille verte si actif, blanche sinon.
+ * Filtre de notifications - pastille verte si actif, blanche sinon.
  * Clic sans ripple (évite le flash blanc).
  */
 @Composable

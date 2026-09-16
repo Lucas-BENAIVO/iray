@@ -10,7 +10,7 @@ data class UserProfileEntity(
     val lastName: String = "",
     val phone: String = "",
     val email: String = "",
-    /** JJ/MM/AAAA — aligné sur le formulaire profil UI. */
+    /** JJ/MM/AAAA - aligné sur le formulaire profil UI. */
     val birthdate: String = "",
     val commune: String = "",
     val fokontany: String = "",

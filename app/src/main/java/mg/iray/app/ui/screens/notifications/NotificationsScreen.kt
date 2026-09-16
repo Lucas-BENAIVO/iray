@@ -51,7 +51,7 @@ import mg.iray.app.ui.theme.SurfacePage
 import mg.iray.app.ui.theme.TextPrimary
 
 /**
- * Écran Notifications — copie la capture du 11/09 15:01.
+ * Écran Notifications - copie la capture du 11/09 15:01.
  *
  * Filtres + liste. Best practice : filtre hoisté ici (rememberSaveable),
  * données de démo fournies par défaut (à remplacer par le repository).

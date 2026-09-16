@@ -36,7 +36,7 @@ import mg.iray.app.ui.theme.TextSecondary
 import mg.iray.app.ui.theme.FlagGreen
 
 /**
- * Carte N° de dossier — icône doc + libellé + numéro.
+ * Carte N° de dossier - icône doc + libellé + numéro.
  *
  * Best practice : stateless, aucun texte en dur.
  */
@@ -91,7 +91,7 @@ fun ConfirmationDossierCard(
 }
 
 /**
- * Timeline de suivi — pastille pleine (étape en cours) + creuses (à venir).
+ * Timeline de suivi - pastille pleine (étape en cours) + creuses (à venir).
  *
  * Best practice : stateless, étapes en paramètres.
  */

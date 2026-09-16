@@ -39,7 +39,7 @@ import mg.iray.app.ui.theme.TextPrimary
 import mg.iray.app.ui.theme.TextSecondary
 
 /**
- * Écran "Signalement envoyé !" — fin du parcours signalement.
+ * Écran "Signalement envoyé !" - fin du parcours signalement.
  *
  * N° SIG stable, date du jour, timeline. Best practice : écran stateless,
  * composants communs (check, dossier, timeline, boutons) réutilisés.

@@ -45,14 +45,14 @@ import mg.iray.app.ui.theme.TextPrimary
 import mg.iray.app.ui.theme.TextSecondary
 
 enum class WelcomeActionStyle {
-    /** Démarches — vert drapeau. */
+    /** Démarches - vert drapeau. */
     Demarches,
-    /** Signalements — rouge drapeau retenu. */
+    /** Signalements - rouge drapeau retenu. */
     Signalements,
 }
 
 /**
- * Carte d’action Welcome premium — pastille icône, titre Clash, flèche circulaire.
+ * Carte d’action Welcome premium - pastille icône, titre Clash, flèche circulaire.
  */
 @Composable
 fun WelcomeActionCard(

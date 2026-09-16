@@ -1,7 +1,7 @@
 package mg.iray.app.ui.screens.demarcheDetail
 
 /**
- * Antsipirian’ny asa ara-pitantanana — écran dynamique unique.
+ * Antsipirian’ny asa ara-pitantanana - écran dynamique unique.
  * Données de démo en malagasy.
  */
 data class DemarcheDetails(

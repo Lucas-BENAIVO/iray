@@ -35,7 +35,7 @@ import mg.iray.app.ui.theme.SurfacePage
 import mg.iray.app.ui.theme.FlagRed
 
 /**
- * Écran sous-catégorie — UN écran dynamique par catégorie.
+ * Écran sous-catégorie - UN écran dynamique par catégorie.
  *
  * Contenu fourni par [SignalementCatalog] selon [categoryId].
  * Best practice : sélection hoistée ici, groupe radio stateless.

@@ -75,7 +75,7 @@ import mg.iray.app.ui.screens.zone.ZoneActions
 import mg.iray.app.ui.screens.zone.ZoneScreen
 
 /**
- * Graphe de navigation — best practice : un seul [NavHost], routes
+ * Graphe de navigation - best practice : un seul [NavHost], routes
  * centralisées, navigation pilotée par les callbacks des écrans.
  */
 object IrayRoute {
@@ -141,7 +141,7 @@ fun IrayNavHost(
     var commune by rememberSaveable { mutableStateOf("") }
     var fokontany by rememberSaveable { mutableStateOf("") }
     var hasProfile by rememberSaveable { mutableStateOf(false) }
-    // Fichiers joints par "demarcheId/index" — partagés documents ↔ upload.
+    // Fichiers joints par "demarcheId/index" - partagés documents ↔ upload.
     val attachedByKey = remember { mutableStateMapOf<String, String>() }
 
     val openProfile = hasProfileRemote || hasProfile
@@ -248,7 +248,7 @@ fun IrayNavHost(
                             fokontany = selection.fokontany,
                         )
                         if (hasProfile) {
-                            // Édition zone depuis Mon profil — retour direct.
+                            // Édition zone depuis Mon profil - retour direct.
                             navController.navigate(IrayRoute.MON_PROFIL) {
                                 popUpTo(IrayRoute.MON_PROFIL) { inclusive = true }
                                 launchSingleTop = true

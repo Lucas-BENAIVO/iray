@@ -46,7 +46,7 @@ import mg.iray.app.ui.theme.IrayTheme
 import mg.iray.app.ui.theme.SurfacePage
 
 /**
- * Écran "Démarches administratives" — copie la capture du 11/09 15:24.
+ * Écran "Démarches administratives" - copie la capture du 11/09 15:24.
  *
  * Recherche + filtres + liste sélectionnable. Best practice : recherche,
  * filtre et sélection hoistés ici (rememberSaveable), composants de

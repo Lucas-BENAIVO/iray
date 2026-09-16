@@ -22,7 +22,7 @@ import mg.iray.app.entity.UserProfileEntity
 import mg.iray.app.worker.enqueueImmediateSync
 
 /**
- * Contrôleur profil — unique source de vérité Room / sync.
+ * Contrôleur profil - unique source de vérité Room / sync.
  * Les infos citoyen sont assemblées avec l’uid de session.
  */
 class ProfileController(application: Application) : AndroidViewModel(application) {

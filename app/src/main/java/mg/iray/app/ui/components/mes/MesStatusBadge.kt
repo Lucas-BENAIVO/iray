@@ -17,7 +17,7 @@ import mg.iray.app.ui.theme.PriorityOrange
 import mg.iray.app.ui.theme.SuccessAvatar
 
 /**
- * Pastille de statut — couleur + libellé (stateless).
+ * Pastille de statut - couleur + libellé (stateless).
  */
 @Composable
 fun MesStatusBadge(

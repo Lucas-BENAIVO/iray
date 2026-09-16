@@ -43,7 +43,7 @@ import mg.iray.app.ui.theme.TextSecondary
 import mg.iray.app.ui.theme.FlagGreen
 
 /**
- * Zone d’upload pointillée — invite galerie/fichiers ou résumé du fichier choisi.
+ * Zone d’upload pointillée - invite galerie/fichiers ou résumé du fichier choisi.
  *
  * Best practice : stateless, aucun texte en dur.
  */

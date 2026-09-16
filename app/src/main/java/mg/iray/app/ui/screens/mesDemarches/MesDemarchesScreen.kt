@@ -49,7 +49,7 @@ import mg.iray.app.ui.theme.SurfacePage
 import mg.iray.app.ui.theme.TextSecondary
 
 /**
- * Écran "Mes démarches" — historique des demandes soumises.
+ * Écran "Mes démarches" - historique des demandes soumises.
  *
  * Recherche + filtres de statut + liste + CTA nouvelle demande + bottom bar.
  * Best practice : état UI hoisté ici, données démo (à remplacer par repo).

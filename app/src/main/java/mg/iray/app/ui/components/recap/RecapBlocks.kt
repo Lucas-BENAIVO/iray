@@ -26,7 +26,7 @@ import mg.iray.app.ui.theme.TextPrimary
 import mg.iray.app.ui.theme.TextSecondary
 
 /**
- * Détails de la demande — lignes libellé gris + valeur grasse.
+ * Détails de la demande - lignes libellé gris + valeur grasse.
  *
  * Best practice : stateless, aucun texte en dur.
  */
@@ -94,7 +94,7 @@ private fun DetailLine(
 }
 
 /**
- * Documents joints — lignes check vert + nom du fichier.
+ * Documents joints - lignes check vert + nom du fichier.
  *
  * Best practice : stateless, liste en paramètre.
  */

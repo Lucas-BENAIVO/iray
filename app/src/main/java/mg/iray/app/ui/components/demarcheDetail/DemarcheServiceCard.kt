@@ -32,7 +32,7 @@ import mg.iray.app.ui.theme.TextSecondary
 import mg.iray.app.ui.theme.FlagGreen
 
 /**
- * Carte "Service concerné" — pastille icône + libellé + valeur.
+ * Carte "Service concerné" - pastille icône + libellé + valeur.
  *
  * Best practice : stateless, aucun texte en dur.
  */

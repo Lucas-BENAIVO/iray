@@ -32,7 +32,7 @@ import mg.iray.app.ui.theme.TextPrimary
 import mg.iray.app.ui.theme.TextSecondary
 
 /**
- * Ligne d’info profil — icône + libellé + valeur.
+ * Ligne d’info profil - icône + libellé + valeur.
  */
 @Composable
 fun ProfileInfoRow(

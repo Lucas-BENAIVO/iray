@@ -33,7 +33,7 @@ import mg.iray.app.ui.theme.TextSecondary
 import mg.iray.app.ui.theme.FlagGreen
 
 /**
- * Carte notification — pastille icône + titre + détail + heure.
+ * Carte notification - pastille icône + titre + détail + heure.
  *
  * Best practice : stateless, données en paramètres, aucun texte en dur.
  */

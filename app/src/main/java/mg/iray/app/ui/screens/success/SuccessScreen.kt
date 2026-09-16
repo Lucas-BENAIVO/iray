@@ -31,7 +31,7 @@ import mg.iray.app.ui.theme.SurfacePage
 import mg.iray.app.ui.theme.TextSecondary
 
 /**
- * Écran "Profil créé !" — entre zone et welcome.
+ * Écran "Profil créé !" - entre zone et welcome.
  *
  * Affiche les vraies données saisies ([fullName], [zoneLabel]).
  * Best practice : stateless, bouton commun réutilisé.

@@ -32,7 +32,7 @@ import mg.iray.app.ui.theme.TextPrimary
 import mg.iray.app.ui.theme.TextSecondary
 
 /**
- * Carte récap — avatar + nom + "Commune, Fokontany".
+ * Carte récap - avatar + nom + "Commune, Fokontany".
  *
  * Best practice : stateless, données en paramètres, aucun texte en dur.
  */

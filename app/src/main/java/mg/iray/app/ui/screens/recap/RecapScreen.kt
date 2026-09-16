@@ -26,7 +26,7 @@ import mg.iray.app.ui.theme.IrayTheme
 import mg.iray.app.ui.theme.SurfacePage
 
 /**
- * Écran "Récapitulatif" (étape 5 sur 5) — UN écran dynamique.
+ * Écran "Récapitulatif" (étape 5 sur 5) - UN écran dynamique.
  *
  * Détails issus de [DemarcheDetailsCatalog], fichiers joints réels
  * ([attachedFileNames], sinon noms des pièces requises).

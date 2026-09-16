@@ -43,7 +43,7 @@ import mg.iray.app.ui.theme.TextPrimary
 import mg.iray.app.ui.theme.TextSecondary
 
 /**
- * Carte récap du signalement — catégorie + localisation + description + priorité.
+ * Carte récap du signalement - catégorie + localisation + description + priorité.
  *
  * Best practice : stateless, aucun texte en dur.
  */

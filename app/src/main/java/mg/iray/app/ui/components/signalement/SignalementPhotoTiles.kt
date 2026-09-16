@@ -37,7 +37,7 @@ import mg.iray.app.ui.theme.TextPrimary
 import mg.iray.app.ui.theme.FlagRed
 
 /**
- * Vignettes photos + tuile "+" — aperçu réel via ImageView système.
+ * Vignettes photos + tuile "+" - aperçu réel via ImageView système.
  *
  * Best practice : stateless (URIs en paramètres), pas de dépendance lourde.
  */

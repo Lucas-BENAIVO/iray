@@ -31,7 +31,7 @@ import mg.iray.app.ui.theme.IrayTheme
 import mg.iray.app.ui.theme.SurfacePage
 
 /**
- * Écran "Signaler un problème" — choix de la catégorie, recherche live.
+ * Écran "Signaler un problème" - choix de la catégorie, recherche live.
  *
  * Best practice : recherche et sélection hoistées ici (rememberSaveable),
  * lignes de [mg.iray.app.ui.components.signalement] stateless.

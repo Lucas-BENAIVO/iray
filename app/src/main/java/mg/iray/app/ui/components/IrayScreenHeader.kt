@@ -26,7 +26,7 @@ import mg.iray.app.ui.theme.TextPrimary
 import mg.iray.app.ui.theme.TextSecondary
 
 /**
- * En-tête d’écran — design system onboarding (Clash titre, Satoshi sous-titre, barre drapeau).
+ * En-tête d’écran - design system onboarding (Clash titre, Satoshi sous-titre, barre drapeau).
  */
 @Composable
 fun IrayScreenHeader(

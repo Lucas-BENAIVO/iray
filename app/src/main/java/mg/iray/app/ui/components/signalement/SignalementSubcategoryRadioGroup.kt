@@ -27,7 +27,7 @@ import mg.iray.app.ui.theme.TextPrimary
 import mg.iray.app.ui.theme.FlagRed
 
 /**
- * Liste radio des sous-catégories — lignes séparées, sélection bleue.
+ * Liste radio des sous-catégories - lignes séparées, sélection bleue.
  *
  * Best practice : stateless ([selected]/[onSelect] hoistés).
  */

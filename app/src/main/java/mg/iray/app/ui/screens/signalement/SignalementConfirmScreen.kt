@@ -25,7 +25,7 @@ import mg.iray.app.ui.theme.IrayTheme
 import mg.iray.app.ui.theme.SurfacePage
 
 /**
- * Écran "Confirmation" du signalement — récap + priorité + Envoyer.
+ * Écran "Confirmation" du signalement - récap + priorité + Envoyer.
  *
  * Best practice : écran stateless, données en paramètres.
  */

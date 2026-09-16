@@ -41,7 +41,7 @@ import mg.iray.app.ui.theme.SurfacePage
 import mg.iray.app.ui.theme.TextSecondary
 
 /**
- * Écran "Détails et photos" — description + photos du problème.
+ * Écran "Détails et photos" - description + photos du problème.
  *
  * Best practice : état hoisté ici, URIs en chaînes (survivent à la rotation).
  */

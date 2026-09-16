@@ -49,7 +49,7 @@ import mg.iray.app.ui.theme.SurfacePage
 import mg.iray.app.ui.theme.TextSecondary
 
 /**
- * Écran "Mes signalements" — historique des signalements envoyés.
+ * Écran "Mes signalements" - historique des signalements envoyés.
  *
  * Même logique que Mes démarches : recherche, filtres, liste, CTA, bottom bar.
  */

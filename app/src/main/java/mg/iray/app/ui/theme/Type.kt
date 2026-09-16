@@ -8,7 +8,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import mg.iray.app.R
 
-/** Corps / UI — Satoshi (toute l’app). */
+/** Corps / UI - Satoshi (toute l’app). */
 val IrayFontFamily = FontFamily(
     Font(R.font.satoshi_regular, FontWeight.Normal),
     Font(R.font.satoshi_medium, FontWeight.Medium),
@@ -18,7 +18,7 @@ val IrayFontFamily = FontFamily(
     Font(R.font.satoshi_black, FontWeight.ExtraBold),
 )
 
-/** Gros titres / onboarding — Clash Display. */
+/** Gros titres / onboarding - Clash Display. */
 val IrayDisplayFontFamily = FontFamily(
     Font(R.font.clash_display_medium, FontWeight.Medium),
     Font(R.font.clash_display_semibold, FontWeight.SemiBold),
@@ -28,7 +28,7 @@ val IrayDisplayFontFamily = FontFamily(
 )
 
 /**
- * Typographie Iray — appliquée via [IrayTheme] à tous les écrans.
+ * Typographie Iray - appliquée via [IrayTheme] à tous les écrans.
  * Display/Headline → Clash Display · reste → Satoshi.
  */
 val Typography = Typography(

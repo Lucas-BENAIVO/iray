@@ -19,11 +19,11 @@ import com.google.maps.android.compose.MarkerState
 import com.google.maps.android.compose.rememberCameraPositionState
 import mg.iray.app.ui.theme.IrayTheme
 
-/** Centre par défaut — Antananarivo. */
+/** Centre par défaut - Antananarivo. */
 val DefaultMapLatLng = LatLng(-18.8792, 47.5079)
 
 /**
- * Carte interactive Google Maps — pin + tap pour choisir la position.
+ * Carte interactive Google Maps - pin + tap pour choisir la position.
  */
 @Composable
 fun ZoneMapPreview(

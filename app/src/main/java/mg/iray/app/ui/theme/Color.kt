@@ -3,18 +3,18 @@ package mg.iray.app.ui.theme
 import androidx.compose.ui.graphics.Color
 
 /**
- * Design system État malgache — palette institutionnelle maximale.
+ * Design system État malgache - palette institutionnelle maximale.
  *
  * Drapeau = identité (logo, barre). UI = neutres + un vert très retenu.
  */
 
-// —— Drapeau (marque d’État uniquement) ——
+// -- Drapeau (marque d'État uniquement)
 val FlagWhite = Color(0xFFFFFFFF)
 val FlagRed = Color(0xFFFC3D32)
 val FlagGreen = Color(0xFF007E3A)
 
-// —— UI ——
-/** Vert d’État très désaturé — icônes, liens, liserés. */
+// -- UI
+/** Vert d'État très désaturé - icônes, liens, liserés. */
 val BrandAccent = Color(0xFF184A38)
 /** Fond primaire : à peine teinté, presque blanc. */
 val BrandPrimarySoft = Color(0xFFF4F7F5)
@@ -43,26 +43,26 @@ val SurfaceCard = Color(0xFFFFFFFF)
 val DividerSubtle = Color(0xFFEEEEEE)
 val OutlineOnWhite = Color(0xFFE0E0E0)
 
-// —— Carte zone (placeholder en attendant le SDK carto) ——
+// -- Carte zone (placeholder en attendant le SDK carto)
 /** Fond beige clair façon carte. */
 val ZoneMapBackground = Color(0xFFEDE9DC)
 /** Punaise de localisation bleue. */
 val ZoneMapPin = Color(0xFF1A73E8)
 
-// —— Écran succès ——
+// -- Écran succès
 /** Halo vert clair autour du check. */
 val SuccessHalo = Color(0xFFE3F3E8)
 /** Pastille avatar bleu nuit. */
 val SuccessAvatar = Color(0xFF1B3A5C)
 
-// —— Priorités signalement ——
+// -- Priorités signalement
 /** Orange priorité moyenne. */
 val PriorityOrange = Color(0xFFE68900)
 
-// —— Onboarding premium ——
+// -- Onboarding premium
 /** Vert profond atmosphérique. */
 val OnboardingGreenDeep = Color(0xFF123528)
-/** Vert doux bas d’écran. */
+/** Vert doux bas d'écran. */
 val OnboardingGreenSoft = Color(0xFF3A634C)
 /** Texte secondaire sur fond vert. */
 val OnboardingMutedOnGreen = Color(0xFFC5D6CB)

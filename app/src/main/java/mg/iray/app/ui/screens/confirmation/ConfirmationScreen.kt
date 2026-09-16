@@ -38,7 +38,7 @@ import mg.iray.app.ui.theme.TextPrimary
 import mg.iray.app.ui.theme.TextSecondary
 
 /**
- * Écran "Demande envoyée !" — fin du parcours, UN écran dynamique.
+ * Écran "Demande envoyée !" - fin du parcours, UN écran dynamique.
  *
  * N° de dossier stable par démarche, date du jour, timeline de suivi.
  * Best practice : écran stateless, check commun réutilisé.

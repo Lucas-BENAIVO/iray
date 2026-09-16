@@ -57,7 +57,7 @@ fun OnboardingBottomContent(
         modifier = modifier,
         horizontalAlignment = Alignment.Start,
     ) {
-        // Accent discret — petit trait vert (pas d’icône « virus »).
+        // Accent discret - petit trait vert (pas d’icône « virus »).
         Box(
             modifier = Modifier
                 .size(width = 36.dp, height = 4.dp)
@@ -125,7 +125,7 @@ fun OnboardingBottomContent(
 }
 
 /**
- * CTA premium sur fond photo — pilule blanche, typo nette, flèche en pastille.
+ * CTA premium sur fond photo - pilule blanche, typo nette, flèche en pastille.
  * Micro-effet au clic (échelle + légère opacité) avant navigation.
  */
 @Composable

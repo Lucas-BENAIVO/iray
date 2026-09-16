@@ -29,7 +29,7 @@ import mg.iray.app.ui.theme.IrayTheme
 import mg.iray.app.ui.theme.SurfacePage
 
 /**
- * Écran "Documents à joindre" (étape 3 sur 5) — UN écran dynamique.
+ * Écran "Documents à joindre" (étape 3 sur 5) - UN écran dynamique.
  *
  * Documents issus de [DemarcheDetailsCatalog] selon [demarcheId].
  * Best practice : fichiers joints hoistés ici, lignes stateless.

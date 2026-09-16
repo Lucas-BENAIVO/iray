@@ -44,7 +44,7 @@ class RequestController(application: Application) : AndroidViewModel(application
     private val _lastSignalementRef = MutableStateFlow("")
     val lastSignalementRef: StateFlow<String> = _lastSignalementRef.asStateFlow()
 
-    /** Brouillon formulaire démarche — clés = champs backend [RequestEntity.formData]. */
+    /** Brouillon formulaire démarche - clés = champs backend [RequestEntity.formData]. */
     private val _draftFormData = MutableStateFlow<Map<String, Any>>(emptyMap())
     val draftFormData: StateFlow<Map<String, Any>> = _draftFormData.asStateFlow()
 

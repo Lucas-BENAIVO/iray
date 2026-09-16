@@ -22,7 +22,7 @@ import mg.iray.app.ui.theme.IrayTheme
 import mg.iray.app.ui.theme.TextOnBrand
 
 /**
- * Check de succès — halo clair + confettis + pastille + check blanc.
+ * Check de succès - halo clair + confettis + pastille + check blanc.
  */
 @Composable
 fun SuccessCheckmark(

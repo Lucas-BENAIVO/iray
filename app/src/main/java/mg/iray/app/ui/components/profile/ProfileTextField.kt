@@ -34,7 +34,7 @@ import mg.iray.app.ui.theme.TextPrimary
 import mg.iray.app.ui.theme.TextSecondary
 
 /**
- * Champ du formulaire profil — icône + libellé + zone de saisie.
+ * Champ du formulaire profil - icône + libellé + zone de saisie.
  * [error] affiché sous le champ quand non null (validation).
  */
 @Composable

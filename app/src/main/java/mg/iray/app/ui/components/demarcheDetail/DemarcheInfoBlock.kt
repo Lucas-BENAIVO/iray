@@ -30,7 +30,7 @@ import mg.iray.app.ui.theme.TextPrimary
 import mg.iray.app.ui.theme.TextSecondary
 
 /**
- * Bloc "Informations" — délai estimé + frais, icônes vertes.
+ * Bloc "Informations" - délai estimé + frais, icônes vertes.
  *
  * Best practice : stateless, aucun texte en dur.
  */

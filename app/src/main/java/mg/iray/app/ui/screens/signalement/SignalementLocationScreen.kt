@@ -47,7 +47,7 @@ import mg.iray.app.ui.theme.SurfacePage
 import mg.iray.app.ui.theme.TextSecondary
 
 /**
- * Écran localisation du signalement — carte réelle + GPS + adresse.
+ * Écran localisation du signalement - carte réelle + GPS + adresse.
  */
 data class SignalementLocationActions(
     val onBack: () -> Unit = {},

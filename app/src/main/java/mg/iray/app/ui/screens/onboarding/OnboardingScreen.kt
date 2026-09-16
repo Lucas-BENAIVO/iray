@@ -27,7 +27,7 @@ import mg.iray.app.ui.components.onboarding.OnboardingTopBrand
 import mg.iray.app.ui.theme.IrayTheme
 
 /**
- * Onboarding immersif — photo pleine page + overlay cinématique + contenu bas.
+ * Onboarding immersif - photo pleine page + overlay cinématique + contenu bas.
  */
 data class OnboardingActions(
     val onStart: () -> Unit = {},
@@ -56,7 +56,7 @@ fun OnboardingScreen(
                 .alpha(0f),
         )
 
-        // Overlay chaud / profond — laisse respirer le ciel, ancre le texte en bas.
+        // Overlay chaud / profond - laisse respirer le ciel, ancre le texte en bas.
         Box(
             modifier = Modifier
                 .fillMaxSize()

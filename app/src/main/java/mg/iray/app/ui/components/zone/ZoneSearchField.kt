@@ -23,7 +23,7 @@ import mg.iray.app.ui.theme.OutlineOnWhite
 import mg.iray.app.ui.theme.TextSecondary
 
 /**
- * Champ de recherche de zone — loupe + hint.
+ * Champ de recherche de zone - loupe + hint.
  *
  * Best practice : stateless ([value]/[onValueChange] hoistés), aucun texte en dur.
  */

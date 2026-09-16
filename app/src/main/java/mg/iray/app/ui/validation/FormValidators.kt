@@ -3,7 +3,7 @@ package mg.iray.app.ui.validation
 import java.util.Calendar
 
 /**
- * Validation des champs citoyen — formats Madagascar / JJ/MM/AAAA.
+ * Validation des champs citoyen - formats Madagascar / JJ/MM/AAAA.
  */
 object FormValidators {
 

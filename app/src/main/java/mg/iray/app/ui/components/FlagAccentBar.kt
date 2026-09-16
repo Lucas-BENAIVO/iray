@@ -21,7 +21,7 @@ import mg.iray.app.ui.theme.IrayTheme
 import mg.iray.app.ui.theme.OutlineOnWhite
 
 /**
- * Fine barre tricolore — rappel discret du drapeau.
+ * Fine barre tricolore - rappel discret du drapeau.
  */
 @Composable
 fun FlagAccentBar(

@@ -30,7 +30,7 @@ import mg.iray.app.ui.theme.TextSecondary
 import mg.iray.app.ui.theme.FlagGreen
 
 /**
- * Carte "Documents nécessaires" — lignes "» + libellé" séparées.
+ * Carte "Documents nécessaires" - lignes "» + libellé" séparées.
  *
  * Best practice : stateless, liste en paramètre.
  */

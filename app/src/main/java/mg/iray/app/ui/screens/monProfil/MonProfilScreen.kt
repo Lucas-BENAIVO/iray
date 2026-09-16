@@ -50,7 +50,7 @@ import mg.iray.app.ui.theme.TextPrimary
 import mg.iray.app.ui.theme.TextSecondary
 
 /**
- * Écran "Mon profil" — fiche citoyen une fois le parcours création terminé.
+ * Écran "Mon profil" - fiche citoyen une fois le parcours création terminé.
  *
  * Affiche les infos saisies + zone. Bottom bar onglet Profil actif.
  */

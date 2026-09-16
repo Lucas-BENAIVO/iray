@@ -43,7 +43,7 @@ import mg.iray.app.ui.theme.TextPrimary
 import mg.iray.app.ui.theme.TextSecondary
 
 /**
- * Carte document à joindre — même effet clic / flèche que les autres CTA.
+ * Carte document à joindre - même effet clic / flèche que les autres CTA.
  */
 @Composable
 fun DocumentUploadRow(
