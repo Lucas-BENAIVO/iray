@@ -21,6 +21,8 @@ class IrayApp : Application() {
         schedulePeriodicMediaUpload(this)
 
         appScope.launch {
+            // Offline-first : référentiel local prêt avant toute sync réseau.
+            ServiceLocator.territoryRepository().ensureLocalReferentiel()
             // premier lancement : création du uid anonyme unique, persisté localement
             ServiceLocator.authRepository().ensureUserId()
             // premier lancement hors-ligne : upgrade vers le vrai uid dès que possible

@@ -1,0 +1,40 @@
+[
+  {"id":"reg_analamanga","name":"Analamanga","type":"REGION","parentId":null},
+  {"id":"reg_vakinankaratra","name":"Vakinankaratra","type":"REGION","parentId":null},
+  {"id":"reg_atsinanana","name":"Atsinanana","type":"REGION","parentId":null},
+  {"id":"reg_boeny","name":"Boeny","type":"REGION","parentId":null},
+  {"id":"reg_haute_matsiatra","name":"Haute Matsiatra","type":"REGION","parentId":null},
+
+  {"id":"dist_tana_renivohitra","name":"Antananarivo Renivohitra","type":"DISTRICT","parentId":"reg_analamanga"},
+  {"id":"dist_tana_avaradrano","name":"Antananarivo Avaradrano","type":"DISTRICT","parentId":"reg_analamanga"},
+  {"id":"dist_tana_atsimondrano","name":"Antananarivo Atsimondrano","type":"DISTRICT","parentId":"reg_analamanga"},
+  {"id":"dist_antsirabe_i","name":"Antsirabe I","type":"DISTRICT","parentId":"reg_vakinankaratra"},
+  {"id":"dist_toamasina_i","name":"Toamasina I","type":"DISTRICT","parentId":"reg_atsinanana"},
+  {"id":"dist_mahajanga_i","name":"Mahajanga I","type":"DISTRICT","parentId":"reg_boeny"},
+  {"id":"dist_fianarantsoa_i","name":"Fianarantsoa I","type":"DISTRICT","parentId":"reg_haute_matsiatra"},
+
+  {"id":"com_tana","name":"Antananarivo","type":"COMMUNE","parentId":"dist_tana_renivohitra"},
+  {"id":"com_ambalavao","name":"Ambalavao","type":"COMMUNE","parentId":"dist_tana_avaradrano"},
+  {"id":"com_antsirabe","name":"Antsirabe","type":"COMMUNE","parentId":"dist_antsirabe_i"},
+  {"id":"com_toamasina","name":"Toamasina","type":"COMMUNE","parentId":"dist_toamasina_i"},
+  {"id":"com_mahajanga","name":"Mahajanga","type":"COMMUNE","parentId":"dist_mahajanga_i"},
+  {"id":"com_fianarantsoa","name":"Fianarantsoa","type":"COMMUNE","parentId":"dist_fianarantsoa_i"},
+
+  {"id":"arr_tana_1","name":"1er Arrondissement","type":"ARRONDISSEMENT","parentId":"com_tana"},
+  {"id":"arr_tana_2","name":"2e Arrondissement","type":"ARRONDISSEMENT","parentId":"com_tana"},
+  {"id":"arr_tana_3","name":"3e Arrondissement","type":"ARRONDISSEMENT","parentId":"com_tana"},
+  {"id":"arr_tana_4","name":"4e Arrondissement","type":"ARRONDISSEMENT","parentId":"com_tana"},
+  {"id":"arr_tana_5","name":"5e Arrondissement","type":"ARRONDISSEMENT","parentId":"com_tana"},
+  {"id":"arr_tana_6","name":"6e Arrondissement","type":"ARRONDISSEMENT","parentId":"com_tana"},
+
+  {"id":"fkt_andohalo","name":"Andohalo","type":"FOKONTANY","parentId":"arr_tana_1"},
+  {"id":"fkt_analakely","name":"Analakely","type":"FOKONTANY","parentId":"arr_tana_1"},
+  {"id":"fkt_isoraka","name":"Isoraka","type":"FOKONTANY","parentId":"arr_tana_1"},
+  {"id":"fkt_antaninarenina","name":"Antaninarenina","type":"FOKONTANY","parentId":"arr_tana_1"},
+  {"id":"fkt_ambohijanahary","name":"Ambohijanahary","type":"FOKONTANY","parentId":"arr_tana_2"},
+  {"id":"fkt_ambahivoraka","name":"Ambahivoraka","type":"FOKONTANY","parentId":"com_ambalavao"},
+  {"id":"fkt_antsirabe_centre","name":"Centre Ville","type":"FOKONTANY","parentId":"com_antsirabe"},
+  {"id":"fkt_toamasina_centre","name":"Tanàna Afovoany","type":"FOKONTANY","parentId":"com_toamasina"},
+  {"id":"fkt_mahajanga_centre","name":"Mahabibo","type":"FOKONTANY","parentId":"com_mahajanga"},
+  {"id":"fkt_fianarantsoa_centre","name":"Zoma","type":"FOKONTANY","parentId":"com_fianarantsoa"}
+]

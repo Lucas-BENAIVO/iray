@@ -14,8 +14,23 @@ interface TerritoryDao {
     @Query("SELECT * FROM territories WHERE parentId = :parentId ORDER BY name ASC")
     fun observeByParent(parentId: String): Flow<List<TerritoryEntity>>
 
-    @Query("SELECT * FROM territories WHERE type = :type ORDER BY name ASC")
+    @Query("SELECT * FROM territories WHERE UPPER(type) = UPPER(:type) ORDER BY name ASC")
     fun observeByType(type: String): Flow<List<TerritoryEntity>>
+
+    @Query(
+        """
+        SELECT * FROM territories
+        WHERE parentId IS NULL OR parentId = ''
+        ORDER BY name ASC
+        """,
+    )
+    fun observeRoots(): Flow<List<TerritoryEntity>>
+
+    @Query("SELECT COUNT(*) FROM territories")
+    suspend fun count(): Int
+
+    @Query("SELECT COUNT(*) FROM territories WHERE UPPER(type) = UPPER(:type)")
+    suspend fun countByType(type: String): Int
 
     @Query("SELECT * FROM territories WHERE pendingOperation IS NOT NULL")
     suspend fun getPending(): List<TerritoryEntity>

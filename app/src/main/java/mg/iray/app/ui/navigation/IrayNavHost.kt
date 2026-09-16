@@ -144,7 +144,8 @@ fun IrayNavHost(
 
     val openProfile = hasProfileRemote || hasProfile
 
-    // Hydrate l’UI depuis Room (lié à l’uid) dès que le profil est disponible.
+    // Hydrate l’UI depuis Room. Profil « complet » = identité + faritra
+    // (sinon Faritrao flip startDestination → Welcome au milieu du parcours).
     LaunchedEffect(profile) {
         val p = profile ?: return@LaunchedEffect
         if (p.firstName.isNotBlank()) firstName = p.firstName
@@ -153,7 +154,12 @@ fun IrayNavHost(
         if (p.birthdate.isNotBlank()) birthdate = p.birthdate
         if (p.commune.isNotBlank()) commune = p.commune
         if (p.fokontany.isNotBlank()) fokontany = p.fokontany
-        if (p.firstName.isNotBlank() && p.lastName.isNotBlank()) {
+        if (
+            p.firstName.isNotBlank() &&
+            p.lastName.isNotBlank() &&
+            p.commune.isNotBlank() &&
+            p.fokontany.isNotBlank()
+        ) {
             hasProfile = true
         }
     }
@@ -168,8 +174,11 @@ fun IrayNavHost(
         return
     }
 
-    val startDestination =
-        if (openProfile) IrayRoute.WELCOME else IrayRoute.ONBOARDING
+    // Figé au 1er rendu NavHost : ne jamais changer startDestination en cours de session
+    // (sinon recréation du graphe → redirection forcée vers Welcome).
+    val startDestination = remember {
+        if (hasProfileRemote || hasProfile) IrayRoute.WELCOME else IrayRoute.ONBOARDING
+    }
 
     NavHost(
         navController = navController,
@@ -227,6 +236,8 @@ fun IrayNavHost(
         composable(IrayRoute.ZONE) {
             ZoneScreen(
                 actions = ZoneActions(
+                    // Toujours un retour : création → profil identité, édition → mon profil.
+                    onBack = { navController.popBackStack() },
                     onContinue = { selection ->
                         commune = selection.commune
                         fokontany = selection.fokontany

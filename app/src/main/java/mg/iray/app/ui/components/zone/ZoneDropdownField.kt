@@ -42,8 +42,13 @@ fun ZoneDropdownField(
     options: List<String>,
     onSelect: (String) -> Unit,
     modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    placeholder: String = "",
+    optionLabel: (String) -> String = { it },
 ) {
     var expanded by rememberSaveable { mutableStateOf(false) }
+    val display = value.ifBlank { placeholder }
+    val displayColor = if (value.isBlank()) TextSecondary else TextPrimary
 
     Column(modifier = modifier.fillMaxWidth()) {
         Text(
@@ -55,24 +60,27 @@ fun ZoneDropdownField(
         Spacer(modifier = Modifier.height(4.dp))
 
         ExposedDropdownMenuBox(
-            expanded = expanded,
-            onExpandedChange = { expanded = it },
+            expanded = expanded && enabled,
+            onExpandedChange = { if (enabled && options.isNotEmpty()) expanded = it },
         ) {
             OutlinedTextField(
-                value = value,
+                value = display,
                 onValueChange = {},
                 readOnly = true,
+                enabled = enabled,
                 singleLine = true,
                 trailingIcon = {
-                    ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded)
+                    ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded && enabled)
                 },
-                textStyle = MaterialTheme.typography.bodyLarge.copy(color = TextPrimary),
+                textStyle = MaterialTheme.typography.bodyLarge.copy(color = displayColor),
                 shape = RoundedCornerShape(12.dp),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedContainerColor = BrandWhite,
                     unfocusedContainerColor = BrandWhite,
+                    disabledContainerColor = BrandWhite,
                     focusedBorderColor = BrandAccent,
                     unfocusedBorderColor = OutlineOnWhite,
+                    disabledBorderColor = OutlineOnWhite.copy(alpha = 0.5f),
                 ),
                 modifier = Modifier
                     .menuAnchor()
@@ -80,12 +88,12 @@ fun ZoneDropdownField(
             )
 
             ExposedDropdownMenu(
-                expanded = expanded,
+                expanded = expanded && enabled,
                 onDismissRequest = { expanded = false },
             ) {
                 options.forEach { option ->
                     DropdownMenuItem(
-                        text = { Text(text = option) },
+                        text = { Text(text = optionLabel(option)) },
                         onClick = {
                             onSelect(option)
                             expanded = false

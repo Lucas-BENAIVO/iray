@@ -40,7 +40,13 @@ class ProfileController(application: Application) : AndroidViewModel(application
     }.stateIn(viewModelScope, SharingStarted.Eagerly, null)
 
     val hasProfile: StateFlow<Boolean> = profile
-        .map { it != null && it.firstName.isNotBlank() && it.lastName.isNotBlank() }
+        .map {
+            it != null &&
+                it.firstName.isNotBlank() &&
+                it.lastName.isNotBlank() &&
+                it.commune.isNotBlank() &&
+                it.fokontany.isNotBlank()
+        }
         .stateIn(viewModelScope, SharingStarted.Eagerly, false)
 
     init {

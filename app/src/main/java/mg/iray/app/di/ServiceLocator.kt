@@ -26,6 +26,7 @@ import mg.iray.app.sync.RemoteSync
 
 object ServiceLocator {
 
+    @Volatile private lateinit var appContext: Context
     @Volatile lateinit var db: AppDatabase
     @Volatile lateinit var session: UserSessionStore
     @Volatile lateinit var authSource: AuthSource
@@ -33,6 +34,7 @@ object ServiceLocator {
     @Volatile lateinit var mediaUploader: MediaUploader
 
     fun init(context: Context) {
+        appContext = context.applicationContext
         db = AppDatabase.getInstance(context)
         session = SharedPrefsUserSession(context)
         authSource = FirebaseAuthSource()
@@ -54,7 +56,7 @@ object ServiceLocator {
     fun signalementRepository() = SignalementRepository(db.signalementDao(), remoteSync, uidProvider())
     fun notificationRepository() = NotificationRepository(db.notificationDao(), remoteSync, uidProvider())
     fun mediaRepository() = MediaRepository(db.mediaDao(), mediaUploader, uidProvider())
-    fun territoryRepository() = TerritoryRepository(db.territoryDao(), remoteSync)
+    fun territoryRepository() = TerritoryRepository(db.territoryDao(), remoteSync, appContext)
     fun procedureRepository() = ProcedureRepository(db.procedureDao(), remoteSync)
     fun requestRepository() = RequestRepository(db.requestDao(), remoteSync, uidProvider())
     fun announcementRepository() = AnnouncementRepository(db.announcementDao(), remoteSync)

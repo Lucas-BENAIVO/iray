@@ -86,8 +86,13 @@
     <string name="zone_district_default">Antananarivo Avaradrano</string>
     <string name="zone_commune_label">Kaominina</string>
     <string name="zone_commune_default">Antananarivo</string>
+    <string name="zone_arrondissement_label">Arrondissement</string>
     <string name="zone_fokontany_label">Fokontany</string>
     <string name="zone_fokontany_default">Andohalo</string>
+    <string name="zone_select_hint">Misafidiana…</string>
+    <string name="zone_loading">Miandry ny faritra…</string>
+    <string name="zone_empty">Tsy mbola misy faritra eo an-toerana. Tsindrio Avereno.</string>
+    <string name="zone_retry">Avereno</string>
     <string name="zone_continue">Tohizo</string>
 
     <!-- Succès — profil créé -->
