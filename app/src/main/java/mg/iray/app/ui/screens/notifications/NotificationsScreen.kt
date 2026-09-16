@@ -3,7 +3,6 @@ package mg.iray.app.ui.screens.notifications
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -16,31 +15,24 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.AssignmentTurnedIn
 import androidx.compose.material.icons.filled.Description
 import androidx.compose.material.icons.filled.Person
-import androidx.compose.material.icons.filled.Tune
 import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material.icons.filled.Whatshot
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import mg.iray.app.R
+import mg.iray.app.ui.components.IrayScreenHeader
 import mg.iray.app.ui.components.notifications.NotificationCard
 import mg.iray.app.ui.components.notifications.NotificationFilterChip
 import mg.iray.app.ui.theme.BrandDanger
@@ -48,7 +40,6 @@ import mg.iray.app.ui.theme.FlagGreen
 import mg.iray.app.ui.theme.IrayTheme
 import mg.iray.app.ui.theme.SuccessAvatar
 import mg.iray.app.ui.theme.SurfacePage
-import mg.iray.app.ui.theme.TextPrimary
 
 /**
  * Écran Notifications - copie la capture du 11/09 15:01.
@@ -113,35 +104,11 @@ fun NotificationsScreen(
             .statusBarsPadding()
             .navigationBarsPadding(),
     ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 8.dp, end = 8.dp, top = 8.dp),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            IconButton(onClick = actions.onBack) {
-                Icon(
-                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                    contentDescription = stringResource(R.string.notifications_back_cd),
-                    tint = TextPrimary,
-                )
-            }
-            Text(
-                text = stringResource(R.string.notifications_title),
-                style = MaterialTheme.typography.titleLarge.copy(
-                    fontWeight = FontWeight.Bold,
-                ),
-                color = TextPrimary,
-                modifier = Modifier.weight(1f),
-            )
-            IconButton(onClick = actions.onFilterClick) {
-                Icon(
-                    imageVector = Icons.Filled.Tune,
-                    contentDescription = stringResource(R.string.notifications_filter_cd),
-                    tint = TextPrimary,
-                )
-            }
-        }
+        IrayScreenHeader(
+            title = stringResource(R.string.notifications_title),
+            onBack = actions.onBack,
+            modifier = Modifier.fillMaxWidth(),
+        )
 
         Spacer(modifier = Modifier.height(4.dp))
 
