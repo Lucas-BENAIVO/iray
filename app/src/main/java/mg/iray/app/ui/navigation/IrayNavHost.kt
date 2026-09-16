@@ -130,6 +130,8 @@ fun IrayNavHost(
     var sigCategoryId by rememberSaveable { mutableStateOf("") }
     var sigSubcategory by rememberSaveable { mutableStateOf("") }
     var sigAddress by rememberSaveable { mutableStateOf("") }
+    var sigLatitude by rememberSaveable { mutableStateOf<Double?>(null) }
+    var sigLongitude by rememberSaveable { mutableStateOf<Double?>(null) }
     var sigDescription by rememberSaveable { mutableStateOf("") }
     var sigPhotos by rememberSaveable { mutableStateOf(listOf<String>()) }
     var firstName by rememberSaveable { mutableStateOf("") }
@@ -400,11 +402,14 @@ fun IrayNavHost(
             val zoneCommune = profile?.commune?.takeIf { it.isNotBlank() } ?: commune
             SignalementLocationScreen(
                 initialAddress = "Fokontany $zoneFokontany, $zoneCommune",
+                initialLatitude = sigLatitude,
+                initialLongitude = sigLongitude,
                 actions = SignalementLocationActions(
                     onBack = { navController.popBackStack() },
-                    onUsePosition = { /* TODO: GPS */ },
-                    onContinue = { address ->
+                    onContinue = { address, lat, lng ->
                         sigAddress = address
+                        sigLatitude = lat
+                        sigLongitude = lng
                         navController.navigate(
                             "signalement_details/$locCategoryId/" +
                                 Uri.encode(sigSubcategory),
@@ -445,6 +450,8 @@ fun IrayNavHost(
                             subcategory = sigSubcategory,
                             description = sigDescription,
                             zoneLabel = sigAddress,
+                            latitude = sigLatitude,
+                            longitude = sigLongitude,
                             photoUris = sigPhotos,
                         ) {
                             navController.navigate(IrayRoute.SIGNALEMENT_SUCCESS)

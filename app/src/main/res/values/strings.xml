@@ -221,6 +221,11 @@
     <string name="signalement_location_back_cd">Miverina</string>
     <string name="signalement_location_title">Toerana</string>
     <string name="signalement_use_position">Ampiasao ny toerako</string>
+    <string name="signalement_locating">Mitady toerana…</string>
+    <string name="signalement_location_unavailable">Tsy hita ny toerana. Safidio eo amin’ny sarintany.</string>
+    <string name="signalement_location_permission_denied">Omeo alalana ny GPS mba hampiasa ny toeranao.</string>
+    <string name="signalement_coords_hint">Tsindrio ny sarintany na ampiasao ny GPS</string>
+    <string name="signalement_coords_label">Lat %1$.5f · Lng %2$.5f</string>
     <string name="signalement_address_label">Adiresy hita</string>
     <string name="signalement_address_hint">Fokontany, Kaominina</string>
 

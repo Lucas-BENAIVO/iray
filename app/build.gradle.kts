@@ -18,6 +18,12 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        // Clé Maps (surchargeable via gradle.properties MAPS_API_KEY=…).
+        val mapsKey = (project.findProperty("MAPS_API_KEY") as? String)
+            ?.takeIf { it.isNotBlank() }
+            ?: "AIzaSyDNYSWxb152aR6DTPTRaxdEV8yL7fhH-1I"
+        manifestPlaceholders["MAPS_API_KEY"] = mapsKey
     }
 
     // Signature identique sur toutes les machines.
@@ -74,12 +80,16 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-    //Firebase
+    // Firebase
     implementation(platform("com.google.firebase:firebase-bom:33.16.0"))
     implementation("com.google.firebase:firebase-firestore")
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-storage")
+    // Carte + GPS (signalement)
+    implementation("com.google.android.gms:play-services-maps:19.0.0")
+    implementation("com.google.android.gms:play-services-location:21.3.0")
+    implementation("com.google.maps.android:maps-compose:6.1.2")
     // Room
     implementation(libs.room.runtime)
     implementation(libs.room.ktx)

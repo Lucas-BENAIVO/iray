@@ -77,20 +77,20 @@ private fun generateSignalementReference(): String {
     return "SIG-$year-%06d".format(seq)
 }
 
-private fun SignalementEntity.toSyncData(): Map<String, Any> = mapOf(
-    "id" to id,
-    "category" to category,
-    "subcategory" to subcategory,
-    "description" to description,
-    "zoneLabel" to zoneLabel,
-    "latitude" to (latitude ?: 0.0),
-    "longitude" to (longitude ?: 0.0),
-    "photoMediaIds" to photoMediaIds,
-    "referenceNumber" to referenceNumber,
-    "status" to status,
-    "createdAt" to createdAt,
-    "updatedAt" to updatedAt
-)
+private fun SignalementEntity.toSyncData(): Map<String, Any> = buildMap {
+    put("id", id)
+    put("category", category)
+    put("subcategory", subcategory)
+    put("description", description)
+    put("zoneLabel", zoneLabel)
+    latitude?.let { put("latitude", it) }
+    longitude?.let { put("longitude", it) }
+    put("photoMediaIds", photoMediaIds)
+    put("referenceNumber", referenceNumber)
+    put("status", status)
+    put("createdAt", createdAt)
+    put("updatedAt", updatedAt)
+}
 
 private fun signalementFromSyncData(id: String, data: Map<String, Any>): SignalementEntity? =
     SignalementEntity(
@@ -99,11 +99,11 @@ private fun signalementFromSyncData(id: String, data: Map<String, Any>): Signale
         subcategory = (data["subcategory"] as? String).orEmpty(),
         description = (data["description"] as? String).orEmpty(),
         zoneLabel = (data["zoneLabel"] as? String).orEmpty(),
-        latitude = (data["latitude"] as? Double),
-        longitude = (data["longitude"] as? Double),
+        latitude = (data["latitude"] as? Number)?.toDouble(),
+        longitude = (data["longitude"] as? Number)?.toDouble(),
         photoMediaIds = (data["photoMediaIds"] as? List<*>)?.filterIsInstance<String>().orEmpty(),
         referenceNumber = (data["referenceNumber"] as? String).orEmpty(),
         status = (data["status"] as? String) ?: "RECEIVED",
         createdAt = (data["createdAt"] as? Number)?.toLong() ?: 0L,
-        updatedAt = (data["updatedAt"] as? Number)?.toLong() ?: 0L
+        updatedAt = (data["updatedAt"] as? Number)?.toLong() ?: 0L,
     )

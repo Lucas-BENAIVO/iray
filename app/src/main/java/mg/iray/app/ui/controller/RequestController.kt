@@ -82,6 +82,8 @@ class RequestController(application: Application) : AndroidViewModel(application
         subcategory: String,
         description: String,
         zoneLabel: String,
+        latitude: Double?,
+        longitude: Double?,
         photoUris: List<String>,
         onDone: (SignalementEntity) -> Unit = {},
     ) {
@@ -107,6 +109,8 @@ class RequestController(application: Application) : AndroidViewModel(application
                 subcategory = subcategory,
                 description = description,
                 zoneLabel = zoneLabel,
+                latitude = latitude,
+                longitude = longitude,
                 photoMediaIds = mediaIds,
                 referenceNumber = reference,
                 status = "RECEIVED",
