@@ -20,7 +20,20 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    // Signature identique sur toutes les machines.
+    signingConfigs {
+        create("sharedDebug") {
+            storeFile = rootProject.file("keystore/iray-debug.jks")
+            storePassword = "iraydebug"
+            keyAlias = "iraydebug"
+            keyPassword = "iraydebug"
+        }
+    }
+
     buildTypes {
+        debug {
+            signingConfig = signingConfigs.getByName("sharedDebug")
+        }
         release {
             isMinifyEnabled = false
             proguardFiles(
