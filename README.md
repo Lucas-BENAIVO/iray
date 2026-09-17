@@ -15,7 +15,7 @@ Application Android citoyenne pour Madagascar - **fangatahana** (démarches admi
 | Local | Room (`app_db`) |
 | Sync | Firebase Firestore (+ Auth, Storage, Analytics) |
 | Background | WorkManager (`SyncWorker`, `MediaUploadWorker`) |
-| Carte / GPS | Maps Compose, Play Services Maps & Location |
+| Carte / GPS | MapLibre Native (OpenFreeMap / OSM), Play Services Location |
 | Build | AGP 8.7, Gradle 8.9, **JDK 17**, minSdk 24, targetSdk 35 |
 
 Module unique : `:app` (`mg.iray.app`).
@@ -68,7 +68,7 @@ Toutes les machines utilisent le même keystore pour éviter les conflits d’in
 
 Après un install d’une autre machine / autre signature : désinstaller l’ancienne app puis réinstaller.
 
-### SHA-1 (Maps / Firebase)
+### SHA-1 (Firebase)
 
 ```bash
 keytool -list -v -keystore keystore/iray-debug.jks -alias iraydebug
@@ -78,24 +78,21 @@ SHA-1 attendu (keystore partagé actuel) :
 
 `A6:03:EB:49:BD:41:65:22:59:C3:66:F3:AD:16:12:BE:5E:FC:77:00`
 
-## Carte Google Maps (signalements)
+## Carte MapLibre + OpenStreetMap (signalements)
 
-L’écran **Toerana** utilise Google Maps. Si la carte est **grise** (logo Google visible) :
+L’écran **Toerana** utilise **MapLibre Native** + tuiles **OpenStreetMap**.
 
-1. Réseau téléphone OK (VPN / DNS souvent en cause)
-2. Sur le compte Google du projet **iray-mobile** :
- - activer **Maps SDK for Android**
- - restreindre la clé API (apps Android) :
- - package : `mg.iray.app`
- - SHA-1 : celui du keystore ci-dessus
-3. Clé injectée via `MAPS_API_KEY` (manifest `com.google.android.geo.API_KEY`) 
- Surcharge possible dans `gradle.properties` :
+### Hors-ligne (préchargement)
 
-```properties
-MAPS_API_KEY=votre_cle
-```
+1. **1re fois avec Internet** : l’app télécharge deux packs
+   - aperçu Madagascar (zoom 4–8)
+   - détail **Antananarivo** (zoom 11–15)
+2. **Ensuite** : la carte Tana reste utilisable **sans réseau**
+3. Hors de la zone préchargée / sans pack : Internet encore nécessaire
 
-Sans surcharge, le build utilise la clé présente dans la config Firebase / fallback Gradle.
+- Style : `assets/map/osm_raster_style.json`
+- Code : `MapOfflinePackager`
+- GPS : Play Services Location (local, même offline)
 
 ## Structure utile
 
@@ -126,4 +123,4 @@ iray/
 
 - Langue UI : **malagasy** (`app/src/main/res/values/strings.xml`)
 - Room version 4 ; migrations destructives en debug (`fallbackToDestructiveMigration`)
-- Ne pas committer de secrets hors du flux prévu (préférer `local.properties` / `gradle.properties` local pour une clé Maps dédiée)
+- Ne pas committer de secrets hors du flux prévu (`google-services.json` déjà lié au projet Firebase)
