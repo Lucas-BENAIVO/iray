@@ -1,6 +1,10 @@
 package mg.iray.app.repository
 
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flowOf
+import mg.iray.app.auth.UserSessionStore
 import mg.iray.app.dao.RequestDao
 import mg.iray.app.entity.RequestEntity
 import mg.iray.app.sync.RemoteSync
@@ -8,14 +12,26 @@ import mg.iray.app.sync.RemoteSync
 class RequestRepository(
     private val dao: RequestDao,
     private val sync: RemoteSync,
-    private val userId: () -> String
+    private val session: UserSessionStore,
 ) : SyncableRepository {
+
+    private fun userId(): String = session.getUid().orEmpty()
 
     private fun collection() = "users/${userId()}/requests"
 
-    fun observeAll(): Flow<List<RequestEntity>> = dao.observeAll(userId())
+    @OptIn(ExperimentalCoroutinesApi::class)
+    fun observeAll(): Flow<List<RequestEntity>> =
+        session.observeUid().flatMapLatest { uid ->
+            if (uid.isNullOrBlank()) flowOf(emptyList())
+            else dao.observeAll(uid)
+        }
 
-    fun observeByStatus(status: String): Flow<List<RequestEntity>> = dao.observeByStatus(userId(), status)
+    @OptIn(ExperimentalCoroutinesApi::class)
+    fun observeByStatus(status: String): Flow<List<RequestEntity>> =
+        session.observeUid().flatMapLatest { uid ->
+            if (uid.isNullOrBlank()) flowOf(emptyList())
+            else dao.observeByStatus(uid, status)
+        }
 
     fun observe(id: String): Flow<RequestEntity?> = dao.observe(id)
 

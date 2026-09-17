@@ -10,6 +10,7 @@ import mg.iray.app.fakes.FakeRemoteSync
 import mg.iray.app.fakes.FakeSignalementDao
 import mg.iray.app.fakes.FakeTaskDao
 import mg.iray.app.fakes.FakeUserProfileDao
+import mg.iray.app.fakes.InMemorySession
 import mg.iray.app.repository.NotificationRepository
 import mg.iray.app.repository.SignalementRepository
 import mg.iray.app.repository.TaskRepository
@@ -129,7 +130,8 @@ class OfflineFirstSyncTest {
     fun `le signalement est pousse avec les photos attachees`() = runTest {
         val dao = FakeSignalementDao()
         val remote = FakeRemoteSync()
-        val repo = SignalementRepository(dao, remote) { uid() }
+        val session = InMemorySession().also { it.saveUid(uid()) }
+        val repo = SignalementRepository(dao, remote, session)
 
         repo.save(
             SignalementEntity(

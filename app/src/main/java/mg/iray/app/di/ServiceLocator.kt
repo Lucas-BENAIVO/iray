@@ -53,12 +53,12 @@ object ServiceLocator {
 
     fun taskRepository() = TaskRepository(db.taskDao(), remoteSync, uidProvider())
     fun userProfileRepository() = UserProfileRepository(db.userProfileDao(), remoteSync, uidProvider())
-    fun signalementRepository() = SignalementRepository(db.signalementDao(), remoteSync, uidProvider())
+    fun signalementRepository() = SignalementRepository(db.signalementDao(), remoteSync, session)
     fun notificationRepository() = NotificationRepository(db.notificationDao(), remoteSync, uidProvider())
     fun mediaRepository() = MediaRepository(db.mediaDao(), mediaUploader, uidProvider())
     fun territoryRepository() = TerritoryRepository(db.territoryDao(), remoteSync, appContext)
     fun procedureRepository() = ProcedureRepository(db.procedureDao(), remoteSync)
-    fun requestRepository() = RequestRepository(db.requestDao(), remoteSync, uidProvider())
+    fun requestRepository() = RequestRepository(db.requestDao(), remoteSync, session)
     fun announcementRepository() = AnnouncementRepository(db.announcementDao(), remoteSync)
 
     fun syncableRepositories(): List<SyncableRepository> = listOf(

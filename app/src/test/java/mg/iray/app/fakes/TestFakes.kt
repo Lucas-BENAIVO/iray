@@ -1,4 +1,4 @@
-﻿package mg.iray.app.fakes
+package mg.iray.app.fakes
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -25,10 +25,11 @@ import mg.iray.app.sync.RemoteSync
 import java.io.IOException
 
 class InMemorySession : UserSessionStore {
-    private var uid: String? = null
-    override fun saveUid(uid: String) { this.uid = uid }
-    override fun getUid(): String? = uid
-    override fun clear() { uid = null }
+    private val uidFlow = MutableStateFlow<String?>(null)
+    override fun saveUid(uid: String) { uidFlow.value = uid }
+    override fun getUid(): String? = uidFlow.value
+    override fun observeUid() = uidFlow
+    override fun clear() { uidFlow.value = null }
 }
 
 class FakeAuthSource : AuthSource {

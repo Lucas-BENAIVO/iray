@@ -1,6 +1,10 @@
 package mg.iray.app.repository
 
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flowOf
+import mg.iray.app.auth.UserSessionStore
 import mg.iray.app.dao.SignalementDao
 import mg.iray.app.entity.SignalementEntity
 import mg.iray.app.sync.RemoteSync
@@ -8,12 +12,20 @@ import mg.iray.app.sync.RemoteSync
 class SignalementRepository(
     private val dao: SignalementDao,
     private val sync: RemoteSync,
-    private val userId: () -> String
+    private val session: UserSessionStore,
 ) : SyncableRepository {
+
+    private fun userId(): String = session.getUid().orEmpty()
 
     private fun collection() = "users/${userId()}/signalements"
 
-    fun observeAll(): Flow<List<SignalementEntity>> = dao.observeAll(userId())
+    /** Suit l’uid de session : sinon la liste reste figée sur "" au démarrage. */
+    @OptIn(ExperimentalCoroutinesApi::class)
+    fun observeAll(): Flow<List<SignalementEntity>> =
+        session.observeUid().flatMapLatest { uid ->
+            if (uid.isNullOrBlank()) flowOf(emptyList())
+            else dao.observeAll(uid)
+        }
 
     suspend fun save(signalement: SignalementEntity) {
         dao.upsert(
